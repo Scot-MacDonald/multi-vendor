@@ -1,0 +1,47 @@
+import React from "react";
+import SmallCard from "./SmallCard";
+import {
+  Boxes,
+  MailCheck,
+  Package,
+  PackageCheck,
+  PackageMinus,
+  PackageOpen,
+  ShoppingCart,
+} from "lucide-react";
+
+export default function SmallCards() {
+  const data = [
+    {
+      title: "Total Orders",
+      number: "150",
+      iconBg: "bg-green-600",
+      icon: Boxes,
+    },
+    {
+      title: "Pending Orders",
+      number: "100",
+      iconBg: "bg-green-600",
+      icon: ShoppingCart,
+    },
+    {
+      title: "Orders Processing",
+      number: "200",
+      iconBg: "bg-green-600",
+      icon: Package,
+    },
+    {
+      title: "Orders Delivered",
+      number: "300",
+      iconBg: "bg-green-600",
+      icon: PackageCheck,
+    },
+  ];
+  return (
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 py-8">
+      {data.map((data, i) => {
+        return <SmallCard data={data} />;
+      })}
+    </div>
+  );
+}
