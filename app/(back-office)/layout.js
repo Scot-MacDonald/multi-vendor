@@ -7,9 +7,9 @@ export default function layout({ children }) {
     <div className="flex">
       <Sidebar />
 
-      <div className="w-full">
+      <div className="lg:ml-64 ml-0 flex-grow min-h-screen">
         <Navbar />
-        <main className="ml-60 mt-16  p-8 text-slate-50 bg-white dark:bg-black min-h-screen ">
+        <main className=" mt-16  p-8 text-slate-50 bg-white dark:bg-black min-h-screen ">
           {children}
         </main>
       </div>
