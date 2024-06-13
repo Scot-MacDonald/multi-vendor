@@ -9,7 +9,7 @@ export default function layout({ children }) {
 
       <div className="w-full">
         <Navbar />
-        <main className="ml-60 mt-16  p-8 text-slate-50 min-h-screen ">
+        <main className="ml-60 mt-16  p-8 text-slate-50 bg-white dark:bg-black min-h-screen ">
           {children}
         </main>
       </div>

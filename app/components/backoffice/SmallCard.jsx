@@ -5,7 +5,7 @@ export default function SmallCard({ data }) {
   const { title, number, iconBg, icon: Icon } = data;
   return (
     <div
-      className={`rounded-lg  text-black shadow-lg p-4 flex border-solid border border-black `}
+      className={`rounded-lg  text-black dark:text-white shadow-lg p-4 flex border-solid border border-black dark:border-white `}
     >
       <div className="flex space-x-4">
         <div

@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function sidebar() {
   return (
-    <div className=" space-y-6 w-60 h-screen text-black  p-3 fixed left-0 top-0 border-r border-black">
+    <div className=" space-y-6 w-60 h-screen bg-white dark:bg-black dark:text-white text-black  p-3 fixed left-0 top-0 border-r border-black dark:border-white">
       <Link className="mb-6" href="#">
         Logo
       </Link>

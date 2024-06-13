@@ -15,7 +15,9 @@ export default function CustomDataTable() {
   const itemEndIndex = Math.min(startIndex + PAGE_SIZE, data.length);
   return (
     <div className="">
-      <h2 className="text-xl text-black font-bold mb-4">Recent Orders</h2>
+      <h2 className="text-xl text-black dark:text-white font-bold mb-4">
+        Recent Orders
+      </h2>
 
       <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
         <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">

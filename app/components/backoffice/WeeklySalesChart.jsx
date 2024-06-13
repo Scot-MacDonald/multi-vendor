@@ -110,7 +110,9 @@ export default function WeeklySalesChart() {
   return (
     <div>
       <div className=" p-8 rounded-lg h-full">
-        <h2 className="text-xl text-black font-bold mb-4">Weekly Sales</h2>
+        <h2 className="text-xl text-black dark:text-white font-bold mb-4">
+          Weekly Sales
+        </h2>
         <div className="p-4">
           <div className="text-sm font-medium text-center text-gray-200 border-b border-gray-400 dark:text-gray-400 dark:border-gray-700">
             <ul className="flex flex-wrap -mb-px">
