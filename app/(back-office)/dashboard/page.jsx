@@ -12,7 +12,7 @@ export default function page() {
       <LargeCards />
       <SmallCards />
       <DashboardCharts />
-      <CustomDataTable />
+      {/* <CustomDataTable /> */}
     </div>
   );
 }

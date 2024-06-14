@@ -10,7 +10,7 @@ export default function CustomDataTable() {
   const endIndex = startIndex + PAGE_SIZE;
   const currentlyDisplayedData = data.slice(startIndex, endIndex);
   const totalPages = Math.ceil(data.length / PAGE_SIZE);
-  console.log(data);
+  // console.log(data);
   const itemStartIndex = startIndex + 1;
   const itemEndIndex = Math.min(startIndex + PAGE_SIZE, data.length);
   return (
