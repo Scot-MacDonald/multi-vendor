@@ -128,8 +128,8 @@ export default function sidebar({ showSidebar, setShowSidebar }) {
     <div
       className={
         showSidebar
-          ? " lg:block mt-10 sm:mt-0  space-y-6 w-64 h-screen bg-white dark:bg-black dark:text-white text-black   fixed left-0 top-0 border-r border-black dark:border-white"
-          : "mt-10 sm:mt-0 hidden lg:block space-y-6 w-64 h-screen bg-white dark:bg-black dark:text-white text-black   fixed left-0 top-0 border-r border-black dark:border-white"
+          ? " lg:block mt-10 sm:mt-0  space-y-6 w-64 h-screen bg-white dark:bg-black dark:text-white text-black   fixed left-0 top-0 border-r border-black dark:border-white overflow-y-scroll"
+          : "mt-10 sm:mt-0 hidden lg:block space-y-6 w-64 h-screen bg-white dark:bg-black dark:text-white text-black   fixed left-0 top-0 border-r border-black dark:border-white overflow-y-scroll"
       }
     >
       <div className="pt-2 pl-2 hidden lg:block">
