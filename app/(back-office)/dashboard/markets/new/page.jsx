@@ -9,10 +9,9 @@ import { makePostRequest } from "@/lib/apiRequest";
 
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import SelectInput from "@/app/components/formInputs/SelectInput";
 
 export default function NewCategory() {
-  const [imageUrl, setImageUrl] = useState("");
+  const [logoUrl, setLogoUrl] = useState("");
   const [loading, setLoading] = useState(false);
   const {
     register,
@@ -23,52 +22,45 @@ export default function NewCategory() {
   async function onSubmit(data) {
     const slug = generateSlug(data.title);
     data.slug = slug;
-    data.imageUrl = imageUrl;
+    data.logoUrl = logoUrl;
 
     console.log(data);
-    makePostRequest(setLoading, "api/categories", data, "category", reset);
-    setImageUrl("");
+    makePostRequest(setLoading, "api/markets", data, "Market", reset);
+    setLogoUrl("");
   }
   return (
     <div>
-      <FormHeader title="New category" />
+      <FormHeader title="New Market" />
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="w-full max-w-4xl p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-6 md:p-8 dark:bg-transparent dark:border-lime-700 mx-auto my-3"
       >
         <div className="grid gap-4 sm:grid-cols-2 sm:gap-6">
           <TextInput
-            label="Category Title"
+            label="Market Title"
             name="title"
             register={register}
             errors={errors}
-            className="w-full"
           />
-          {/* <SelectInput
-            label="Select Market"
-            name="title"
-            register={register}
-            errors={errors}
-            className="w-full"
-          /> */}
-          <TextAreaInput
-            label="Category Description"
-            name="description"
-            register={register}
-            errors={errors}
-          />
+
           <ImageInput
-            imageUrl={imageUrl}
-            setImageUrl={setImageUrl}
-            endpoint="categoryImageUploader"
-            label="Category image"
+            imageUrl={logoUrl}
+            setImageUrl={setLogoUrl}
+            endpoint="marketLogoUploader"
+            label="Market Logo"
+          />
+          <TextAreaInput
+            label={"Market Description"}
+            name={"description"}
+            register={register}
+            errors={errors}
           />
         </div>
 
         <SubmitButton
           isLoading={loading}
-          buttonTitle="Create Category"
-          loadingButtonTitle="Creating category please wait..."
+          buttonTitle="Create Market"
+          loadingButtonTitle="Creating market please wait..."
         />
       </form>
     </div>

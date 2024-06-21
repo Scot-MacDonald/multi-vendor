@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-// API NEEDS TO BE SET UP ON MONGO 
+// API NEEDS TO BE SET UP ON MONGO
 export async function POST(request) {
   try {
     const { title, couponCode, expiryDate } = await request.json();

@@ -107,20 +107,20 @@ export default function sidebar({ showSidebar, setShowSidebar }) {
       icon: LayoutList,
       href: "/dashboard/categories",
     },
-    {
-      title: "Attributes",
-      icon: SendToBack,
-      href: "/dashboard/attributes",
-    },
+    // {
+    //   title: "Attributes",
+    //   icon: SendToBack,
+    //   href: "/dashboard/attributes",
+    // },
     {
       title: "Coupons",
       icon: ScanSearch,
       href: "/dashboard/coupons",
     },
     {
-      title: "Store slides",
+      title: "Store Banners",
       icon: MonitorPlay,
-      href: "/dashboard/sliders",
+      href: "/dashboard/banners",
     },
   ];
   const [openMenu, setOpenMenu] = useState(false);
@@ -169,7 +169,7 @@ export default function sidebar({ showSidebar, setShowSidebar }) {
               {openMenu ? <ChevronDown /> : <ChevronRight />}
             </button>
           </CollapsibleTrigger>
-          <CollapsibleContent className="px-3 pl-4 py-3 bg-slate-100 rounded-sm">
+          <CollapsibleContent className="px-3 pl-4 py-3 dark:bg-black dark:text-slate-100 rounded-sm">
             {catalogueLinks.map((item, i) => {
               const Icon = item.icon;
               return (
