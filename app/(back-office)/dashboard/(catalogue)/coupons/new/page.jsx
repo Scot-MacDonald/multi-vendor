@@ -21,13 +21,16 @@ export default function NewCoupon() {
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const title = watch("title");
-  console.log(title);
+  // HE REMOVED THE FOLLOWING 4 LINES OF CODE BECAUSE HE HAD AN ERROR OURS RUNS WITHOUT AN ERROR!
+  // const title = watch("title");
+  // const expiryDate = watch("expiryDate");
+  // const coupon = generateCouponCode(title, expiryDate)
+  // console.log(coupon);
   async function onSubmit(data) {
-    // data.slug = slug;
+    const couponCode = generateCouponCode(data.title, data.expiryDate) //THIS LINE CAN BE REMOVED IF OTHER LINES ARE UNCOMMENTED
+    data.couponCode = couponCode; //THIS LINE CAN BE REMOVED IF OTHER LINES ARE UNCOMMENTED
     console.log(data);
-    // makePostRequest(setLoading, "api/categories", data, "category", reset);
-    // setImageUrl("");
+    makePostRequest(setLoading, "api/coupons", data, "coupon", reset);
   }
   return (
     <div>
@@ -43,14 +46,15 @@ export default function NewCoupon() {
             register={register}
             errors={errors}
           />
-          <TextInput
+          {/* THE LINE BELOW CAN BE UNCOMMENTED AND THE USER CAN INPUT THE COUPON CODE */}
+          {/* <TextInput
             label="Coupon Code"
             name="code"
             defaultValue="gfgfgfgfgf"
             register={register}
             errors={errors}
             className="w-full"
-          />
+          /> */}
           <TextInput
             label="Coupon expiry date"
             name="expiryDate"
