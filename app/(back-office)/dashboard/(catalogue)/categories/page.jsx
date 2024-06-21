@@ -13,7 +13,7 @@ export default function page() {
         href="/dashboard/categories/new"
         linkTitle="Add category"
       />
-      <h2 className="text-black">Categories</h2>
+
       <TableActions />
       <div className="py-6">
         <h2>table</h2>
