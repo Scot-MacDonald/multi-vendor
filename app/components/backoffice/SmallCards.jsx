@@ -16,24 +16,28 @@ export default function SmallCards() {
       title: "Total Orders",
       number: "150",
       iconBg: "bg-green-600",
+      iconBorder: "dark:border-[#666666] border-solid border ",
       icon: Boxes,
     },
     {
       title: "Pending Orders",
       number: "100",
       iconBg: "bg-green-600",
+      iconBorder: "dark:border-[#666666] border-solid border ",
       icon: ShoppingCart,
     },
     {
       title: "Orders Processing",
       number: "200",
       iconBg: "bg-green-600",
+      iconBorder: "dark:border-[#666666] border-solid border ",
       icon: Package,
     },
     {
       title: "Orders Delivered",
       number: "300",
       iconBg: "bg-green-600",
+      iconBorder: "dark:border-[#666666] border-solid border ",
       icon: PackageCheck,
     },
   ];

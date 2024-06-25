@@ -24,7 +24,7 @@ export default function TextInput({
           id={name}
           defaultValue={defaultValue}
           autoComplete={name}
-          className="block w-full rounded-md border-0 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-lime-700 placeholder:text-black dark:placeholder:text-white focus:ring-2 focus:ring-inset focus:ring-lime-700 dark:focus:ring-slate-100 sm:text-sm sm:leading-6 dark:bg-transparent dark:text-slate-100"
+          className="block w-full rounded-md border-0 py-2 text-gray-900 shadow-sm ring-1 ring-inset dark:ring-[#666666] ring-gray-300 placeholder:text-black dark:placeholder:text-white focus:ring-2 focus:ring-inset focus:ring-[#666666] dark:focus:ring-slate-100 sm:text-sm sm:leading-6 dark:bg-transparent dark:text-slate-100"
           placeholder={`Type the ${label.toLowerCase()}`}
         />
         {errors[`${name}`] && (

@@ -27,7 +27,7 @@ export default function NewCoupon() {
   // const coupon = generateCouponCode(title, expiryDate)
   // console.log(coupon);
   async function onSubmit(data) {
-    const couponCode = generateCouponCode(data.title, data.expiryDate) //THIS LINE CAN BE REMOVED IF OTHER LINES ARE UNCOMMENTED
+    const couponCode = generateCouponCode(data.title, data.expiryDate); //THIS LINE CAN BE REMOVED IF OTHER LINES ARE UNCOMMENTED
     data.couponCode = couponCode; //THIS LINE CAN BE REMOVED IF OTHER LINES ARE UNCOMMENTED
     console.log(data);
     makePostRequest(setLoading, "api/coupons", data, "coupon", reset);
@@ -37,7 +37,7 @@ export default function NewCoupon() {
       <FormHeader title="New coupon" />
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="w-full max-w-4xl p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-6 md:p-8 dark:bg-transparent dark:border-lime-700 mx-auto my-3"
+        className="w-full max-w-4xl p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-6 md:p-8 dark:bg-transparent dark:border-[#666666] mx-auto my-3"
       >
         <div className="grid gap-4 sm:grid-cols-2 sm:gap-6">
           <TextInput
