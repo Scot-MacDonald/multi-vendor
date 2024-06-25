@@ -51,7 +51,8 @@ export default function NewProduct() {
       title: "farmer 4",
     },
   ];
-  const [tags, setTags] = useState(["tag1", "tag2", "tag3", "tag4"]);
+  const [tags, setTags] = useState([]);
+  console.log(tags);
   const [loading, setLoading] = useState(false);
   const {
     register,
@@ -145,7 +146,7 @@ export default function NewProduct() {
             register={register}
             errors={errors}
           />
-          <ArrayItemsinput setItems={setTags} items={tags} />
+          <ArrayItemsinput setItems={setTags} items={tags} itemTitle="Tag" />
         </div>
 
         <SubmitButton
