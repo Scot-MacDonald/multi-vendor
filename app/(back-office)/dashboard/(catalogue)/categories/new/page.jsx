@@ -13,6 +13,24 @@ import SelectInput from "@/app/components/formInputs/SelectInput";
 
 export default function NewCategory() {
   const [imageUrl, setImageUrl] = useState("");
+  const markets = [
+    {
+      id: 1,
+      title: "White Widow farmers market",
+    },
+    {
+      id: 2,
+      title: "Quebec Gold farmers market",
+    },
+    {
+      id: 3,
+      title: "Shaman farmers market",
+    },
+    {
+      id: 4,
+      title: "Cannabis sativa farmers market",
+    },
+  ];
   const [loading, setLoading] = useState(false);
   const {
     register,
@@ -44,13 +62,16 @@ export default function NewCategory() {
             errors={errors}
             className="w-full"
           />
-          {/* <SelectInput
-            label="Select Market"
-            name="title"
+          <SelectInput
+            label="Select Markets"
+            name="marketIds"
             register={register}
             errors={errors}
             className="w-full"
-          /> */}
+            options={markets}
+            // change to false for single select
+            multiple={true}
+          />
           <TextAreaInput
             label="Category Description"
             name="description"
