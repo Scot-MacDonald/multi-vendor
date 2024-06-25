@@ -128,8 +128,8 @@ export default function sidebar({ showSidebar, setShowSidebar }) {
     <div
       className={
         showSidebar
-          ? " lg:block mt-10 sm:mt-0  space-y-6 w-64 h-screen bg-white dark:bg-black dark:text-white text-black   fixed left-0 top-0 border-r border-black dark:border-white overflow-y-scroll"
-          : "mt-10 sm:mt-0 hidden lg:block space-y-6 w-64 h-screen bg-white dark:bg-black dark:text-white text-black   fixed left-0 top-0 border-r border-black dark:border-white overflow-y-scroll"
+          ? " lg:block mt-10 sm:mt-0  space-y-6 w-64 h-screen bg-white dark:bg-black dark:text-white text-black   fixed left-0 top-0 border-r border-gray-300 dark:border-[#666666] overflow-y-scroll"
+          : "mt-10 sm:mt-0 hidden lg:block space-y-6 w-64 h-screen bg-white dark:bg-black dark:text-white text-black   fixed left-0 top-0 border-r border-gray-300 dark:border-[#666666] overflow-y-scroll"
       }
     >
       <div className="pt-2 pl-2 hidden lg:block">
@@ -148,7 +148,7 @@ export default function sidebar({ showSidebar, setShowSidebar }) {
           href="/dashboard"
           className={
             pathname === "/dashboard"
-              ? "flex items-center space-x-3 px-6 py-2 mt-10 lg:mt-0 border-l-8 border-green-600 text-green-600"
+              ? "flex items-center space-x-3 px-6 py-2 mt-10 lg:mt-0 border-l-8 border-[#666666] text-[#666666]"
               : "flex items-center space-x-3 px-6 py-2 "
           }
         >
@@ -179,7 +179,7 @@ export default function sidebar({ showSidebar, setShowSidebar }) {
                   href={item.href}
                   className={
                     pathname === item.href
-                      ? "flex items-center space-x-3  py-1 text-sm  text-green-600"
+                      ? "flex items-center space-x-3  py-1 text-sm  text-[#666666]"
                       : "flex items-center space-x-3  py-1 text-sm"
                   }
                 >
@@ -200,7 +200,7 @@ export default function sidebar({ showSidebar, setShowSidebar }) {
               href={item.href}
               className={
                 item.href == pathname
-                  ? "flex items-center space-x-3 px-6 py-2 border-l-8 border-green-600 text-green-600"
+                  ? "flex items-center space-x-3 px-6 py-2 border-l-8 border-[#666666] text-[#666666]"
                   : "flex items-center space-x-3 px-6 py-2 "
               }
             >
@@ -210,7 +210,7 @@ export default function sidebar({ showSidebar, setShowSidebar }) {
           );
         })}
         <div className="px-6 py-2">
-          <button className="flex items-center space-x-3  bg-lime-600 rounded-md px-6 py-3">
+          <button className="flex items-center space-x-3  bg-green-500 rounded-md px-6 py-3">
             <LogOut />
             <span>Logout</span>
           </button>
