@@ -9,6 +9,7 @@ import { makePostRequest } from "@/lib/apiRequest";
 
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
+import ToggleInput from "@/app/components/formInputs/Toggleinput";
 
 export default function NewCategory() {
   const [imageUrl, setImageUrl] = useState("");
@@ -16,9 +17,15 @@ export default function NewCategory() {
   const {
     register,
     reset,
+    watch,
     handleSubmit,
     formState: { errors },
-  } = useForm();
+  } = useForm({
+    defaultValues: {
+      isActive: true,
+    },
+  });
+  const isActive = watch("isActive");
   async function onSubmit(data) {
     const slug = generateSlug(data.title);
     data.slug = slug;
@@ -56,6 +63,13 @@ export default function NewCategory() {
             label="Banner Image"
           />
         </div>
+        <ToggleInput
+          label="Publish your Banner"
+          name="isActive"
+          trueTitle="Active"
+          falseTitle="Draft"
+          register={register}
+        />
 
         <SubmitButton
           isLoading={loading}

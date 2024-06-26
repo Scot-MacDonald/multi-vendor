@@ -7,7 +7,7 @@ import React from "react";
 
 export default function Coupons() {
   return (
-    <div className="text-black">
+    <div className="text-black bg-[#ffffff] dark:bg-black p-8">
       <PageHeader
         heading="Coupons"
         href="/dashboard/coupons/new"

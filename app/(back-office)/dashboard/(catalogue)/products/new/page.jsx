@@ -12,6 +12,8 @@ import { useForm } from "react-hook-form";
 import SelectInput from "@/app/components/formInputs/SelectInput";
 
 import ArrayItemsinput from "@/app/components/formInputs/ArrayItemsInput";
+import ToggleInput from "@/app/components/formInputs/Toggleinput";
+import clsx from "clsx";
 
 export default function NewProduct() {
   const [imageUrl, setImageUrl] = useState("");
@@ -54,12 +56,21 @@ export default function NewProduct() {
   const [tags, setTags] = useState([]);
   console.log(tags);
   const [loading, setLoading] = useState(false);
+
   const {
     register,
     reset,
+    watch,
     handleSubmit,
     formState: { errors },
-  } = useForm();
+  } = useForm({
+    defaultValues: {
+      isActive: true,
+    },
+  });
+  const isActive = watch("isActive");
+  console.log(isActive);
+
   async function onSubmit(data) {
     const slug = generateSlug(data.title);
     data.slug = slug;
@@ -146,6 +157,14 @@ export default function NewProduct() {
             register={register}
             errors={errors}
           />
+          <ToggleInput
+            label="Publish your Product"
+            name="isActive"
+            trueTitle="Active"
+            falseTitle="Draft"
+            register={register}
+          />
+
           <ArrayItemsinput setItems={setTags} items={tags} itemTitle="Tag" />
         </div>
 

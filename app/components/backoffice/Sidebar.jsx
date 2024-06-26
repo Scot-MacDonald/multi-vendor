@@ -128,18 +128,18 @@ export default function sidebar({ showSidebar, setShowSidebar }) {
     <div
       className={
         showSidebar
-          ? " lg:block mt-10 sm:mt-0  space-y-6 w-64 h-screen bg-white dark:bg-black dark:text-white text-black   fixed left-0 top-0 border-r border-gray-300 dark:border-[#666666] overflow-y-scroll"
-          : "mt-10 sm:mt-0 hidden lg:block space-y-6 w-64 h-screen bg-white dark:bg-black dark:text-white text-black   fixed left-0 top-0 border-r border-gray-300 dark:border-[#666666] overflow-y-scroll"
+          ? " lg:block mt-10 sm:mt-0  space-y-6 w-64 h-screen bg-[#f8f8f8] dark:bg-black dark:text-white text-[#249a38]  fixed left-0 top-0 border-8 border-[#f8f8f8] dark:border-[#303030] overflow-y-scroll  "
+          : "mt-10 sm:mt-0 hidden lg:block space-y-6 w-64 h-screen bg-white dark:bg-black dark:text-white text-[#249a38]   fixed left-0 top-0 border-8 border-[#f8f8f8] dark:border-[#303030] overflow-y-scroll"
       }
     >
-      <div className="pt-2 pl-2 hidden lg:block">
+      <div className="pt-2 pl-2 hidden lg:block  ">
         <Link
           onClick={() => setShowSidebar(false)}
           className=""
           href="/dashboard"
         >
           {/* <Image src={logo} alt="logo" width={40} height={40} /> */}
-          <Cannabis size={48} color="#008e00" strokeWidth={1} />
+          <Cannabis size={48} color="#249a38" strokeWidth={1} />
         </Link>
       </div>
       <div className="space-y-3 flex flex-col mt-12">
@@ -148,7 +148,7 @@ export default function sidebar({ showSidebar, setShowSidebar }) {
           href="/dashboard"
           className={
             pathname === "/dashboard"
-              ? "flex items-center space-x-3 px-6 py-2 mt-10 lg:mt-0 border-l-8 border-[#666666] text-[#666666]"
+              ? "flex items-center space-x-3 px-6 py-2 mt-10 lg:mt-0 border-l-8 border-[#666666] text-[#249a38]"
               : "flex items-center space-x-3 px-6 py-2 "
           }
         >
@@ -210,9 +210,9 @@ export default function sidebar({ showSidebar, setShowSidebar }) {
           );
         })}
         <div className="px-6 py-2">
-          <button className="flex items-center space-x-3  bg-green-500 rounded-md px-6 py-3">
+          <button className="flex items-center space-x-3  bg-[#12a049] text-white rounded-md px-6 py-3">
             <LogOut />
-            <span>Logout</span>
+            <span className="">Logout</span>
           </button>
         </div>
       </div>

@@ -13,7 +13,7 @@ import { generateCouponCode } from "@/lib/generateCouponCode";
 import { generateUserCode } from "@/lib/generateUserCode";
 import ToggleInput from "@/app/components/formInputs/Toggleinput";
 
-export default function NewFarmer() {
+export default function NewStaff() {
   const [loading, setLoading] = useState(false);
   const [couponCode, setCouponCode] = useState();
   const {
@@ -33,25 +33,33 @@ export default function NewFarmer() {
     const code = generateUserCode("LFF", data.name);
     data.code = code;
     console.log(data);
-    makePostRequest(setLoading, "api/farmers", data, "farmer", reset);
+    makePostRequest(setLoading, "api/staff", data, "staff", reset);
   }
   return (
     <div>
-      <FormHeader title="New Farmer" />
+      <FormHeader title="New Staff" />
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="w-full max-w-4xl p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-6 md:p-8 dark:bg-transparent dark:border-lime-700 mx-auto my-3"
       >
         <div className="grid gap-4 sm:grid-cols-2 sm:gap-6">
           <TextInput
-            label="Farmer's Full Name"
+            label="Staff Full Name"
             name="name"
             register={register}
             errors={errors}
-            className="w-full"
           />
           <TextInput
-            label="Farmer's Phone"
+            label="Password"
+            name="password"
+            register={register}
+            errors={errors}
+            type="password"
+            className="w-full"
+          />
+
+          <TextInput
+            label="Staff's Phone"
             name="phone"
             type="tel"
             register={register}
@@ -59,40 +67,20 @@ export default function NewFarmer() {
             className="w-full"
           />
           <TextInput
-            label="Farmer's Email Address"
+            label="Staff's Email Address"
             name="name"
             register={register}
             errors={errors}
             className="w-full"
           />
           <TextInput
-            label="Farmer's Physical Address"
+            label="Staff's Physical Address"
             name="physicalAddress"
             register={register}
             errors={errors}
             className="w-full"
           />
-          <TextInput
-            label="Farmer's Contact Person"
-            name="contactPerson"
-            register={register}
-            errors={errors}
-            className="w-full"
-          />
-          <TextInput
-            label="Farmer's Contact Person Phone"
-            name="phone"
-            type="tel"
-            register={register}
-            errors={errors}
-            className="w-full"
-          />
-          <TextAreaInput
-            label="Farmer's Payment Terms"
-            name="terms"
-            register={register}
-            errors={errors}
-          />
+
           <TextAreaInput
             label="Notes"
             name="notes"
@@ -100,19 +88,12 @@ export default function NewFarmer() {
             errors={errors}
             isRequired={false}
           />
-          <ToggleInput
-            label="Farmer status"
-            name="isActive"
-            trueTitle="Active"
-            falseTitle="Draft"
-            register={register}
-          />
         </div>
 
         <SubmitButton
           isLoading={loading}
-          buttonTitle="Create Farmer"
-          loadingButtonTitle="Creating farmer please wait..."
+          buttonTitle="Create Staff"
+          loadingButtonTitle="Creating staff please wait..."
         />
       </form>
     </div>
