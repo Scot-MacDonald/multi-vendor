@@ -10,6 +10,7 @@ import { makePostRequest } from "@/lib/apiRequest";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { generateCouponCode } from "@/lib/generateCouponCode";
+import ToggleInput from "@/app/components/formInputs/Toggleinput";
 
 export default function NewCoupon() {
   const [loading, setLoading] = useState(false);
@@ -20,7 +21,12 @@ export default function NewCoupon() {
     watch,
     handleSubmit,
     formState: { errors },
-  } = useForm();
+  } = useForm({
+    defaultValues: {
+      isActive: true,
+    },
+  });
+  const isActive = watch("isActive");
   // HE REMOVED THE FOLLOWING 4 LINES OF CODE BECAUSE HE HAD AN ERROR OURS RUNS WITHOUT AN ERROR!
   // const title = watch("title");
   // const expiryDate = watch("expiryDate");
@@ -62,6 +68,13 @@ export default function NewCoupon() {
             register={register}
             errors={errors}
             className="w-full"
+          />
+          <ToggleInput
+            label="Publish your Coupon"
+            name="isActive"
+            trueTitle="Active"
+            falseTitle="Draft"
+            register={register}
           />
         </div>
 
