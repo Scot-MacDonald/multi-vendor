@@ -8,7 +8,7 @@ import React from "react";
 export default function page() {
   return (
     <>
-      <div className="bg-white dark:bg-black pl-8 pt-8">
+      <div className="bg-white dark:bg-[#252525] pl-8 pt-8">
         <Heading title="Dashboard Overview" />
       </div>
       <LargeCards />

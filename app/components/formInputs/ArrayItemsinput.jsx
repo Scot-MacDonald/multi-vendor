@@ -34,15 +34,14 @@ export default function ArrayItemsInput({ setItems, items = [], itemTitle }) {
           <button
             onClick={addItem}
             type="button"
-            className="shrink-0 inline-flex items-center py-2.5 px-3 ms-2 text-sm font-medium text-white bg-lime-700 rounded-lg border border-lime-700 hover:bg-lime-800 focus:ring-4 focus:outline-none focus:ring-lime-300 dark:bg-lime-600 dark:hover:bg-lime-700 dark:focus:ring-lime-800"
+            className="ml-3 shrink-0 w-8 h-8 bg-green-500  flex items-center justify-center"
           >
-            <Plus className="w-4 h-4 me-2" />
-            Add
+            <Plus className="w-4 h-4 " />
           </button>
           <button
             type="button"
             onClick={() => setShowTagForm(false)}
-            className="ml-3 shrink-0 w-8 h-8 bg-red-400 rounded-full flex items-center justify-center"
+            className="ml-3 shrink-0 w-8 h-8 bg-red-500  flex items-center justify-center"
           >
             <X className="w-4 h-4 " />
           </button>

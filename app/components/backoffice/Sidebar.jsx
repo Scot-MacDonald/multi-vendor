@@ -128,8 +128,8 @@ export default function sidebar({ showSidebar, setShowSidebar }) {
     <div
       className={
         showSidebar
-          ? " lg:block mt-10 sm:mt-0  space-y-6 w-64 h-screen bg-[#f8f8f8] dark:bg-black dark:text-white text-[#249a38]  fixed left-0 top-0 border-8 border-[#f8f8f8] dark:border-[#303030] overflow-y-scroll  "
-          : "mt-10 sm:mt-0 hidden lg:block space-y-6 w-64 h-screen bg-white dark:bg-black dark:text-white text-[#249a38]   fixed left-0 top-0 border-8 border-[#f8f8f8] dark:border-[#303030] overflow-y-scroll"
+          ? " lg:block mt-10 sm:mt-0  space-y-6 w-64 h-screen bg-[#f8f8f8] dark:bg-[#2b2b2b] dark:text-white text-[#249a38]  fixed left-0 top-0 border-8 border-[#f8f8f8] dark:border-[#303030] overflow-y-scroll  "
+          : "mt-10 sm:mt-0 hidden lg:block space-y-6 w-64 h-screen bg-white dark:bg-[#2b2b2b] dark:text-white text-[#249a38]   fixed left-0 top-0 border-8 border-[#f8f8f8] dark:border-[#303030] overflow-y-scroll"
       }
     >
       <div className="pt-2 pl-2 hidden lg:block  ">
@@ -139,7 +139,7 @@ export default function sidebar({ showSidebar, setShowSidebar }) {
           href="/dashboard"
         >
           {/* <Image src={logo} alt="logo" width={40} height={40} /> */}
-          <Cannabis size={48} color="#249a38" strokeWidth={1} />
+          <Cannabis size={32} color="#249a38" strokeWidth={1} />
         </Link>
       </div>
       <div className="space-y-3 flex flex-col mt-12">
@@ -169,7 +169,7 @@ export default function sidebar({ showSidebar, setShowSidebar }) {
               {openMenu ? <ChevronDown /> : <ChevronRight />}
             </button>
           </CollapsibleTrigger>
-          <CollapsibleContent className="px-3 pl-4 py-3 dark:bg-black dark:text-slate-100 rounded-sm">
+          <CollapsibleContent className="px-3 pl-4 py-3 dark:bg-[#252525] dark:text-slate-100 rounded-sm">
             {catalogueLinks.map((item, i) => {
               const Icon = item.icon;
               return (

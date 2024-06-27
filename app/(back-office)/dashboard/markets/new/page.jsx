@@ -36,11 +36,11 @@ export default function NewCategory() {
     setLogoUrl("");
   }
   return (
-    <div>
+    <div className="bg-white dark:bg-[#252525] py-6">
       <FormHeader title="New Market" />
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="w-full max-w-4xl p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-6 md:p-8 dark:bg-transparent dark:border-lime-700 mx-auto my-3"
+        className="w-full max-w-4xl ml-8 p-4 bg-white border border-[#f8f8f8]  sm:p-6 md:p-8 dark:bg-transparent dark:border-[#303030]  m-5"
       >
         <div className="grid gap-4 sm:grid-cols-2 sm:gap-6">
           <TextInput

@@ -19,7 +19,7 @@ export default function TableActions() {
           <input
             type="text"
             id="table-search"
-            className="block bg-white py-3 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg  focus:ring-green-700 focus:border-green-700 dark:bg-black dark:border-[#666666] dark:placeholder-[#666666] dark:text-white dark:focus:ring-blue-500 dark:focus:border-green-800 w-full"
+            className="block bg-white py-3 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg  focus:ring-green-700 focus:border-green-700 dark:bg-transparent dark:border-[#666666] dark:placeholder-[#666666] dark:text-white dark:focus:ring-blue-500 dark:focus:border-green-800 w-full"
             placeholder="Search for items"
           />
         </div>
