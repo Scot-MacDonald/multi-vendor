@@ -60,7 +60,7 @@ export default function NewCategory() {
       <FormHeader title="New category" />
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="w-full max-w-4xl ml-8 p-4 bg-white border border-[#f8f8f8]  sm:p-6 md:p-8 dark:bg-transparent dark:border-[#303030]  m-5"
+        className="w-full max-w-4xl ml-8 p-4 bg-white border border-dashed border-gray-900/25 dark:border-[#666666] sm:p-6 md:p-8 dark:bg-transparent   m-5"
       >
         <div className="grid gap-4 sm:grid-cols-2 sm:gap-6">
           <TextInput

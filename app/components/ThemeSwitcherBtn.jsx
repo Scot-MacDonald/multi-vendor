@@ -18,7 +18,7 @@ export default function ThemeSwitcherBtn() {
 
   return (
     <button
-      className="text-lime-700 dark:text-white"
+      className="text-[#12a049] dark:text-white"
       onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
     >
       {theme === "light" ? <Moon /> : <Sun />}
