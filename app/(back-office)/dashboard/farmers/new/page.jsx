@@ -12,6 +12,7 @@ import { useForm } from "react-hook-form";
 import { generateCouponCode } from "@/lib/generateCouponCode";
 import { generateUserCode } from "@/lib/generateUserCode";
 import ToggleInput from "@/app/components/formInputs/Toggleinput";
+import { useRouter } from "next/navigation";
 
 export default function NewFarmer() {
   const [loading, setLoading] = useState(false);
@@ -28,12 +29,16 @@ export default function NewFarmer() {
     },
   });
   const isActive = watch("isActive");
+  const router = useRouter();
+  function redirect() {
+    router.push("/dashboard/farmers");
+  }
 
   async function onSubmit(data) {
     const code = generateUserCode("LFF", data.name);
     data.code = code;
     console.log(data);
-    makePostRequest(setLoading, "api/farmers", data, "farmer", reset);
+    makePostRequest(setLoading, "api/farmers", data, "farmer", reset, redirect);
   }
   return (
     <div className="bg-white dark:bg-[#252525] py-6">
