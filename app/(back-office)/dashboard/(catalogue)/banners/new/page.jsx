@@ -10,6 +10,7 @@ import { makePostRequest } from "@/lib/apiRequest";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import ToggleInput from "@/app/components/formInputs/Toggleinput";
+import { useRouter } from "next/navigation";
 
 export default function NewCategory() {
   const [imageUrl, setImageUrl] = useState("");
@@ -25,6 +26,10 @@ export default function NewCategory() {
       isActive: true,
     },
   });
+  const router = useRouter();
+  function redirect() {
+    router.push("/dashboard/banners");
+  }
   const isActive = watch("isActive");
   async function onSubmit(data) {
     const slug = generateSlug(data.title);
@@ -32,7 +37,7 @@ export default function NewCategory() {
     data.imageUrl = imageUrl;
 
     console.log(data);
-    makePostRequest(setLoading, "api/banners", data, "Banner", reset);
+    makePostRequest(setLoading, "api/banners", data, "Banner", reset, redirect);
     setImageUrl("");
   }
   return (

@@ -1,0 +1,129 @@
+"use client";
+import FormHeader from "@/app/components/backoffice/FormHeader";
+import SubmitButton from "@/app/components/formInputs/SubmitButton";
+import TextAreaInput from "@/app/components/formInputs/TextAreaInput";
+import TextInput from "@/app/components/formInputs/TextInput";
+import ImageInput from "@/app/components/formInputs/imageInput";
+import { generateSlug } from "@/lib/generateSlug";
+import { makePostRequest } from "@/lib/apiRequest";
+
+import React, { useState } from "react";
+import { useForm } from "react-hook-form";
+import SelectInput from "@/app/components/formInputs/SelectInput";
+import ToggleInput from "@/app/components/formInputs/Toggleinput";
+import QuillEditor from "@/app/components/formInputs/QuillEditor";
+
+export default function NewCategory() {
+  const [imageUrl, setImageUrl] = useState("");
+  const categories = [
+    {
+      id: 1,
+      title: "Category 1",
+    },
+    {
+      id: 2,
+      title: "Category 2",
+    },
+    {
+      id: 3,
+      title: "Category 3",
+    },
+    {
+      id: 4,
+      title: "Category 4",
+    },
+  ];
+  const [loading, setLoading] = useState(false);
+  const {
+    register,
+    reset,
+    watch,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    defaultValues: {
+      isActive: true,
+    },
+  });
+
+  const [content, setContent] = useState("");
+
+  const isActive = watch("isActive");
+
+  async function onSubmit(data) {
+    const slug = generateSlug(data.title);
+    data.slug = slug;
+    data.imageUrl = imageUrl;
+    data.content = content;
+    console.log(data);
+    makePostRequest(setLoading, "api/trainings", data, "Training", reset);
+    setImageUrl("");
+    setContent("");
+  }
+  return (
+    <div className="bg-white dark:bg-[#252525] py-6">
+      <FormHeader title="New Training" />
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className="w-full max-w-4xl ml-8 p-4 bg-white border border-[#f8f8f8]  sm:p-6 md:p-8 dark:bg-transparent dark:border-[#303030]  m-5"
+      >
+        <div className="grid gap-4 sm:grid-cols-2 sm:gap-6">
+          <TextInput
+            label="Training Title"
+            name="title"
+            register={register}
+            errors={errors}
+            className="w-full"
+          />
+          <SelectInput
+            label="Select Category"
+            name="categoryId"
+            register={register}
+            errors={errors}
+            className="w-full bg-transparent"
+            options={categories}
+            // change to false for single select
+          />
+          <TextAreaInput
+            label="Training Description"
+            name="description"
+            register={register}
+            errors={errors}
+          />
+          <ImageInput
+            imageUrl={imageUrl}
+            setImageUrl={setImageUrl}
+            endpoint="trainingImageUploader"
+            label="Training Thumbnail"
+          />
+          <div className="sm:col-span-2">
+            <label
+              htmlFor="content"
+              className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+            >
+              Blog Content
+            </label>
+            <QuillEditor
+              label="Training Content"
+              value={content}
+              onChange={setContent}
+            />
+          </div>
+          <ToggleInput
+            label="Publish your Training"
+            name="isActive"
+            trueTitle="Active"
+            falseTitle="Draft"
+            register={register}
+          />
+        </div>
+
+        <SubmitButton
+          isLoading={loading}
+          buttonTitle="Create Training"
+          loadingButtonTitle="Creating training please wait..."
+        />
+      </form>
+    </div>
+  );
+}
