@@ -1,9 +1,17 @@
 import { NextResponse } from "next/server";
-// API NEEDS TO BE SET UP ON MONGO
+import db from "@/lib/db";
 export async function POST(request) {
   try {
-    const { title, couponCode, expiryDate } = await request.json();
-    const newCoupon = { title, couponCode, expiryDate };
+    const { title, couponCode, expiryDate, isActive } = await request.json();
+
+    const newCoupon = await db.coupon.create({
+      data: {
+        title,
+        couponCode,
+        expiryDate,
+        isActive,
+      },
+    });
     console.log(newCoupon);
     return NextResponse.json(newCoupon);
   } catch (error) {

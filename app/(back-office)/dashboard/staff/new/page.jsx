@@ -30,10 +30,10 @@ export default function NewStaff() {
   const isActive = watch("isActive");
 
   async function onSubmit(data) {
-    const code = generateUserCode("LFF", data.name);
+    const code = generateUserCode("LSM", data.name);
     data.code = code;
     console.log(data);
-    makePostRequest(setLoading, "api/staff", data, "staff", reset);
+    makePostRequest(setLoading, "api/staffs", data, "staff", reset);
   }
   return (
     <div className="bg-white dark:bg-[#252525] py-6">
@@ -48,6 +48,21 @@ export default function NewStaff() {
             name="name"
             register={register}
             errors={errors}
+          />
+          <TextInput
+            label="NIN (Id Number)"
+            name="nin"
+            register={register}
+            errors={errors}
+            className="w-full"
+          />
+          <TextInput
+            label="Date of Birth"
+            name="dob"
+            register={register}
+            errors={errors}
+            type="date"
+            className="w-full "
           />
           <TextInput
             label="Password"
