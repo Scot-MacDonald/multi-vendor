@@ -11,6 +11,8 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { generateCouponCode } from "@/lib/generateCouponCode";
 import ToggleInput from "@/app/components/formInputs/Toggleinput";
+import { generateIsoFormattedDate } from "@/lib/generateIsoFormattedDate";
+import { useRouter } from "next/navigation";
 
 export default function NewCoupon() {
   const [loading, setLoading] = useState(false);
@@ -27,6 +29,11 @@ export default function NewCoupon() {
     },
   });
   const isActive = watch("isActive");
+  const router = useRouter();
+  function redirect() {
+    router.push("/dashboard/coupons");
+  }
+
   // HE REMOVED THE FOLLOWING 4 LINES OF CODE BECAUSE HE HAD AN ERROR OURS RUNS WITHOUT AN ERROR!
   // const title = watch("title");
   // const expiryDate = watch("expiryDate");
@@ -34,9 +41,11 @@ export default function NewCoupon() {
   // console.log(coupon);
   async function onSubmit(data) {
     const couponCode = generateCouponCode(data.title, data.expiryDate); //THIS LINE CAN BE REMOVED IF OTHER LINES ARE UNCOMMENTED
+    const isoFormattedDate = generateIsoFormattedDate(data.expiryDate);
+    data.expiryDate = isoFormattedDate;
     data.couponCode = couponCode; //THIS LINE CAN BE REMOVED IF OTHER LINES ARE UNCOMMENTED
     console.log(data);
-    makePostRequest(setLoading, "api/coupons", data, "coupon", reset);
+    makePostRequest(setLoading, "api/coupons", data, "coupon", reset, redirect);
   }
   return (
     <div className="bg-white dark:bg-[#252525] py-6">
