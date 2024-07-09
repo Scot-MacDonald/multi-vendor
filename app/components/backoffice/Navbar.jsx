@@ -29,10 +29,10 @@ export default function Navbar({ setShowSidebar, showSidebar }) {
         Logo
       </Link> */}
       <button onClick={() => setShowSidebar(!showSidebar)}>
-        <AlignJustify className="text-lime-700 dark:text-white" />
+        <AlignJustify className="text-[#12a049] dark:text-white" />
       </button>
 
-      <div className="flex space-x-3">
+      <div className="flex space-x-3 ">
         <ThemeSwitcherBtn />
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
@@ -40,7 +40,7 @@ export default function Navbar({ setShowSidebar, showSidebar }) {
               type="button"
               className="relative inline-flex items-center p-3 text-sm font-medium text-center text-white rounded-lg"
             >
-              <Bell className="text-lime-700 dark:text-white" />
+              <Bell className="text-[#12a049] dark:text-white" />
               <span className="sr-only">Notifications</span>
               <div className="absolute inline-flex items-center justify-center w-5 h-5 text-xs font-bold text-white bg-red-500 rounded-full -top-0 end-6 dark:border-gray-900">
                 20
