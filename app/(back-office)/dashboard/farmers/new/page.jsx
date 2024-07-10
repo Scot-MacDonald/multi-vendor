@@ -97,7 +97,16 @@ export default function NewFarmer() {
             name="terms"
             register={register}
             errors={errors}
+            isRequired={false}
           />
+
+          {/* COMMENTED THIS OUT, WE DONT NEED IT FOR NOW */}
+          {/* <ImageInput
+            imageUrl={logoUrl}
+            setImageUrl={setLogoUrl}
+            endpoint="FarmerProfileUploader"
+            label="Farmer profile image"
+          /> */}
           <TextAreaInput
             label="Notes"
             name="notes"
