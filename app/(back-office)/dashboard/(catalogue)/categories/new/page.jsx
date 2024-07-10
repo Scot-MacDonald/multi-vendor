@@ -11,27 +11,11 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import SelectInput from "@/app/components/formInputs/SelectInput";
 import ToggleInput from "@/app/components/formInputs/Toggleinput";
+import { useRouter } from "next/navigation";
 
 export default function NewCategory() {
   const [imageUrl, setImageUrl] = useState("");
-  const markets = [
-    {
-      id: 1,
-      title: "White Widow farmers market",
-    },
-    {
-      id: 2,
-      title: "Quebec Gold farmers market",
-    },
-    {
-      id: 3,
-      title: "Shaman farmers market",
-    },
-    {
-      id: 4,
-      title: "Cannabis sativa farmers market",
-    },
-  ];
+  // const markets = [];
   const [loading, setLoading] = useState(false);
   const {
     register,
@@ -45,6 +29,10 @@ export default function NewCategory() {
     },
   });
   const isActive = watch("isActive");
+  const router = useRouter();
+  function redirect() {
+    router.push("/dashboard/categories");
+  }
 
   async function onSubmit(data) {
     const slug = generateSlug(data.title);
@@ -52,7 +40,14 @@ export default function NewCategory() {
     data.imageUrl = imageUrl;
 
     console.log(data);
-    makePostRequest(setLoading, "api/categories", data, "category", reset);
+    makePostRequest(
+      setLoading,
+      "api/categories",
+      data,
+      "category",
+      reset,
+      redirect
+    );
     setImageUrl("");
   }
   return (
@@ -68,18 +63,8 @@ export default function NewCategory() {
             name="title"
             register={register}
             errors={errors}
-            className="w-full"
           />
-          <SelectInput
-            label="Select Markets"
-            name="marketIds"
-            register={register}
-            errors={errors}
-            className="w-full bg-transparent"
-            options={markets}
-            // change to false for single select
-            multiple={true}
-          />
+
           <TextAreaInput
             label="Category Description"
             name="description"

@@ -10,10 +10,25 @@ import { makePostRequest } from "@/lib/apiRequest";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import ToggleInput from "@/app/components/formInputs/Toggleinput";
+import SelectInput from "@/app/components/formInputs/SelectInput";
 
 export default function NewCategory() {
   const [logoUrl, setLogoUrl] = useState("");
   const [loading, setLoading] = useState(false);
+  const categories = [
+    {
+      id: 1,
+      title: "category 1",
+    },
+    {
+      id: 2,
+      title: "category 2",
+    },
+    {
+      id: 3,
+      title: "category 3",
+    },
+  ];
   const {
     register,
     reset,
@@ -48,6 +63,17 @@ export default function NewCategory() {
             name="title"
             register={register}
             errors={errors}
+            className="w-full"
+          />
+          <SelectInput
+            label="Select Categories"
+            name="categoryIds"
+            register={register}
+            errors={errors}
+            className="w-full bg-transparent"
+            options={categories}
+            // change to false for single select
+            multiple={true}
           />
 
           <ImageInput

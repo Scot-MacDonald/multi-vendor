@@ -22,3 +22,20 @@ export async function POST(request) {
     );
   }
 }
+
+export async function GET(request) {
+  try {
+    const banners = await db.banner.findMany({
+      orderBy: {
+        createdAt: "desc",
+      },
+    });
+    return NextResponse.json(banners);
+  } catch (error) {
+    console.log(error);
+    return NextResponse.json(
+      { maessage: "failed to fetch banner", error },
+      { status: 500 }
+    );
+  }
+}
