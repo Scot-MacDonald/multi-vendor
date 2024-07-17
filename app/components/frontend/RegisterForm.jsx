@@ -37,7 +37,7 @@ export default function RegisterForm({role}) {
         toast.success("User Created Successfully");
         reset();
         // const userRole= responseData.data.role
-        if(role === "USER"){
+        if(role === "FARMER"){
             router.push(`/onboarding/${responseData.data.id}`);
         } else {
             setLoading(false);

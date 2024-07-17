@@ -15,7 +15,7 @@ import ToggleInput from "@/app/components/formInputs/Toggleinput";
 import { useRouter } from "next/navigation";
 import ArrayItemsInput from "../formInputs/ArrayItemsinput";
 
-export default function NewFarmerForm({user}) {
+export default function NewFarmerForm({ user }) {
   const [loading, setLoading] = useState(false);
   const [couponCode, setCouponCode] = useState();
   const [imageUrl, setImageUrl] = useState();
