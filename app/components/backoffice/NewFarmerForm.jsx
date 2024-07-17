@@ -120,7 +120,11 @@ export default function NewFarmerForm({ user }) {
         errors={errors}
         className="w-full"
       />
-      <ArrayItemsInput setItems={setProducts} items={products} itemTitle="Product"/>
+      <ArrayItemsInput 
+        setItems={setProducts} 
+        items={products} 
+        itemTitle="Product"
+      />
       <ImageInput
         imageUrl={imageUrl}
         setImageUrl={setImageUrl}
@@ -151,3 +155,4 @@ export default function NewFarmerForm({ user }) {
   </form>
   );
 }
+
