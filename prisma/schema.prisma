@@ -65,17 +65,17 @@ model Product {
   // productImages  String[]
   description    String?
   isActive       Boolean
-  // isWholesale    Boolean
+  isWholesale    Boolean
   sku            String?
   barcode        String?
-  // productCode    String?
-  // unit           String?
+  productCode    String?
+  unit           String?
   productPrice   Float
   salePrice      Float
-  // wholesalePrice Float?
-  // wholesaleQty   Int?
-  // productStock   Int?
-  // qty            Int?
+  wholesalePrice Float?
+  wholesaleQty   Int?
+  productStock   Int?
+  qty            Int?
   tags           String[]
 
     categoryIds String   @db.ObjectId
@@ -120,7 +120,7 @@ model User {
   password   String
   emailVerified DateTime?
  
-   products Product[]
+  products Product[]
   role UserRole @default(USER)
   farmerProfile FarmerProfile?
 	createdAt DateTime @default(now())
@@ -129,7 +129,7 @@ model User {
 
 model FarmerProfile {
   id          String     @id @default(auto()) @map("_id") @db.ObjectId
-  title       String
+
  
   code String
   contactPerson String?
