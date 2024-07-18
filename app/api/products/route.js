@@ -91,23 +91,3 @@ export async function GET(request) {
     );
   }
 }
-
-// sku
-// barcode
-// categoryId
-// description
-// userId:farmerId
-// imageUrl
-// isActive
-// isWholesale
-// productCode
-// productPrice
-// salePrice
-// slug
-// tags
-// title
-// unit
-// wholesalePrice
-// wholesaleQty
-// productStock
-// qty
