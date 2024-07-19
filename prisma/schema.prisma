@@ -1,4 +1,3 @@
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -14,99 +13,89 @@ model Coupon {
   couponCode String
   expiryDate DateTime
   isActive   Boolean
- 
 }
 
 model Banner {
-    id         String   @id @default(auto()) @map("_id") @db.ObjectId
-title String
-link String
-imageUrl String
-isActive Boolean
- createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id         String   @id @default(auto()) @map("_id") @db.ObjectId
+  title      String
+  link       String
+  imageUrl   String
+  isActive   Boolean
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
 }
 
 model Category {
-   id       String    @id @default(auto()) @map("_id") @db.ObjectId
-  title      String 
-  slug       String @unique
-  imageUrl  String?
-  description String?   
-  isActive   Boolean
-  products  Product[] 
-  trainings  Training[]  
-  marketIds String[] @db.ObjectId
-  markets   Market[]   @relation(fields: [marketIds], references: [id])
+  id          String    @id @default(auto()) @map("_id") @db.ObjectId
+  title       String
+  slug        String    @unique
+  imageUrl    String?
+  description String?
+  isActive    Boolean
+  products    Product[]
+  trainings   Training[]
+  marketIds   String[]  @db.ObjectId
+  markets     Market[]  @relation(fields: [marketIds], references: [id])
 
-  createdAt DateTime  @default(now())
-  updatedAt DateTime? @updatedAt
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime? @updatedAt
 }
 
 model Market {
   id          String     @id @default(auto()) @map("_id") @db.ObjectId
   title       String
-  slug     String @unique
-  logoUrl String
+  slug        String     @unique
+  logoUrl     String
   description String
-  isActive   Boolean
+  isActive    Boolean
   categoryIds String[]   @db.ObjectId
   categories  Category[] @relation(fields: [categoryIds], references: [id])
 
-createdAt   DateTime   @default(now())
+  createdAt   DateTime   @default(now())
   updatedAt   DateTime?  @updatedAt
 }
 
 model Product {
-  id       String    @id @default(auto()) @map("_id") @db.ObjectId
-  title          String
-  slug           String   @unique
-  imageUrl       String?
-  // productImages  String[]
-  description    String?
-  isActive       Boolean
-  isWholesale    Boolean
-  sku            String?
-  barcode        String?
-  productCode    String?
-  unit           String?
-  productPrice   Float
-  salePrice      Float
+  id            String    @id @default(auto()) @map("_id") @db.ObjectId
+  title         String
+  slug          String    @unique
+  imageUrl      String?
+  description   String?
+  isActive      Boolean
+  isWholesale   Boolean
+  sku           String?
+  barcode       String?
+  productCode   String?
+  unit          String?
+  productPrice  Float
+  salePrice     Float
   wholesalePrice Float?
-  wholesaleQty   Int?
-  productStock   Int?
-  qty            Int?
-  tags           String[]
+  wholesaleQty  Int?
+  productStock  Int?
+  qty           Int?
+  tags          String[]
+  categoryId    String    @db.ObjectId
+  category      Category  @relation(fields: [categoryId], references: [id])
+  userId        String    @db.ObjectId
+  user          User      @relation(fields: [userId], references: [id])
 
-  categoryIds String   @db.ObjectId
-   categories   Category @relation(fields: [categoryIds], references: [id])
-  
- user   User @relation(fields: [userId], references: [id])
-  userId String  @db.ObjectId
-
-  createdAt  DateTime  @default(now())
-  updatedAt  DateTime? @updatedAt
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime? @updatedAt
 }
 
-
-
-
-model Training{
-     id          String     @id @default(auto()) @map("_id") @db.ObjectId
+model Training {
+  id          String     @id @default(auto()) @map("_id") @db.ObjectId
   title       String
-      slug           String   @unique
-  imageUrl       String?
-   description    String?
-  isActive       Boolean
-      content String
-
-        
-  categories  Category @relation(fields: [categoryIds], references: [id])
-  categoryIds String  @db.ObjectId
-
+  slug        String     @unique
+  imageUrl    String?
+  description String?
+  isActive    Boolean
+  content     String
+  categoryId  String     @db.ObjectId
+  category    Category   @relation(fields: [categoryId], references: [id])
 }
 
-enum UserRole{
+enum UserRole {
   ADMIN
   USER
   FARMER
@@ -114,40 +103,36 @@ enum UserRole{
 }
 
 model User {
-  id         String   @id @default(auto()) @map("_id") @db.ObjectId
-  name       String?
-  email      String?   @unique
-  password   String
+  id            String        @id @default(auto()) @map("_id") @db.ObjectId
+  name          String?
+  email         String?       @unique
+  password      String
   emailVerified DateTime?
- 
-  products Product[]
-  role UserRole @default(USER)
+  products      Product[]
+  role          UserRole      @default(USER)
   farmerProfile FarmerProfile?
-	createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
 }
 
 model FarmerProfile {
-  id          String     @id @default(auto()) @map("_id") @db.ObjectId
-
- 
-  code String
-  contactPerson String?
-  contactPersonPhone String?
-  profileImageUrl String?
-  email String
-  name String
-  notes String?
-  phone String
-  physicalAddress String?
-  terms String?
-  isActive Boolean
-  products String[]
-  landSize Float
-  mainCrop String
-
-  user   User @relation(fields: [userId], references: [id])
-  userId String @db.ObjectId  @unique
-  createdAt  DateTime  @default(now())
-  updatedAt  DateTime? @updatedAt
+  id                  String     @id @default(auto()) @map("_id") @db.ObjectId
+  code                String
+  contactPerson       String?
+  contactPersonPhone  String?
+  profileImageUrl     String?
+  email               String
+  name                String
+  notes               String?
+  phone               String
+  physicalAddress     String?
+  terms               String?
+  isActive            Boolean
+  products            String[]
+  landSize            Float
+  mainCrop            String
+  userId              String     @db.ObjectId  @unique
+  user                User       @relation(fields: [userId], references: [id])
+  createdAt           DateTime   @default(now())
+  updatedAt           DateTime?  @updatedAt
 }
