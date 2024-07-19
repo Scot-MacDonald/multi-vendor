@@ -16,12 +16,10 @@ import { useRouter } from "next/navigation";
 import NewFarmerForm from "@/app/components/backoffice/NewFarmerForm";
 
 export default function NewFarmer() {
-
-
   return (
     <div className="bg-white dark:bg-[#252525] py-6">
       <FormHeader title="New Farmer" />
-      <NewFarmerForm/>
+      <NewFarmerForm />
     </div>
   );
 }
