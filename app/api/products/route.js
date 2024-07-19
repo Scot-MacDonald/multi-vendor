@@ -1,6 +1,7 @@
 import db from "@/lib/db";
 import { NextResponse } from "next/server";
 
+// POST function to create a new product
 export async function POST(request) {
   try {
     const {
@@ -24,20 +25,18 @@ export async function POST(request) {
       productStock,
       qty,
     } = await request.json();
+
     const existingProduct = await db.product.findUnique({
-      where: {
-        slug,
-      },
+      where: { slug },
     });
+
     if (existingProduct) {
       return NextResponse.json(
-        {
-          data: null,
-          message: "Product already exists",
-        },
+        { data: null, message: "Product already exists" },
         { status: 409 }
       );
     }
+
     const newProduct = await db.product.create({
       data: {
         sku,
@@ -55,38 +54,37 @@ export async function POST(request) {
         tags,
         title,
         unit,
-        wholesalePrice: parseFloat(wholesalePrice),
-        wholesaleQty: parseInt(wholesaleQty),
+        wholesalePrice: isWholesale ? parseFloat(wholesalePrice) : null,
+        wholesaleQty: isWholesale ? parseInt(wholesaleQty) : null,
         productStock: parseInt(productStock),
         qty: parseInt(qty),
       },
     });
+
     console.log(newProduct);
     return NextResponse.json(newProduct);
   } catch (error) {
     console.log(error);
     return NextResponse.json(
-      { maessage: "failed to create Product", error },
+      { message: "Failed to create Product", error },
       { status: 500 }
     );
   }
 }
 
+// GET function to fetch all products
 export async function GET(request) {
   try {
-    const products = await db.product
-      .findMany
-      //   {
-      //   orderBy: {
-      //     createdAt: "desc",
-      //   },
-      // }
-      ();
+    const products = await db.product.findMany({
+      orderBy: {
+        createdAt: "desc",
+      },
+    });
     return NextResponse.json(products);
   } catch (error) {
     console.log(error);
     return NextResponse.json(
-      { maessage: "failed to fetch product", error },
+      { message: "Failed to fetch products", error },
       { status: 500 }
     );
   }

@@ -11,19 +11,16 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import SelectInput from "@/app/components/formInputs/SelectInput";
 
-import ArrayItemsinput from "@/app/components/formInputs/ArrayItemsInput";
 import ToggleInput from "@/app/components/formInputs/Toggleinput";
 import clsx from "clsx";
 import { generateUserCode } from "@/lib/generateUserCode";
 import { useRouter } from "next/navigation";
+import ArrayItemsInput from "@/app/components/formInputs/ArrayItemsInput";
 
 export default function NewProductForm({ categories, farmers }) {
   const [imageUrl, setImageUrl] = useState("");
-
   const [tags, setTags] = useState([]);
-  console.log(tags);
   const [loading, setLoading] = useState(false);
-
   const {
     register,
     reset,
@@ -36,13 +33,13 @@ export default function NewProductForm({ categories, farmers }) {
       isWholesale: false,
     },
   });
+
   const isActive = watch("isActive");
   const isWholesale = watch("isWholesale");
-
-  console.log(isActive);
   const router = useRouter();
+
   function redirect() {
-    router.push("/dasboard/products");
+    router.push("/dashboard/products");
   }
 
   async function onSubmit(data) {
@@ -53,8 +50,11 @@ export default function NewProductForm({ categories, farmers }) {
     data.imageUrl = imageUrl;
     data.qty = 1;
     data.productCode = productCode;
+    data.productPrice = parseFloat(data.productPrice);
+    data.salePrice = parseFloat(data.salePrice);
+    data.wholesalePrice = isWholesale ? parseFloat(data.wholesalePrice) : null;
+    data.wholesaleQty = isWholesale ? parseInt(data.wholesaleQty) : null;
 
-    console.log(data);
     makePostRequest(
       setLoading,
       "api/products",
@@ -63,9 +63,11 @@ export default function NewProductForm({ categories, farmers }) {
       reset,
       redirect
     );
+
     setImageUrl("");
     setTags([]);
   }
+
   return (
     <div className="bg-white dark:bg-[#252525] py-6">
       <FormHeader title="New product" />
@@ -118,7 +120,6 @@ export default function NewProductForm({ categories, farmers }) {
             errors={errors}
             className="w-full"
           />
-
           <TextInput
             label="Unit of Measurement"
             name="unit"
@@ -126,7 +127,6 @@ export default function NewProductForm({ categories, farmers }) {
             errors={errors}
             className="w-full"
           />
-
           <SelectInput
             label="Select Category"
             name="categoryId"
@@ -134,16 +134,14 @@ export default function NewProductForm({ categories, farmers }) {
             errors={errors}
             className="w-full"
             options={categories}
-            // change to false for single select
           />
           <SelectInput
             label="Select Farmer"
-            name="farmerId"
+            name="userId"
             register={register}
             errors={errors}
             className="w-full"
             options={farmers}
-            // change to false for single select
           />
           <ToggleInput
             label="Supports Wholesale Selling"
@@ -163,7 +161,7 @@ export default function NewProductForm({ categories, farmers }) {
                 className="w-full"
               />
               <TextInput
-                label="Minimium Wholesale Qty"
+                label="Minimum Wholesale Qty"
                 name="wholesaleQty"
                 type="number"
                 register={register}
@@ -172,7 +170,6 @@ export default function NewProductForm({ categories, farmers }) {
               />
             </>
           )}
-
           <ImageInput
             imageUrl={imageUrl}
             setImageUrl={setImageUrl}
@@ -192,10 +189,8 @@ export default function NewProductForm({ categories, farmers }) {
             falseTitle="Draft"
             register={register}
           />
-
-          <ArrayItemsinput setItems={setTags} items={tags} itemTitle="Tag" />
+          <ArrayItemsInput setItems={setTags} items={tags} itemTitle="Tag" />
         </div>
-
         <SubmitButton
           isLoading={loading}
           buttonTitle="Create Product"
