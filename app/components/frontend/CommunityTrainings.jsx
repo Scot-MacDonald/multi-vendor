@@ -1,8 +1,10 @@
 import Link from "next/link";
 import React from "react";
 import TrainingCarousel from "./TrainingCarousel";
+import { getData } from "@/lib/getData";
 
-export default function CommunityTrainings() {
+export default async function CommunityTrainings() {
+  const trainings = await getData("trainings");
   return (
     <div className="">
       <div className="flex justify-between items-center py-4 px-2">
@@ -11,7 +13,7 @@ export default function CommunityTrainings() {
           See All
         </Link>
       </div>
-      <TrainingCarousel />
+      <TrainingCarousel trainings={trainings} />
     </div>
   );
 }
