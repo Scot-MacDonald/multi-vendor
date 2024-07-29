@@ -5,7 +5,7 @@ import "react-multi-carousel/lib/styles.css";
 import Image from "next/image";
 import Link from "next/link";
 
-export default function TrainingCarousel() {
+export default function TrainingCarousel({ trainings }) {
   const responsive = {
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
@@ -23,7 +23,7 @@ export default function TrainingCarousel() {
       slidesToSlide: 1, // optional, default to 1.
     },
   };
-  const slides = [{}, {}, {}, {}, {}, {}, {}, {}, {}, {}];
+
   return (
     <Carousel
       swipeable={false}
@@ -45,22 +45,23 @@ export default function TrainingCarousel() {
     >
       {/* Blue Dream SC cut */}
       {/* Cloud Forest */}
-      {slides.map((slide, i) => {
+      {trainings.map((training, i) => {
         return (
           <div>
             <div className="flex flex-col   ">
               <Link key={i} href="#">
-                <Image src="/MENU_1.jpg" width={430} height={430} />
+                <Image
+                  src={training.imageUrl}
+                  width={430}
+                  height={430}
+                  alt={training.title}
+                  className="w-full h-96 object-cover"
+                />
               </Link>
               <h2 className="text-center mb-30 py-1 font-semibold">
-                mountain haze
+                {training.title}
               </h2>
-              <p className="line-clamp-3  ">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere
-                consequuntur repudiandae accusantium? Atque commodi earum
-                incidunt mollitia esse veritatis aliquid possimus laborum.
-                Voluptatum accusamus fuga doloremque libero beatae ab est!
-              </p>
+              <p className="line-clamp-3  ">{training.description}</p>
               <div className="flex justify-between items-center py-2">
                 <Link className="text-green-400" href="#">
                   Read more

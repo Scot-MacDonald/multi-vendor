@@ -4,21 +4,22 @@ import Hero from "../components/frontend/Hero";
 import MarketList from "../components/frontend/MarketList";
 import CategoryList from "../components/frontend/CategoryList";
 import CommunityTrainings from "../components/frontend/CommunityTrainings";
+import { getData } from "@/lib/getData";
 
-export default function Home() {
+export default async function Home() {
+  const categories = await getData("categories");
   return (
     <div className="w-full min-h-screen ">
       <Hero />
       <MarketList />
-      <div className="py-8">
-        <CategoryList />
-      </div>
-      <div className="py-8">
-        <CategoryList />
-      </div>
-      <div className="py-8">
-        <CategoryList />
-      </div>
+      {categories.map((category, i) => {
+        return (
+          <div className="py-8" key={i}>
+            <CategoryList category={category} />
+          </div>
+        );
+      })}
+
       <div className="py-8">
         <CommunityTrainings />
       </div>

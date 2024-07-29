@@ -5,7 +5,7 @@ import "react-multi-carousel/lib/styles.css";
 import Image from "next/image";
 import Link from "next/link";
 
-export default function MarketsCarousel() {
+export default function MarketsCarousel({ markets }) {
   const responsive = {
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
@@ -23,7 +23,6 @@ export default function MarketsCarousel() {
       slidesToSlide: 1, // optional, default to 1.
     },
   };
-  const slides = [{}, {}, {}, {}, {}, {}, {}, {}, {}, {}];
   return (
     <Carousel
       swipeable={false}
@@ -45,12 +44,17 @@ export default function MarketsCarousel() {
     >
       {/* Blue Dream SC cut */}
       {/* Cloud Forest */}
-      {slides.map((slide, i) => {
+      {markets.map((market, i) => {
         return (
           <Link key={i} href="#">
             <div className="flex flex-col items-center  ">
-              <Image src="/MENU_2.jpg" width={400} height={400} />
-              <h2 className="justify-center mb-10">mountain haze</h2>
+              <Image
+                width={400}
+                height={400}
+                src={market.logoUrl}
+                alt={market.title}
+              />
+              <h2 className="justify-center mb-10">{market.title}</h2>
             </div>
           </Link>
         );
