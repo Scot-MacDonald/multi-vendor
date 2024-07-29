@@ -10,8 +10,8 @@ export default function CategoryCarousel({ products }) {
   const responsive = {
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
-      items: 6,
-      slidesToSlide: 3, // optional, default to 1.
+      items: 4,
+      slidesToSlide: 1, // optional, default to 1.
     },
     tablet: {
       breakpoint: { max: 1024, min: 464 },
@@ -29,7 +29,7 @@ export default function CategoryCarousel({ products }) {
     <Carousel
       swipeable={false}
       draggable={false}
-      showDots={true}
+      showDots={false}
       responsive={responsive}
       ssr={true} // means to render carousel on server-side.
       infinite={true}
@@ -39,30 +39,30 @@ export default function CategoryCarousel({ products }) {
       customTransition="all .5"
       transitionDuration={500}
       containerClass="carousel-container"
-      removeArrowOnDeviceType={["tablet", "mobile"]}
+      removeArrowOnDeviceType={["desktop", "tablet", "mobile"]}
       //   deviceType={}
       dotListClass="custom-dot-list-style"
-      itemClass="px-2"
+      // itemClass="px-2"
     >
       {/* Blue Dream SC cut */}
       {/* Cloud Forest */}
       {products.map((product, i) => {
         return (
           <div key={i}>
-            <div className="flex flex-col items-center  ">
+            <div className="flex flex-col items-center min-h-96 border border-[#666666] ">
               <Link href="#">
                 <Image
                   src={product.imageUrl}
-                  width={400}
-                  height={400}
+                  width={420}
+                  height={420}
                   alt={product.title}
-                  className="w-full h-66 object-cover"
+                  className="w-full  object-contain "
                 />
               </Link>
               <Link href="#">
                 <h2 className="justify-center mb-10">{product.title}</h2>
               </Link>
-              <div className="flex justify-between w-full">
+              <div className="flex justify-between w-full px-3 py-3">
                 <p>€ {product.salePrice}</p>
                 <button className="flex items-center space-x-2">
                   <ShoppingCart />
