@@ -1,4 +1,3 @@
-"use client";
 import {
   Cannabis,
   CircleDollarSign,
@@ -10,33 +9,16 @@ import Link from "next/link";
 import HeroCarousel from "./HeroCarousel";
 import Image from "next/image";
 import advert from "@/public/advert.gif";
+import SidebarCategories from "./SidebarCategories";
+import { getData } from "@/lib/getData";
 
-export default function Hero() {
-  const categories = [{}, {}, {}, {}, {}, {}, {}, {}];
+export default async function Hero() {
+  const banners = await getData("banners");
   return (
     <div className="grid grid-cols-12 gap-8 mb-6 ">
-      <div className="md:col-span-3 hidden md:block border border-dashed border-gray-900/25 dark:border-[#666666] rounded-md overflow-hidden">
-        <h2 className=" py-4 px-6">Shop by category</h2>
-
-        <div className="py-4 px-6  overflow-y-auto flex flex-col gap-4">
-          {categories.map((category, i) => {
-            return (
-              <>
-                <Link
-                  key={i}
-                  href="#"
-                  className="flex items-center gap-3 hover:bg-[#f8f8f8] duration-500 transition-all"
-                >
-                  <Cannabis size={32} color="#249a38" strokeWidth={1} />
-                  <span>Weed</span>
-                </Link>
-              </>
-            );
-          })}
-        </div>
-      </div>
+      <SidebarCategories />
       <div className="col-span-full md:col-span-7  rounded-md overflow-hidden">
-        <HeroCarousel />
+        <HeroCarousel banners={banners} />
       </div>
       <div className="col-span-2 hidden md:block border border-dashed border-gray-900/25 dark:border-[#666666] rounded-md py-4 px-6 ">
         <Link href="#">

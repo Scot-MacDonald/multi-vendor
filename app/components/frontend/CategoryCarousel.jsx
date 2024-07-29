@@ -4,8 +4,9 @@ import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import Image from "next/image";
 import Link from "next/link";
+import { ShoppingCart } from "lucide-react";
 
-export default function CategoryCarousel() {
+export default function CategoryCarousel({ products }) {
   const responsive = {
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
@@ -23,7 +24,7 @@ export default function CategoryCarousel() {
       slidesToSlide: 1, // optional, default to 1.
     },
   };
-  const slides = [{}, {}, {}, {}, {}, {}, {}, {}, {}, {}];
+
   return (
     <Carousel
       swipeable={false}
@@ -45,14 +46,31 @@ export default function CategoryCarousel() {
     >
       {/* Blue Dream SC cut */}
       {/* Cloud Forest */}
-      {slides.map((slide, i) => {
+      {products.map((product, i) => {
         return (
-          <Link key={i} href="#">
+          <div key={i}>
             <div className="flex flex-col items-center  ">
-              <Image src="/MENU_2.jpg" width={400} height={400} />
-              <h2 className="justify-center mb-10">mountain haze</h2>
+              <Link href="#">
+                <Image
+                  src={product.imageUrl}
+                  width={400}
+                  height={400}
+                  alt={product.title}
+                  className="w-full h-66 object-cover"
+                />
+              </Link>
+              <Link href="#">
+                <h2 className="justify-center mb-10">{product.title}</h2>
+              </Link>
+              <div className="flex justify-between w-full">
+                <p>€ {product.salePrice}</p>
+                <button className="flex items-center space-x-2">
+                  <ShoppingCart />
+                  <span>Add</span>
+                </button>
+              </div>
             </div>
-          </Link>
+          </div>
         );
       })}
     </Carousel>

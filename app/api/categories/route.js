@@ -34,19 +34,21 @@ export async function POST(request) {
 
 export async function GET(request) {
   try {
-    const categories = await db.category
-      .findMany
-      //   {
-      //   orderBy: {
-      //     createdAt: "desc",
-      //   },
-      // }
-      ();
+    const categories = await db.category.findMany({
+      include: {
+        products: true,
+      },
+      // Uncomment and adjust the following block if you want to order the results
+      // orderBy: {
+      //   createdAt: "desc",
+      // },
+    });
+
     return NextResponse.json(categories);
   } catch (error) {
     console.log(error);
     return NextResponse.json(
-      { maessage: "failed to fetch category", error },
+      { message: "failed to fetch category", error },
       { status: 500 }
     );
   }
