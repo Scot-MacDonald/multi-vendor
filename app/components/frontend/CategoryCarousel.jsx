@@ -44,12 +44,10 @@ export default function CategoryCarousel({ products }) {
       dotListClass="custom-dot-list-style"
       // itemClass="px-2"
     >
-      {/* Blue Dream SC cut */}
-      {/* Cloud Forest */}
       {products.map((product, i) => {
         return (
           <div key={i}>
-            <div className="flex flex-col items-center min-h-96 border border-[#666666] ">
+            <div className="flex flex-col items-center pt-10 border border-[#666666] ">
               <Link href="#">
                 <Image
                   src={product.imageUrl}
