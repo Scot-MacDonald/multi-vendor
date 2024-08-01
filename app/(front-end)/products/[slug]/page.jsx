@@ -1,3 +1,5 @@
+"use client";
+
 import Breadcrumb from "@/app/components/frontend/breadcrumb";
 import { ShoppingCart } from "lucide-react";
 import CategoryCarousel from "@/app/components/frontend/CategoryCarousel";
@@ -5,7 +7,8 @@ import React from "react";
 import { getData } from "@/lib/getData";
 import Image from "next/image";
 import { Share2 } from "lucide-react";
-import { Tag, Minus, Plus } from "lucide-react";
+import { Tag, Minus, Plus, Send } from "lucide-react";
+import Link from "next/link";
 
 
 export default async function ProductDetailPage({params:{slug}}) {
@@ -60,11 +63,44 @@ export default async function ProductDetailPage({params:{slug}}) {
                     </div>
                 </div>
                 <div className="col-span-3 hidden md:block border border-dashed border-gray-900/25 dark:border-[#666666] rounded-md overflow-hidden">
-                    <h2 className=" py-4 px-6">Delivery and Returns</h2>
+                    <h2 className="bg-slate-100 dark:bg-gray-800 py-4 px-6 font-semibold border-b border-gray-300 dark:border-gray-600 text-slate-800 dark:text-slate-100">Delivery and Returns</h2>
+                    <div className="px-4 py-4">
+                    <div className="flex py-2 px-4 bg-green-400 text-slate-50 items-center gap-3">
+                        <span>Blatt Express</span>
+                        <Send/>
+                    </div>
+                    <div className="py-3 border-b border-gray-500">
+                        Eligible for free Delivery
+                        <Link href="#">View Details</Link>
+                    </div>
+                    <h2 className="py-2">Choose your Location</h2>
+                    <div className="border-b border-gray-500 pb-3">
+                    <select id="countries" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    <option>Kreuzburg</option>
+                    <option>Mitte</option>
+                    <option>Neuköln</option>
+                    <option>Friedrichshain</option>
+                    <option>Charlottenburg</option>
+                    <option>Pankow</option>
+                    <option>Wedding</option>
+                    </select>
+                    </div>
+                    <div className="border-b border-gray-500 pb-3 pt-3">
+                    <select id="countries" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    <option>Kreuzburg</option>
+                    <option>Mitte</option>
+                    <option>Neuköln</option>
+                    <option>Friedrichshain</option>
+                    <option>Charlottenburg</option>
+                    <option>Pankow</option>
+                    <option>Wedding</option>
+                    </select>
+                    </div>
+                    </div>
                 </div>
             </div>
-            <div className="bg-white dark:bg-slate-700 p-4">
-                <h2 className="mb-4">Similar Products</h2>
+            <div className="bg-white dark:bg-slate-700 p-4 my-8 rounded-xl p-4">
+                <h2 className="mb-4 text-xl font-semibold text-slate-200 ml-3">Similar Products</h2>
                 <CategoryCarousel products={category.products} />
             </div>
         </div>

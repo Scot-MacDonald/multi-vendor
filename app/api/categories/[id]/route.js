@@ -3,7 +3,7 @@ import { NextResponse } from "next/server";
 
 export async function GET(request, {params:{id}}) {
     try {
-      const categories = await db.category.findUnique({
+      const category = await db.category.findUnique({
         where: {
           id
         },
@@ -16,7 +16,7 @@ export async function GET(request, {params:{id}}) {
         // },
       });
   
-      return NextResponse.json(categories);
+      return NextResponse.json(category);
     } catch (error) {
       console.log(error);
       return NextResponse.json(
