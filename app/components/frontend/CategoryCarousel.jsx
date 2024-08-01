@@ -50,7 +50,7 @@ export default function CategoryCarousel({ products }) {
         return (
           <div key={i}>
             <div className="flex flex-col items-center min-h-96 border border-[#666666] ">
-              <Link href="#">
+              <Link href={`/products/${product.slug}`}>
                 <Image
                   src={product.imageUrl}
                   width={420}
@@ -59,7 +59,7 @@ export default function CategoryCarousel({ products }) {
                   className="w-full  object-contain "
                 />
               </Link>
-              <Link href="#">
+              <Link href={`/products/${product.slug}`}>
                 <h2 className="justify-center mb-10">{product.title}</h2>
               </Link>
               <div className="flex justify-between w-full px-3 py-3">
