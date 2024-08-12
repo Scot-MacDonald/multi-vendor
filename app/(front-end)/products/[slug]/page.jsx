@@ -15,7 +15,7 @@ export default async function ProductDetailPage({params:{slug}}) {
     const category = await getData("/categories/668e6b15ed2307271cf7bf43")
     return (
         <div>
-            <Breadcrumb />
+            {/* <Breadcrumb /> */}
             <div className="grid grid-cols-12 gap-8">
                 <div className="col-span-3">
                     <Image src = "/weed.jpeg" alt = "weed" width ={500} height = {500} className = "w-full" />
