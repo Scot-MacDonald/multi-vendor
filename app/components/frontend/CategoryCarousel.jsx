@@ -38,21 +38,21 @@ export default function CategoryCarousel({ products }) {
       keyBoardControl={true}
       customTransition="all .5"
       transitionDuration={500}
-      containerClass="carousel-container"
+      containerClass="carousel-container  "
       removeArrowOnDeviceType={["desktop", "tablet", "mobile"]}
       //   deviceType={}
       dotListClass="custom-dot-list-style"
-      // itemClass="px-2"
+      itemClass="px-1"
     >
       {products.map((product, i) => {
         return (
-          <div key={i}>
-            <div className="flex flex-col items-center pt-10 border border-[#666666] ">
+          <div key={i} className="">
+            <div className="flex flex-col items-center pt-10 min-h-[300px] bg-[#f8f8f8] ">
               <Link href="#">
                 <Image
                   src={product.imageUrl}
-                  width={420}
-                  height={420}
+                  width={200}
+                  height={200}
                   alt={product.title}
                   className="w-full  object-contain "
                 />

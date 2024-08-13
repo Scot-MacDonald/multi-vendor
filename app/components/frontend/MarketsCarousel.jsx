@@ -9,7 +9,7 @@ export default function MarketsCarousel({ markets }) {
   const responsive = {
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
-      items: 6,
+      items: 4,
       slidesToSlide: 3, // optional, default to 1.
     },
     tablet: {
@@ -40,7 +40,7 @@ export default function MarketsCarousel({ markets }) {
       removeArrowOnDeviceType={["tablet", "mobile"]}
       //   deviceType={}
       dotListClass="custom-dot-list-style"
-      itemClass="px-2"
+      itemClass="px-1"
     >
       {/* Blue Dream SC cut */}
       {/* Cloud Forest */}
@@ -53,6 +53,7 @@ export default function MarketsCarousel({ markets }) {
                 height={400}
                 src={market.logoUrl}
                 alt={market.title}
+                className="w-full  object-contain "
               />
               <h2 className="justify-center mb-10">{market.title}</h2>
             </div>
