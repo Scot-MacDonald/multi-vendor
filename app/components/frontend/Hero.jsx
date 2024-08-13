@@ -8,7 +8,7 @@ import React from "react";
 import Link from "next/link";
 import HeroCarousel from "./HeroCarousel";
 import Image from "next/image";
-import advert from "@/public/advert.gif";
+// import advert from "@/public/advert.gif";
 import SidebarCategories from "./SidebarCategories";
 import { getData } from "@/lib/getData";
 import SecondNav from "./SecondNav";
@@ -51,7 +51,7 @@ export default async function Hero() {
               </div>
             </div>
           </Link>
-          <Image src={advert} alt="advert" className="w-full mt-6" />
+          {/* <Image src={advert} alt="advert" className="w-full mt-6" /> */}
         </div>
       </div>
     </>
