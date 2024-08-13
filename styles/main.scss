@@ -95,3 +95,48 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
 }
+
+.border-l-first-visible {
+  border-left: 1px solid #666666;
+}
+
+.border-l {
+  border-left: 1px solid #666666 !important;
+}
+
+.nav {
+  margin: 0 -10px;
+  padding: 0 10px;
+  list-style: none;
+  display: flex;
+  width: 100%;
+  overflow-x: scroll;
+  -webkit-overflow-scrolling: touch;
+}
+
+.nav > li > a {
+  padding: 14px 16px;
+  display: block;
+  color: black;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 14px;
+}
+
+.nav > li > a.active {
+  border-bottom: 2px solid #e64a19;
+}
+.catI {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 75%;
+}
+
+.iteB {
+  position: relative;
+  overflow: hidden;
+  width: calc(25vw - 12.5px);
+  height: calc(calc(25vw - 12.5px) + calc(25vw - 12.5px) / 4);
+}
