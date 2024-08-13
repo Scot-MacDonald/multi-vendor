@@ -6,7 +6,7 @@ const Footer = () => {
       className="py-10 bg-white dark:bg-[#252525] border-t-8 border-b-8  border-l-8 border-r-8   border-[#f8f8f8] dark:border-[#303030]
       sm:pt-16 lg:pt-24"
     >
-      <div className="px-4 mx-auto sm:px-6 lg:px-8 max-w-7xl">
+      <div className="px-4 mx-auto sm:px-6 lg:px-8 ">
         <div className="grid grid-cols-2 md:col-span-3 lg:grid-cols-6 gap-y-16 gap-x-12">
           <div className="col-span-2 md:col-span-3 lg:col-span-2 lg:pr-8">
             {/* <img className="w-auto h-9" src="/limiLogo.webp" alt="" /> */}
