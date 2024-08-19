@@ -46,12 +46,9 @@ export default function CategoryCarousel({ products }) {
     >
       {products.map((product, i) => {
         return (
-
-
           <div key={i}>
             <div className="flex flex-col items-center min-h-96 border border-[#666666] ">
               <Link href={`/products/${product.slug}`}>
-
                 <Image
                   src={product.imageUrl}
                   width={200}
