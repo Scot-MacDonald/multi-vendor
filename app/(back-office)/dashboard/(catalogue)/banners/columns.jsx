@@ -65,21 +65,16 @@ export const columns = [
             width={500}
             height={500}
             src={imageUrl}
-            alt="#"
             className="w-14 h-14 object-cover rounded-full"
           />
         </div>
       );
     },
   },
-  {
-    accessorKey: "description",
-    header: "Description",
-    cell: ({ row }) => {
-      const description = row.getValue("description");
 
-      return <div className="line-clamp-1">{description}</div>;
-    },
+  {
+    accessorKey: "link",
+    header: "Banner Link",
   },
   {
     accessorKey: "isActive",
