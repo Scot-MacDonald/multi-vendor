@@ -15,9 +15,9 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import SortableColumn from "@/app/components/dataTableColumns/SortableColumn";
-import ImageColumn from "@/app/components/dataTableColumns/ImageColumn";
 import DateColumn from "@/app/components/dataTableColumns/DateColumn";
+import ImageColumn from "@/app/components/dataTableColumns/ImageColumn";
+import SortableColumn from "@/app/components/dataTableColumns/SortableColumn";
 import ActionColumn from "@/app/components/dataTableColumns/ActionColumn";
 
 export const columns = [
@@ -47,19 +47,29 @@ export const columns = [
     accessorKey: "title",
     header: ({ column }) => <SortableColumn column={column} title="Title" />,
   },
+  // {
+  //   accessorKey: "imageUrl",
+  //   header: "Product Image",
+  //   cell: ({ row }) => <ImageColumn row={row} accessorKey="imageUrl" />,
+  // },
   {
-    accessorKey: "imageUrl",
-    header: "Banner Image",
-    cell: ({ row }) => <ImageColumn row={row} accessorKey="imageUrl" />,
+    accessorKey: "profileImageUrl",
+    header: "Profile Image",
+    cell: ({ row }) => <ImageColumn row={row} accessorKey="profileImageUrl" />,
   },
 
-  {
-    accessorKey: "link",
-    header: "Banner Link",
-  },
+  // {
+  //   accessorKey: "description",
+  //   header: "Description",
+  //   cell: ({ row }) => {
+  //     const description = row.getValue("description");
+
+  //     return <div className="line-clamp-1">{description}</div>;
+  //   },
+  // },
   {
     accessorKey: "isActive",
-    header: "IsActive",
+    header: "Active",
   },
   {
     accessorKey: "createdAt",
@@ -68,6 +78,6 @@ export const columns = [
   },
   {
     id: "actions",
-    cell: ({ row }) => <ActionColumn row={row} title="Banner" />,
+    cell: ({ row }) => <ActionColumn row={row} title="Farmer" />,
   },
 ];

@@ -2,19 +2,8 @@
 import Image from "next/image";
 
 import { ColumnDef } from "@tanstack/react-table";
-import { MoreHorizontal } from "lucide-react";
-import { ArrowUpDown } from "lucide-react";
 import { Checkbox } from "@/components/ui/checkbox";
 
-import { Button } from "@/components/ui/button";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
 import SortableColumn from "@/app/components/dataTableColumns/SortableColumn";
 import ImageColumn from "@/app/components/dataTableColumns/ImageColumn";
 import DateColumn from "@/app/components/dataTableColumns/DateColumn";
@@ -47,15 +36,15 @@ export const columns = [
     accessorKey: "title",
     header: ({ column }) => <SortableColumn column={column} title="Title" />,
   },
-  {
-    accessorKey: "imageUrl",
-    header: "Banner Image",
-    cell: ({ row }) => <ImageColumn row={row} accessorKey="imageUrl" />,
-  },
 
   {
-    accessorKey: "link",
-    header: "Banner Link",
+    accessorKey: "couponCode",
+    header: "Coupon Code",
+  },
+  {
+    accessorKey: "expiryDate",
+    header: "Expiry Date",
+    cell: ({ row }) => <DateColumn row={row} accessorKey="expiryDate" />,
   },
   {
     accessorKey: "isActive",
@@ -68,6 +57,6 @@ export const columns = [
   },
   {
     id: "actions",
-    cell: ({ row }) => <ActionColumn row={row} title="Banner" />,
+    cell: ({ row }) => <ActionColumn row={row} title="Coupon" />,
   },
 ];
