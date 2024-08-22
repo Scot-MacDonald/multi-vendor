@@ -1,11 +1,14 @@
 import Heading from "@/app/components/backoffice/Heading";
 import PageHeader from "@/app/components/backoffice/PageHeader";
-import TableActions from "@/app/components/backoffice/TableActions";
 import { Download, Plus, Search, Trash, Trash2 } from "lucide-react";
 import Link from "next/link";
 import React from "react";
+import { columns } from "./columns";
+import DataTable from "@/app/components/data-table-components/DataTable";
+import { getData } from "@/lib/getData";
 
-export default function page() {
+export default async function page() {
+  const trainings = await getData("trainings");
   return (
     <div className="text-black bg-[#ffffff] dark:bg-[#252525] p-8">
       <PageHeader
@@ -14,9 +17,8 @@ export default function page() {
         linkTitle="Add Training"
       />
 
-      <TableActions />
       <div className="py-6">
-        <h2>table</h2>
+        <DataTable data={trainings} columns={columns} />
       </div>
     </div>
   );
