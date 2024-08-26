@@ -9,6 +9,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { MoreHorizontal } from "lucide-react";
+import DeleteBtn from "../Actions/DeleteBtn";
 
 export default function ActionColumn({ row, title, endpoint }) {
   const isActive = row.isActive;
