@@ -3,24 +3,22 @@ import { NextResponse } from "next/server";
 
 export async function GET(request, { params: { id } }) {
   try {
-    const category = await db.category.findUnique({
+    const market = await db.market.findUnique({
       where: {
         id,
       },
-      include: {
-        products: true,
-      },
+
       // Uncomment and adjust the following block if you want to order the results
       // orderBy: {
       //   createdAt: "desc",
       // },
     });
 
-    return NextResponse.json(category);
+    return NextResponse.json(market);
   } catch (error) {
     console.log(error);
     return NextResponse.json(
-      { message: "failed to fetch category", error },
+      { message: "failed to fetch market", error },
       { status: 500 }
     );
   }
@@ -29,27 +27,27 @@ export async function GET(request, { params: { id } }) {
 
 export async function DELETE(request, { params: { id } }) {
   try {
-    const existingCategory = await db.category.findUnique({
+    const existingMarket = await db.market.findUnique({
       where: {
         id,
       },
     });
-    if(!existingCategory){
+    if(!existingMarket){
       return NextResponse.json({
         data: null,
-        message: "Category Not Found",
+        message: "Market Not Found",
       }, {status:404});
     }
-    const deletedCategory = await db.category.delete({
+    const deletedMarket = await db.market.delete({
       where: {
         id,
       },
     });
-    return NextResponse.json(deletedCategory);
+    return NextResponse.json(deletedMarket);
   } catch (error) {
     console.log(error);
     return NextResponse.json(
-      { message: "Failed to delete category", error },
+      { message: "Failed to delete market", error },
       { status: 500 }
     );
   }

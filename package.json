@@ -38,6 +38,7 @@
     "react-multi-carousel": "^2.8.5",
     "react-quill": "^2.0.0",
     "sass": "^1.77.4",
+    "sweetalert2": "^11.12.4",
     "tailwind-merge": "^2.3.0",
     "tailwindcss-animate": "^1.0.7",
     "uploadthing": "^6.12.0"

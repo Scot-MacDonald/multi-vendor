@@ -3,24 +3,22 @@ import { NextResponse } from "next/server";
 
 export async function GET(request, { params: { id } }) {
   try {
-    const category = await db.category.findUnique({
+    const coupon = await db.coupon.findUnique({
       where: {
         id,
       },
-      include: {
-        products: true,
-      },
+
       // Uncomment and adjust the following block if you want to order the results
       // orderBy: {
       //   createdAt: "desc",
       // },
     });
 
-    return NextResponse.json(category);
+    return NextResponse.json(coupon);
   } catch (error) {
     console.log(error);
     return NextResponse.json(
-      { message: "failed to fetch category", error },
+      { message: "failed to fetch coupon", error },
       { status: 500 }
     );
   }
@@ -29,27 +27,27 @@ export async function GET(request, { params: { id } }) {
 
 export async function DELETE(request, { params: { id } }) {
   try {
-    const existingCategory = await db.category.findUnique({
+    const existingCoupon = await db.coupon.findUnique({
       where: {
         id,
       },
     });
-    if(!existingCategory){
+    if(!existingCoupon){
       return NextResponse.json({
         data: null,
-        message: "Category Not Found",
+        message: "Coupon Not Found",
       }, {status:404});
     }
-    const deletedCategory = await db.category.delete({
+    const deletedCoupon = await db.coupon.delete({
       where: {
         id,
       },
     });
-    return NextResponse.json(deletedCategory);
+    return NextResponse.json(deletedCoupon);
   } catch (error) {
     console.log(error);
     return NextResponse.json(
-      { message: "Failed to delete category", error },
+      { message: "Failed to delete coupon", error },
       { status: 500 }
     );
   }
