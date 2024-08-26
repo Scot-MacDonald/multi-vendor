@@ -75,9 +75,9 @@ model Product {
   qty           Int?
   tags          String[]
   categoryId    String    @db.ObjectId
-  category      Category  @relation(fields: [categoryId], references: [id])
+  category      Category  @relation(fields: [categoryId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   userId        String    @db.ObjectId
-  user          User      @relation(fields: [userId], references: [id])
+  user          User      @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
 
   createdAt     DateTime  @default(now())
   updatedAt     DateTime? @updatedAt
@@ -134,7 +134,7 @@ model FarmerProfile {
   landSize            Float
   mainCrop            String
   userId              String     @db.ObjectId  @unique
-  user                User       @relation(fields: [userId], references: [id])
+  user                User       @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   createdAt           DateTime   @default(now())
   updatedAt           DateTime?  @updatedAt
 }
