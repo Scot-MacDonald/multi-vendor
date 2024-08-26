@@ -3,24 +3,22 @@ import { NextResponse } from "next/server";
 
 export async function GET(request, { params: { id } }) {
   try {
-    const category = await db.category.findUnique({
+    const training = await db.training.findUnique({
       where: {
         id,
       },
-      include: {
-        products: true,
-      },
+
       // Uncomment and adjust the following block if you want to order the results
       // orderBy: {
       //   createdAt: "desc",
       // },
     });
 
-    return NextResponse.json(category);
+    return NextResponse.json(training);
   } catch (error) {
     console.log(error);
     return NextResponse.json(
-      { message: "failed to fetch category", error },
+      { message: "failed to fetch training", error },
       { status: 500 }
     );
   }
@@ -29,27 +27,27 @@ export async function GET(request, { params: { id } }) {
 
 export async function DELETE(request, { params: { id } }) {
   try {
-    const existingCategory = await db.category.findUnique({
+    const existingTraining = await db.training.findUnique({
       where: {
         id,
       },
     });
-    if(!existingCategory){
+    if(!existingTraining){
       return NextResponse.json({
         data: null,
-        message: "Category Not Found",
+        message: "Training Not Found",
       }, {status:404});
     }
-    const deletedCategory = await db.category.delete({
+    const deletedTraining = await db.training.delete({
       where: {
         id,
       },
     });
-    return NextResponse.json(deletedCategory);
+    return NextResponse.json(deletedTraining);
   } catch (error) {
     console.log(error);
     return NextResponse.json(
-      { message: "Failed to delete category", error },
+      { message: "Failed to delete training", error },
       { status: 500 }
     );
   }
