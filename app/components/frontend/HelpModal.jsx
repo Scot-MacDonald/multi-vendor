@@ -23,8 +23,8 @@ export default function HelpModal() {
         onClick={() => setOpenModal(true)}
         className="flex items-center space-x-1 text-black dark:text-white bg-white dark:bg-[#252525]  dark:hover:bg-[#252525]  "
       >
-        <HelpCircle className="mr-1" />
-        <span>Help</span>
+        {/* <HelpCircle size={14} strokeWidth={2} /> */}
+        <span className="text-[.75rem] ">Help</span>
       </button>
       <Modal
         className=""

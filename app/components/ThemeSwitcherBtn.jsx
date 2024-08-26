@@ -1,7 +1,8 @@
 "use client";
 import { useState, useEffect } from "react";
 import { useTheme } from "next-themes";
-import { Moon, Sun } from "lucide-react";
+import { Moon, Sun, SunIcon } from "lucide-react";
+import { MaskOffIcon, MaskOnIcon, MoonIcon } from "@radix-ui/react-icons";
 
 export default function ThemeSwitcherBtn() {
   const [mounted, setMounted] = useState(false);
@@ -18,10 +19,10 @@ export default function ThemeSwitcherBtn() {
 
   return (
     <button
-      className="text-[#12a049] dark:text-white"
+      className="text-[#000000] dark:text-white"
       onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
     >
-      {theme === "light" ? <Moon /> : <Sun />}
+      {theme === "light" ? <MoonIcon /> : <SunIcon />}
     </button>
   );
 }
