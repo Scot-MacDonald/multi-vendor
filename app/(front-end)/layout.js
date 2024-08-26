@@ -6,7 +6,7 @@ export default function layout({ children }) {
   return (
     <div>
       <Navbar />
-      <div className="flex py-3   bg-white dark:bg-[#252525]">{children}</div>
+      <div className="flex    bg-white dark:bg-[#252525]">{children}</div>
       <Footer />
     </div>
   );

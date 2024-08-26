@@ -6,7 +6,7 @@ import Link from "next/link";
 export default async function SecondNav() {
   const categories = await getData("categories");
   return (
-    <ul className="nav">
+    <ul className="nav border border-b-8  border-[#f8f8f8] dark:border-[#303030]">
       {categories.map((category, i) => {
         return (
           <>

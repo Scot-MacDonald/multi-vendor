@@ -18,7 +18,7 @@ export default async function Hero() {
   return (
     <>
       <SecondNav />
-      <div className="grid grid-cols-12 gap-8 mb-6 ">
+      <div className="grid grid-cols-12 gap-8 mb-6 pt-6 px-2">
         {/* <SidebarCategories /> */}
         <div className="col-span-full md:col-span-6  rounded-md overflow-hidden">
           <HeroCarousel banners={banners} />
