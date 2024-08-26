@@ -19,7 +19,7 @@ export default async function Coupons() {
       />
 
       <div className="py-6">
-        <DataTable data={farmers} columns={columns} />
+        <DataTable data={farmers} columns={columns} filterKeys={["name"]}/>
       </div>
     </div>
   );
