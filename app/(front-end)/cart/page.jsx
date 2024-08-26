@@ -7,12 +7,14 @@ import Link from "next/link";
 
 export default function Cart() {
   return (
-    <div>
+    <div className="w-full">
       <Breadcrumb />
-      <div className="grid grid-cols-12 gap-8">
-        <div className="col-span-8">
-          <h2 className="py-2 mb-6 text-2xl">Your Cart</h2>
-          <div className="flex items-center justify-between border-b border-slate-400 pb-3 font-semibold text-sm mb-4">
+      <div className="grid grid-cols-12 h-[calc(100vh-150px)] overflow-auto border-l-8 border-r-8   border-[#f8f8f8] dark:border-[#303030]">
+        <div className="col-span-7 p-5 border-r-8  border-[#f8f8f8] dark:border-[#303030]">
+          <h2 className="text-md lg:text-md font-bold uppercase  ">
+            Your Cart
+          </h2>
+          <div className="flex items-center justify-between border-b text-[#b4b4b4] border-slate-400 pb-2 font-semibold text-[.85rem] mb-4">
             <h2 className="uppercase">Product</h2>
             <h2 className="uppercase">Quantity</h2>
             <h2 className="uppercase">Price</h2>
@@ -94,10 +96,12 @@ export default function Cart() {
             </button>
           </div>
         </div>
-        <div className="col-span-4 md:block border border-dashed border-gray-900/25 dark:border-[#666666] rounded-md overflow-hidden p-5 font-bold">
-          <h2 className="text-2xl pb-3">Cart Total</h2>
-          <div className="flex items-center justify-between border-b border-slate-400 pb-6">
-            <span>Subtotal</span>
+        <div className="col-span-5 md:block overflow-hidden p-5">
+          <h2 className="text-md lg:text-md font-bold uppercase ">
+            Cart Total
+          </h2>
+          <div className="flex items-center justify-between border-b border-slate-400 pb-2 font-semibold text-[.85rem] text-[#b4b4b4]">
+            <span className="uppercase">Subtotal</span>
             <span>€589</span>
           </div>
           <div className="flex items-center justify-between pb-4 mt-2">
@@ -108,7 +112,7 @@ export default function Cart() {
             <span>Shipping</span>
             <span>€5</span>
           </div>
-          <p className="border-b border-slate-400 pb-3 font-normal">
+          <p className="border-b border-slate-400 pb-3 text-[.85rem] text-[#b2b2b2]">
             A text here about the shipping prices or whatever is useful.
           </p>
           <div className="flex items-center justify-between py-4 font-bold">

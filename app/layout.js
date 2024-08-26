@@ -1,9 +1,10 @@
-import { Inter } from "next/font/google";
+// import { Inter } from "next/font/google";
 import "../styles/main.scss";
 import Providers from "@/context/Providers";
 import { ThemeModeScript } from "flowbite-react";
+import { GeistSans } from "geist/font/sans";
 
-const inter = Inter({ subsets: ["latin"] });
+// const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
   title: "multi",
@@ -12,11 +13,11 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className="light" style={{ colorScheme: "light" }}>
+    <html lang="en" className="light " style={{ colorScheme: "light" }}>
       <head>
         <ThemeModeScript />
       </head>
-      <body className={inter.className}>
+      <body className={GeistSans.className}>
         <Providers>{children}</Providers>
       </body>
     </html>
