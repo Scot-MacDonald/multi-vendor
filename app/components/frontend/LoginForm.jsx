@@ -4,8 +4,8 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
-import SubmitButton from "../formInputs/SubmitButton";
-import TextInput from "../formInputs/TextInput";
+import SubmitButton from "../FormInputs/SubmitButton";
+import TextInput from "../FormInputs/TextInput";
 
 export default function LoginForm() {
   const router = useRouter();

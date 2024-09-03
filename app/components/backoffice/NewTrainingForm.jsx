@@ -1,21 +1,21 @@
 "use client";
 import FormHeader from "@/app/components/backoffice/FormHeader";
-import SubmitButton from "@/app/components/formInputs/SubmitButton";
-import TextAreaInput from "@/app/components/formInputs/TextAreaInput";
-import TextInput from "@/app/components/formInputs/TextInput";
-import ImageInput from "@/app/components/formInputs/imageInput";
+import SubmitButton from "@/app/components/FormInputs/SubmitButton";
+import TextAreaInput from "@/app/components/FormInputs/TextAreaInput";
+import TextInput from "@/app/components/FormInputs/TextInput";
+import ImageInput from "@/app/components/FormInputs/ImageInput";
 import { generateSlug } from "@/lib/generateSlug";
 import { makePostRequest } from "@/lib/apiRequest";
 
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import SelectInput from "@/app/components/formInputs/SelectInput";
-import ToggleInput from "@/app/components/formInputs/Toggleinput";
+import SelectInput from "@/app/components/FormInputs/SelectInput";
+import ToggleInput from "@/app/components/FormInputs/Toggleinput";
 // import QuillEditor from "@/app/components/formInputs/QuillEditor";
 import dynamic from "next/dynamic";
 import { useRouter } from "next/navigation";
 const QuillEditor = dynamic(
-  () => import("@/app/components/formInputs/QuillEditor"),
+  () => import("@/app/components/FormInputs/QuillEditor"),
   {
     ssr: false,
   }
@@ -63,7 +63,6 @@ export default function NewTrainingForm({ categories }) {
   }
   return (
     <div className="bg-white dark:bg-[#252525] py-6">
-      <FormHeader title="New Training" />
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="w-full max-w-4xl ml-8 p-4 bg-white border border-[#f8f8f8]  sm:p-6 md:p-8 dark:bg-transparent dark:border-[#303030]  m-5"

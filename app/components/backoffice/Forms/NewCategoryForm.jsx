@@ -5,18 +5,20 @@ import TextAreaInput from "@/app/components/FormInputs/TextAreaInput";
 import TextInput from "@/app/components/FormInputs/TextInput";
 import ImageInput from "@/app/components/FormInputs/ImageInput";
 import { generateSlug } from "@/lib/generateSlug";
-import { makePostRequest } from "@/lib/apiRequest";
+import { makePostRequest, makePutRequest } from "@/lib/apiRequest";
 
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import ToggleInput from "@/app/components/FormInputs/Toggleinput";
 import SelectInput from "@/app/components/FormInputs/SelectInput";
+import ToggleInput from "@/app/components/FormInputs/Toggleinput";
 import { useRouter } from "next/navigation";
 
-export default function NewMarketForm({ categories }) {
-  const [imageUrl, setImageUrl] = useState("");
+export default function NewCategoryForm({ updateData = {} }) {
+  const initialImageUrl = updateData?.imageUrl ?? "";
+  const id = updateData?.id ?? "";
+  const [imageUrl, setImageUrl] = useState(initialImageUrl);
+  // const markets = [];
   const [loading, setLoading] = useState(false);
-
   const {
     register,
     reset,
@@ -26,62 +28,72 @@ export default function NewMarketForm({ categories }) {
   } = useForm({
     defaultValues: {
       isActive: true,
+      ...updateData,
     },
   });
   const isActive = watch("isActive");
   const router = useRouter();
   function redirect() {
-    router.push("/dashboard/markets");
+    router.push("/dashboard/categories");
   }
+
   async function onSubmit(data) {
     const slug = generateSlug(data.title);
     data.slug = slug;
-    data.logoUrl = imageUrl;
+    data.imageUrl = imageUrl;
 
     console.log(data);
-    makePostRequest(setLoading, "api/markets", data, "Market", reset, redirect);
+    if (id) {
+      data.id = id;
+      makePutRequest(
+        setLoading,
+        `api/categories/${id}`,
+        data,
+        "Category",
+        redirect
+      );
+      console.log("update Request:", data);
+    } else
+      makePostRequest(
+        setLoading,
+        "api/categories",
+        data,
+        "category",
+        reset,
+        redirect
+      );
+
     setImageUrl("");
   }
   return (
     <div className="bg-white dark:bg-[#252525] py-6">
-      <FormHeader title="New Market" />
+      {/* <FormHeader title="New category" /> */}
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="w-full max-w-4xl ml-8 p-4 bg-white border border-dashed border-gray-900/25 dark:border-[#666666]  sm:p-6 md:p-8 dark:bg-transparent m-5"
+        className="w-full max-w-4xl ml-8 p-4 bg-white border border-dashed border-gray-900/25 dark:border-[#666666] sm:p-6 md:p-8 dark:bg-transparent   m-5"
       >
         <div className="grid gap-4 sm:grid-cols-2 sm:gap-6">
           <TextInput
-            label="Market Title"
+            label="Category Title"
             name="title"
             register={register}
             errors={errors}
-            className="w-full"
-          />
-          <SelectInput
-            label="Select Categories"
-            name="categoryIds"
-            register={register}
-            errors={errors}
-            className="w-full bg-transparent"
-            options={categories}
-            // change to false for single select
-            multiple={true}
           />
 
+          <TextAreaInput
+            label="Category Description"
+            name="description"
+            register={register}
+            errors={errors}
+          />
           <ImageInput
             imageUrl={imageUrl}
             setImageUrl={setImageUrl}
-            endpoint="marketLogoUploader"
-            label="Market Logo"
-          />
-          <TextAreaInput
-            label={"Market Description"}
-            name={"description"}
-            register={register}
-            errors={errors}
+            endpoint="categoryImageUploader"
+            label="Category image"
           />
           <ToggleInput
-            label="Farmer status"
+            label="Publish your Category"
             name="isActive"
             trueTitle="Active"
             falseTitle="Draft"
@@ -91,8 +103,10 @@ export default function NewMarketForm({ categories }) {
 
         <SubmitButton
           isLoading={loading}
-          buttonTitle="Create Market"
-          loadingButtonTitle="Creating market please wait..."
+          buttonTitle={id ? "Update Category" : "Create Category"}
+          loadingButtonTitle={`${
+            id ? "updating" : "Creating"
+          } category please wait...`}
         />
       </form>
     </div>

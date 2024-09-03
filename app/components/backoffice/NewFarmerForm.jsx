@@ -1,9 +1,9 @@
 "use client";
 import FormHeader from "@/app/components/backoffice/FormHeader";
-import SubmitButton from "@/app/components/formInputs/SubmitButton";
-import TextAreaInput from "@/app/components/formInputs/TextAreaInput";
-import TextInput from "@/app/components/formInputs/TextInput";
-import ImageInput from "@/app/components/formInputs/ImageInput";
+import SubmitButton from "@/app/components/FormInputs/SubmitButton";
+import TextAreaInput from "@/app/components/FormInputs/TextAreaInput";
+import TextInput from "@/app/components/FormInputs/TextInput";
+import ImageInput from "@/app/components/FormInputs/ImageInput";
 import { generateSlug } from "@/lib/generateSlug";
 import { makePostRequest } from "@/lib/apiRequest";
 
@@ -11,9 +11,9 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { generateCouponCode } from "@/lib/generateCouponCode";
 import { generateUserCode } from "@/lib/generateUserCode";
-import ToggleInput from "@/app/components/formInputs/Toggleinput";
+import ToggleInput from "@/app/components/FormInputs/Toggleinput";
 import { useRouter } from "next/navigation";
-import ArrayItemsInput from "../formInputs/ArrayItemsinput";
+import ArrayItemsInput from "../FormInputs/ArrayItemsInput";
 
 export default function NewFarmerForm({ user }) {
   const [loading, setLoading] = useState(false);
@@ -71,7 +71,7 @@ export default function NewFarmerForm({ user }) {
         />
         <TextInput
           label="Farmer's Email Address"
-          name="name"
+          name="email"
           register={register}
           errors={errors}
           className="w-full"

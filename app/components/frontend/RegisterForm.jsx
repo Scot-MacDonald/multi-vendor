@@ -4,11 +4,10 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
-import SubmitButton from "../formInputs/SubmitButton";
-import TextInput from "../formInputs/TextInput";
+import SubmitButton from "../FormInputs/SubmitButton";
+import TextInput from "../FormInputs/TextInput";
 
-
-export default function RegisterForm({role}) {
+export default function RegisterForm({ role }) {
   const router = useRouter();
   const {
     register,
@@ -32,17 +31,16 @@ export default function RegisterForm({role}) {
       });
       const responseData = await response.json();
       if (response.ok) {
-        console.log(responseData)
+        console.log(responseData);
         setLoading(false);
         toast.success("User Created Successfully");
         reset();
         // const userRole= responseData.data.role
-        if(role === "FARMER"){
-            router.push(`/onboarding/${responseData.data.id}`);
+        if (role === "FARMER") {
+          router.push(`/onboarding/${responseData.data.id}`);
         } else {
-            setLoading(false);
+          setLoading(false);
         }
-        
       } else {
         setLoading(false);
         if (response.status === 409) {
@@ -63,20 +61,54 @@ export default function RegisterForm({role}) {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-2">
-      <TextInput label = "" name = "role" register = {register} errors = {errors} type ="hidden" defaultValue={role} className="sm:col-span-2 mb-3"/>
-      <TextInput label = "Your Full Name" name = "name" register = {register} errors = {errors} type ="text" className="sm:col-span-2 mb-3"/>
-      <TextInput label = "Email" name = "email" register = {register} errors = {errors} type ="email" className="sm:col-span-2 mb-3"/>
-      {emailErr && <small className="text-red-600 -mt-2 mb-2" >{emailErr}</small>}
-      <TextInput label = "Password" name = "password" register = {register} errors = {errors} type ="password" className="sm:col-span-2 mb-3"/>
-
-      <SubmitButton isLoading = {loading} buttonTitle = "Register" loadingButtonTitle="Creating please wait..." />
-
-        Already have an account?{" "}
-        <Link
-          href="/login"
-          className="font-medium text-purple-600 hover:underline dark:text-purple-500"
-        >
-          Login
-        </Link>
-    </form>)
+      <TextInput
+        label=""
+        name="role"
+        register={register}
+        errors={errors}
+        type="hidden"
+        defaultValue={role}
+        className="sm:col-span-2 mb-3"
+      />
+      <TextInput
+        label="Your Full Name"
+        name="name"
+        register={register}
+        errors={errors}
+        type="text"
+        className="sm:col-span-2 mb-3"
+      />
+      <TextInput
+        label="Email"
+        name="email"
+        register={register}
+        errors={errors}
+        type="email"
+        className="sm:col-span-2 mb-3"
+      />
+      {emailErr && (
+        <small className="text-red-600 -mt-2 mb-2">{emailErr}</small>
+      )}
+      <TextInput
+        label="Password"
+        name="password"
+        register={register}
+        errors={errors}
+        type="password"
+        className="sm:col-span-2 mb-3"
+      />
+      <SubmitButton
+        isLoading={loading}
+        buttonTitle="Register"
+        loadingButtonTitle="Creating please wait..."
+      />
+      Already have an account?{" "}
+      <Link
+        href="/login"
+        className="font-medium text-purple-600 hover:underline dark:text-purple-500"
+      >
+        Login
+      </Link>
+    </form>
+  );
 }
