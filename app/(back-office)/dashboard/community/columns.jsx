@@ -73,6 +73,17 @@ export const columns = [
   },
   {
     id: "actions",
-    cell: ({ row }) => <ActionColumn row={row} title="training" />,
+    // cell: ({ row }) => <ActionColumn row={row} title="Category" endpoint={`categories/${row.id}`}/>,
+    cell: ({ row }) => {
+      const training = row.original;
+      return (
+        <ActionColumn
+          row={row}
+          title="Training"
+          editEndpoint={`community/update/${training.id}`}
+          endpoint={`trainings/${training.id}`}
+        />
+      );
+    },
   },
 ];

@@ -75,10 +75,15 @@ export const columns = [
     id: "actions",
     // cell: ({ row }) => <ActionColumn row={row} title="Category" endpoint={`categories/${row.id}`}/>,
     cell: ({ row }) => {
-      const market = row.original
+      const market = row.original;
       return (
-        <ActionColumn row={row} title="Market" endpoint={`markets/${market.id}`}/>
-      )
-    }
+        <ActionColumn
+          row={row}
+          title="Market"
+          editEndpoint={`markets/update/${market.id}`}
+          endpoint={`markets/${market.id}`}
+        />
+      );
+    },
   },
 ];

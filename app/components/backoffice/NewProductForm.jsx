@@ -1,21 +1,21 @@
 "use client";
 import FormHeader from "@/app/components/backoffice/FormHeader";
-import SubmitButton from "@/app/components/formInputs/SubmitButton";
-import TextAreaInput from "@/app/components/formInputs/TextAreaInput";
-import TextInput from "@/app/components/formInputs/TextInput";
-import ImageInput from "@/app/components/formInputs/imageInput";
+import SubmitButton from "@/app/components/FormInputs/SubmitButton";
+import TextAreaInput from "@/app/components/FormInputs/TextAreaInput";
+import TextInput from "@/app/components/FormInputs/TextInput";
+import ImageInput from "@/app/components/FormInputs/ImageInput";
 import { generateSlug } from "@/lib/generateSlug";
 import { makePostRequest } from "@/lib/apiRequest";
 
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import SelectInput from "@/app/components/formInputs/SelectInput";
+import SelectInput from "@/app/components/FormInputs/SelectInput";
 
-import ToggleInput from "@/app/components/formInputs/Toggleinput";
+import ToggleInput from "@/app/components/FormInputs/Toggleinput";
 import clsx from "clsx";
 import { generateUserCode } from "@/lib/generateUserCode";
 import { useRouter } from "next/navigation";
-import ArrayItemsInput from "@/app/components/formInputs/ArrayItemsInput";
+import ArrayItemsInput from "@/app/components/FormInputs/ArrayItemsInput";
 
 export default function NewProductForm({ categories, farmers }) {
   const [imageUrl, setImageUrl] = useState("");
