@@ -71,14 +71,20 @@ export const columns = [
     header: "Date Created",
     cell: ({ row }) => <DateColumn row={row} accessorKey="createdAt" />,
   },
+
   {
     id: "actions",
     // cell: ({ row }) => <ActionColumn row={row} title="Category" endpoint={`categories/${row.id}`}/>,
     cell: ({ row }) => {
-      const category = row.original
+      const category = row.original;
       return (
-        <ActionColumn row={row} title="Category" endpoint={`categories/${category.id}`}/>
-      )
-    }
+        <ActionColumn
+          row={row}
+          title="Category"
+          editEndpoint={`categories/update/${category.id}`}
+          endpoint={`categories/${category.id}`}
+        />
+      );
+    },
   },
 ];

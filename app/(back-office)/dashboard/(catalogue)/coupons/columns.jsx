@@ -59,10 +59,15 @@ export const columns = [
     id: "actions",
     // cell: ({ row }) => <ActionColumn row={row} title="Category" endpoint={`categories/${row.id}`}/>,
     cell: ({ row }) => {
-      const coupon = row.original
+      const coupon = row.original;
       return (
-        <ActionColumn row={row} title="Coupon" endpoint={`coupons/${coupon.id}`}/>
-      )
-    }
+        <ActionColumn
+          row={row}
+          title="Coupon"
+          editEndpoint={`coupons/update/${coupon.id}`}
+          endpoint={`coupons/${coupon.id}`}
+        />
+      );
+    },
   },
 ];
