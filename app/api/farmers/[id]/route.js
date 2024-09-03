@@ -3,15 +3,14 @@ import { NextResponse } from "next/server";
 
 export async function GET(request, { params: { id } }) {
   try {
-    const farmer = await db.farmer.findUnique({
+    const farmer = await db.user.findUnique({
       where: {
         id,
       },
 
-      // Uncomment and adjust the following block if you want to order the results
-      // orderBy: {
-      //   createdAt: "desc",
-      // },
+      include: {
+        farmerProfile: true,
+      },
     });
 
     return NextResponse.json(farmer);
@@ -24,30 +23,32 @@ export async function GET(request, { params: { id } }) {
   }
 }
 
-
 export async function DELETE(request, { params: { id } }) {
   try {
-    const existingFarmer = await db.farmer.findUnique({
+    const existingUser = await db.user.findUnique({
       where: {
         id,
       },
     });
-    if(!existingFarmer){
-      return NextResponse.json({
-        data: null,
-        message: "Farmer Not Found",
-      }, {status:404});
+    if (!existingUser) {
+      return NextResponse.json(
+        {
+          data: null,
+          message: "Farmer Not Found",
+        },
+        { status: 404 }
+      );
     }
-    const deletedFarmer = await db.farmer.delete({
+    const deletedUser = await db.user.delete({
       where: {
         id,
       },
     });
-    return NextResponse.json(eletedFarmer);
+    return NextResponse.json(deletedUser);
   } catch (error) {
     console.log(error);
     return NextResponse.json(
-      { message: "Failed to delete farmer", error },
+      { message: "Failed to delete user", error },
       { status: 500 }
     );
   }

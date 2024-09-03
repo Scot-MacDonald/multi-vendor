@@ -44,19 +44,19 @@ export const columns = [
     enableHiding: false,
   },
   {
-    accessorKey: "title",
-    header: ({ column }) => <SortableColumn column={column} title="Title" />,
+    accessorKey: "name",
+    header: ({ column }) => <SortableColumn column={column} title="Name" />,
   },
   // {
   //   accessorKey: "imageUrl",
   //   header: "Product Image",
   //   cell: ({ row }) => <ImageColumn row={row} accessorKey="imageUrl" />,
   // },
-  {
-    accessorKey: "profileImageUrl",
-    header: "Profile Image",
-    cell: ({ row }) => <ImageColumn row={row} accessorKey="profileImageUrl" />,
-  },
+  // {
+  //   accessorKey: "profileImageUrl",
+  //   header: "Profile Image",
+  //   cell: ({ row }) => <ImageColumn row={row} accessorKey="profileImageUrl" />,
+  // },
 
   // {
   //   accessorKey: "description",
@@ -68,9 +68,17 @@ export const columns = [
   //   },
   // },
   {
-    accessorKey: "isActive",
-    header: "Active",
+    accessorKey: "email",
+    header: "Email",
   },
+  {
+    accessorKey: "role",
+    header: "Role",
+  },
+  // {
+  //   accessorKey: "isActive",
+  //   header: "Active",
+  // },
   {
     accessorKey: "createdAt",
     header: "Date Created",
@@ -80,10 +88,15 @@ export const columns = [
     id: "actions",
     // cell: ({ row }) => <ActionColumn row={row} title="Category" endpoint={`categories/${row.id}`}/>,
     cell: ({ row }) => {
-      const farmer = row.original
+      const farmer = row.original;
       return (
-        <ActionColumn row={row} title="Farmer" endpoint={`farmers/${farmer.id}`}/>
-      )
-    }
+        <ActionColumn
+          row={row}
+          title="Farmer"
+          editEndpoint={`farmers/update/${farmer.id}`}
+          endpoint={`farmers/${farmer.id}`}
+        />
+      );
+    },
   },
 ];

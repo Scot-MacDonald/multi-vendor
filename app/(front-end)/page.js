@@ -7,7 +7,10 @@ import CommunityTrainings from "../components/frontend/CommunityTrainings";
 import { getData } from "@/lib/getData";
 
 export default async function Home() {
-  const categories = await getData("categories");
+  const categoriesData = await getData("categories");
+  const categories = await categoriesData.filter((category) => {
+    return category.products.length > 3;
+  });
   return (
     <div className="w-full min-h-screen ">
       <Hero />
