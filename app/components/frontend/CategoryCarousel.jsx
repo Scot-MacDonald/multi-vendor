@@ -5,6 +5,7 @@ import "react-multi-carousel/lib/styles.css";
 import Image from "next/image";
 import Link from "next/link";
 import { ShoppingCart } from "lucide-react";
+import Product from "./Product";
 
 export default function CategoryCarousel({ products }) {
   const responsive = {
@@ -34,10 +35,10 @@ export default function CategoryCarousel({ products }) {
       ssr={true} // means to render carousel on server-side.
       infinite={true}
       autoPlay={true}
-      autoPlaySpeed={1000}
+      autoPlaySpeed={5000}
       keyBoardControl={true}
       customTransition="all .5"
-      transitionDuration={500}
+      transitionDuration={1000}
       containerClass="carousel-container  "
       removeArrowOnDeviceType={["desktop", "tablet", "mobile"]}
       //   deviceType={}
@@ -45,31 +46,7 @@ export default function CategoryCarousel({ products }) {
       itemClass="px-1"
     >
       {products.map((product, i) => {
-        return (
-          <div key={i}>
-            <div className="flex flex-col items-center min-h-96 border border-[#666666] ">
-              <Link href={`/products/${product.slug}`}>
-                <Image
-                  src={product.imageUrl}
-                  width={200}
-                  height={200}
-                  alt={product.title}
-                  className="w-full  object-contain "
-                />
-              </Link>
-              <Link href={`/products/${product.slug}`}>
-                <h2 className="justify-center mb-10">{product.title}</h2>
-              </Link>
-              <div className="flex justify-between w-full px-3 py-3">
-                <p>€ {product.salePrice}</p>
-                <button className="flex items-center space-x-2">
-                  <ShoppingCart />
-                  <span>Add</span>
-                </button>
-              </div>
-            </div>
-          </div>
-        );
+        return <Product product={product} key={i} />;
       })}
     </Carousel>
   );
