@@ -4,6 +4,7 @@ import Link from "next/link";
 import ThemeSwitcherBtn from "../ThemeSwitcherBtn";
 import SearchForm from "./SearchForm";
 import HelpModal from "./HelpModal";
+import CartCount from "./CartCount";
 
 export default function Navbar() {
   return (
@@ -25,22 +26,7 @@ export default function Navbar() {
           </Link>
 
           <HelpModal className="w-2 h-2" />
-          <Link
-            href="/cart"
-            type="button"
-            className="relative inline-flex items-center text-[.75rem] text-center text-black bg-transparent rounded-lg "
-          >
-            <span>Cart</span>
-            {/* <ShoppingCart
-              size={14}
-              strokeWidth={2}
-              className="dark:text-white text-black"
-            />
-            <span className="sr-only">Cart</span>
-            <div className="absolute inline-flex items-center justify-center w-4 h-4 text-xs font-bold text-white bg-red-500  rounded-full -top-0 end-6 dark:border-gray-900">
-              20
-            </div> */}
-          </Link>
+          <CartCount />
         </div>
 
         <SearchForm />
