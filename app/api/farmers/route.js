@@ -4,6 +4,31 @@ import { NextResponse } from "next/server";
 export async function POST(request) {
   try {
     const farmerData = await request.json();
+
+    // Check if the user already exists
+    const existingUser = await db.user.findUnique({
+      where: {
+        id: farmerData.userId,
+      },
+    });
+    if (!existingUser) {
+      return NextResponse.json(
+        {
+          data: null,
+          message: "No user found",
+        },
+        { status: 409 }
+      );
+    }
+    const updatedUser = await db.user.update({
+      where: {
+        id: farmerData.userId,
+      },
+      data: {
+        emailVerified: true,
+      },
+    });
+
     const newFarmerProfile = await db.farmerProfile.create({
       data: {
         code: farmerData.code,

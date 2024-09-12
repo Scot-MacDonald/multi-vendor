@@ -7,7 +7,7 @@ import toast from "react-hot-toast";
 import SubmitButton from "../FormInputs/SubmitButton";
 import TextInput from "../FormInputs/TextInput";
 
-export default function RegisterForm({ role }) {
+export default function RegisterForm({ role = "USER" }) {
   const router = useRouter();
   const {
     register,
@@ -36,13 +36,14 @@ export default function RegisterForm({ role }) {
         toast.success("User Created Successfully");
         reset();
         // const userRole= responseData.data.role
-        if (role === "FARMER") {
-          router.push(`/onboarding/${responseData.data.id}`);
+        if (role === "USER") {
+          router.push("/");
         } else {
-          setLoading(false);
+          router.push("/verify-email");
         }
       } else {
         setLoading(false);
+
         if (response.status === 409) {
           setEmailErr("User with this Email already exists");
           toast.error("User with this Email already exists");
@@ -68,7 +69,7 @@ export default function RegisterForm({ role }) {
         errors={errors}
         type="hidden"
         defaultValue={role}
-        className="sm:col-span-2 mb-3"
+        className="sm:col-span-2 mb-3 border-white"
       />
       <TextInput
         label="Your Full Name"
@@ -102,13 +103,36 @@ export default function RegisterForm({ role }) {
         buttonTitle="Register"
         loadingButtonTitle="Creating please wait..."
       />
-      Already have an account?{" "}
-      <Link
-        href="/login"
-        className="font-medium text-purple-600 hover:underline dark:text-purple-500"
-      >
-        Login
-      </Link>
+      <p className="text-[0.75rem] font-light text-gray-500 dark:text-gray-400 py-4">
+        Already have an account?{" "}
+        <Link
+          href="/login"
+          className="font-medium text-purple-600 hover:underline dark:text-purple-500"
+        >
+          Login
+        </Link>
+      </p>
+      {role === "USER" ? (
+        <p className="text-[0.75rem] font-light text-gray-500 dark:text-gray-400 py-4">
+          Are you a Farmer ?{" "}
+          <Link
+            href="/register-farmer"
+            className="font-medium text-purple-600 hover:underline dark:text-purple-500"
+          >
+            Register here
+          </Link>
+        </p>
+      ) : (
+        <p className="text-[0.75rem] font-light text-gray-500 dark:text-gray-400 py-4">
+          Are you a User ?{" "}
+          <Link
+            href="/register"
+            className="font-medium text-purple-600 hover:underline dark:text-purple-500"
+          >
+            Register here
+          </Link>
+        </p>
+      )}
     </form>
   );
 }
