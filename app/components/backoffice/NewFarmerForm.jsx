@@ -35,7 +35,9 @@ export default function NewFarmerForm({ user }) {
   const isActive = watch("isActive");
   const router = useRouter();
   function redirect() {
-    router.push("/dashboard/farmers");
+
+    router.push("/login");
+
   }
 
   async function onSubmit(data) {

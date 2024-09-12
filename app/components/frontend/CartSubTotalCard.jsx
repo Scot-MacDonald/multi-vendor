@@ -4,7 +4,13 @@ import React from "react";
 export default function CartSubTotalCard({ subTotal }) {
   const shipping = 10.0;
   const tax = 0.0;
-  const totalPrice = subTotal + shipping + tax;
+
+
+  const totalPrice = (
+    Number(subTotal) +
+    Number(shipping) +
+    Number(tax)
+  ).toFixed(2);
   return (
     <div className="md:col-span-5 sm:col-span-full col-span-full sm:block overflow-hidden p-5">
       <h2 className="text-md lg:text-md font-bold uppercase ">Cart Total</h2>
