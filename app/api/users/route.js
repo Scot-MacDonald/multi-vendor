@@ -58,13 +58,17 @@
 //     }
 //   }
 
-
 import { NextResponse } from "next/server";
 import db from "@/lib/db";
 import bcrypt from "bcrypt";
-// Handle POST requests
+import { v4 as uuidv4 } from "uuid";
+import base64url from "base64url";
+import { Resend } from "resend";
+import EmailTemplate from "@/app/components/email-template";
+// // Handle POST requests
 export async function POST(request) {
   try {
+    const resend = new Resend(process.env.RESEND_API_KEY);
     const { name, email, password, role } = await request.json();
     // Check if all required fields are provided
     if (!name || !email || !password || !role) {
@@ -92,6 +96,13 @@ export async function POST(request) {
     }
     // Hash the password
     const hashedPassword = await bcrypt.hash(password, 10);
+    //Generate Token
+    // Generate a random UUID (version 4)
+    const rawToken = uuidv4();
+    console.log(rawToken);
+    // Encode the token using Base64 URL-safe format
+    const token = base64url.encode(rawToken);
+
     // Create the new user
     const newUser = await db.user.create({
       data: {
@@ -99,9 +110,24 @@ export async function POST(request) {
         email,
         password: hashedPassword,
         role,
+        verificationToken: token,
       },
     });
     console.log(newUser);
+    if (role === "FARMER") {
+      //Send an Email with the Token on the link as a search param
+      const userId = newUser.id;
+      const linkText = "Verify Account";
+      const redirectUrl = `onboarding/${userId}?token=${token}`;
+      const sendMail = await resend.emails.send({
+        from: "Acme <onboarding@resend.dev>",
+        to: email,
+        subject: "Account Verification from Blattclub",
+        react: EmailTemplate({ name, redirectUrl, linkText }),
+      });
+      console.log(sendMail);
+      //Upon Click redirect them to the login
+    }
     return NextResponse.json(
       {
         data: newUser,

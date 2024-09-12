@@ -1,7 +1,9 @@
 const { createSlice } = require("@reduxjs/toolkit");
 
 // Get initial state from localStorage if available
-const initialState = [];
+const initialState =
+  (typeof window !== "undefined" && JSON.parse(localStorage.getItem("cart"))) ||
+  [];
 const cartSlice = createSlice({
   name: "cart",
   initialState,
@@ -16,18 +18,32 @@ const cartSlice = createSlice({
         existingItem.qty += 1;
       } else {
         // If the item doesn't exist, add it to the cart
-        state.push({ id, title, salePrice, qty: 1, imageUrl });
+        const newItem = { id, title, salePrice, qty: 1, imageUrl };
+        state.push(newItem);
+        // Update localStorage with the new state
+        if (typeof window !== "undefined") {
+          localStorage.setItem("cart", JSON.stringify([...state]));
+        }
       }
     },
     removeFromCart: (state, action) => {
       const cartId = action.payload;
-      return state.filter((item) => item.id !== cartId);
+      const newState = state.filter((item) => item.id !== cartId);
+      // Update localStorage with the new state
+      if (typeof window !== "undefined") {
+        localStorage.setItem("cart", JSON.stringify(newState));
+      }
+      return newState;
     },
     incrementQty: (state, action) => {
       const cartId = action.payload;
       const cartItem = state.find((item) => item.id === cartId);
       if (cartItem) {
         cartItem.qty += 1;
+        // Update localStorage with the new state
+        if (typeof window !== "undefined") {
+          localStorage.setItem("cart", JSON.stringify([...state]));
+        }
       }
     },
     decrementQty: (state, action) => {
@@ -35,6 +51,10 @@ const cartSlice = createSlice({
       const cartItem = state.find((item) => item.id === cartId);
       if (cartItem && cartItem.qty > 1) {
         cartItem.qty -= 1;
+        // Update localStorage with the new state
+        if (typeof window !== "undefined") {
+          localStorage.setItem("cart", JSON.stringify([...state]));
+        }
       }
     },
   },
