@@ -58,7 +58,6 @@
 //     }
 //   }
 
-
 import { NextResponse } from "next/server";
 import db from "@/lib/db";
 import bcrypt from "bcrypt";
@@ -117,18 +116,25 @@ export async function POST(request) {
     });
     console.log(newUser);
 
-       
-    
     if (role === "FARMER") {
       //Send an Email with the Token on the link as a search param
       const userId = newUser.id;
       const linkText = "Verify Account";
       const redirectUrl = `onboarding/${userId}?token=${token}`;
+      const description =
+        " Thank you, for Creating annAccount with Us. We request you to click on the link Below in order to verify your Account. Thankyou";
+      const subject = "Account Verification from Blattclub";
       const sendMail = await resend.emails.send({
         from: "Acme <onboarding@resend.dev>",
         to: email,
-        subject: "Account Verification from Blattclub",
-        react: EmailTemplate({ name, redirectUrl, linkText }),
+        subject: subject,
+        react: EmailTemplate({
+          name,
+          redirectUrl,
+          linkText,
+          description,
+          subject,
+        }),
       });
       console.log(sendMail);
       //Upon Click redirect them to the login
@@ -170,5 +176,4 @@ export async function GET(request) {
       { status: 500 }
     );
   }
-
 }
