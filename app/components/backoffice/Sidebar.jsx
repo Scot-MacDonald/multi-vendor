@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 import Link from "next/link";
 import logo from "../../../public/logo_dark.svg";
@@ -36,10 +36,21 @@ import {
 } from "@/components/ui/collapsible";
 
 import { CompanyModule } from "@faker-js/faker";
+import { signOut, useSession } from "next-auth/react";
 
 export default function sidebar({ showSidebar, setShowSidebar }) {
+  const { data: session, status } = useSession();
+  const router = useRouter();
+  const [openMenu, setOpenMenu] = useState(false);
   const pathname = usePathname();
-  const sidebarLinks = [
+
+  if (status === "loading") {
+    return <p>Loading...</p>;
+  }
+
+  const role = session?.user?.role;
+
+  let sidebarLinks = [
     {
       title: "Customers",
       icon: Users2,
@@ -96,7 +107,7 @@ export default function sidebar({ showSidebar, setShowSidebar }) {
       href: "/",
     },
   ];
-  const catalogueLinks = [
+  let catalogueLinks = [
     {
       title: "Products",
       icon: Boxes,
@@ -123,7 +134,84 @@ export default function sidebar({ showSidebar, setShowSidebar }) {
       href: "/dashboard/banners",
     },
   ];
-  const [openMenu, setOpenMenu] = useState(false);
+
+  if (role === "FARMER") {
+    sidebarLinks = [
+      {
+        title: "Customers",
+        icon: Users2,
+        href: "/dashboard/customers",
+      },
+      {
+        title: "Markets",
+        icon: Warehouse,
+        href: "/dashboard/markets",
+      },
+
+      {
+        title: "Orders",
+        icon: Truck,
+        href: "/dashboard/orders",
+      },
+      {
+        title: "Sales",
+        icon: Truck,
+        href: "/dashboard/sales",
+      },
+
+      {
+        title: "Limi Community",
+        icon: Building2,
+        href: "/dashboard/community",
+      },
+      {
+        title: "Wallet",
+        icon: CircleDollarSign,
+        href: "/dashboard/wallet",
+      },
+      {
+        title: "Farmer Support",
+        icon: HeartHandshake,
+        href: "/dashboard/farmer-support",
+      },
+      {
+        title: "Settings",
+        icon: LayoutGrid,
+        href: "/dashboard/settings",
+      },
+      {
+        title: "Online Store",
+        icon: ExternalLink,
+        href: "/",
+      },
+    ];
+  }
+  if (role === "USER") {
+    sidebarLinks = [
+      {
+        title: "Orders",
+        icon: Truck,
+        href: "/dashboard/orders",
+      },
+      {
+        title: "Profile",
+        icon: Truck,
+        href: "/dashboard/profile",
+      },
+
+      {
+        title: "Online Store",
+        icon: ExternalLink,
+        href: "/",
+      },
+    ];
+    catalogueLinks = [];
+  }
+
+  async function handleLogout() {
+    await signOut();
+    router.push("/");
+  }
   return (
     <div
       className={
@@ -155,41 +243,44 @@ export default function sidebar({ showSidebar, setShowSidebar }) {
           <LayoutGrid />
           <span>Dashboard</span>
         </Link>
-        <Collapsible className="px-6 py-2">
-          <CollapsibleTrigger
-            asChild
-            className=""
-            onClick={() => setOpenMenu(!openMenu)}
-          >
-            <button className="flex items-center space-x-5  py-2   ">
-              <div className="flex items-center space-x-3">
-                <Warehouse />
-                <span>Catalogue</span>
-              </div>
-              {openMenu ? <ChevronDown /> : <ChevronRight />}
-            </button>
-          </CollapsibleTrigger>
-          <CollapsibleContent className="px-3 pl-4 py-3 dark:bg-[#252525] dark:text-slate-100 rounded-sm">
-            {catalogueLinks.map((item, i) => {
-              const Icon = item.icon;
-              return (
-                <Link
-                  onClick={() => setShowSidebar(false)}
-                  key={i}
-                  href={item.href}
-                  className={
-                    pathname === item.href
-                      ? "flex items-center space-x-3  py-1 text-sm  text-[#666666]"
-                      : "flex items-center space-x-3  py-1 text-sm"
-                  }
-                >
-                  <Icon className="w-4 h-4" />
-                  <span>{item.title}</span>
-                </Link>
-              );
-            })}
-          </CollapsibleContent>
-        </Collapsible>
+        {catalogueLinks.length > 0 && (
+          <Collapsible className="px-6 py-2">
+            <CollapsibleTrigger
+              asChild
+              className=""
+              onClick={() => setOpenMenu(!openMenu)}
+            >
+              <button className="flex items-center space-x-5  py-2   ">
+                <div className="flex items-center space-x-3">
+                  <Warehouse />
+                  <span>Catalogue</span>
+                </div>
+                {openMenu ? <ChevronDown /> : <ChevronRight />}
+              </button>
+            </CollapsibleTrigger>
+
+            <CollapsibleContent className="px-3 pl-4 py-3 dark:bg-[#252525] dark:text-slate-100 rounded-sm">
+              {catalogueLinks.map((item, i) => {
+                const Icon = item.icon;
+                return (
+                  <Link
+                    onClick={() => setShowSidebar(false)}
+                    key={i}
+                    href={item.href}
+                    className={
+                      pathname === item.href
+                        ? "flex items-center space-x-3  py-1 text-sm  text-[#666666]"
+                        : "flex items-center space-x-3  py-1 text-sm"
+                    }
+                  >
+                    <Icon className="w-4 h-4" />
+                    <span>{item.title}</span>
+                  </Link>
+                );
+              })}
+            </CollapsibleContent>
+          </Collapsible>
+        )}
 
         {sidebarLinks.map((item, i) => {
           const Icon = item.icon;
@@ -210,7 +301,10 @@ export default function sidebar({ showSidebar, setShowSidebar }) {
           );
         })}
         <div className="px-6 py-2">
-          <button className="flex items-center space-x-3  bg-[#12a049] text-white rounded-md px-6 py-3">
+          <button
+            onClick={handleLogout}
+            className="flex items-center space-x-3  bg-[#12a049] text-white rounded-md px-6 py-3"
+          >
             <LogOut />
             <span className="">Logout</span>
           </button>

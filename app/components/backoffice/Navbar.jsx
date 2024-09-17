@@ -21,8 +21,15 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import ThemeSwitcherBtn from "../ThemeSwitcherBtn";
+import UserAvatar from "./UserAvatar";
+import { useSession } from "next-auth/react";
 
 export default function Navbar({ setShowSidebar, showSidebar }) {
+  const { data: session, status } = useSession();
+  if (status === "loading") {
+    return <p>loading...</p>;
+  }
+
   return (
     <div className="flex items-center justify-between bg-white dark:bg-[#252525] text-white dark:text-[#249a38] h-16 px-8 py-4 fixed top-0 w-full  lg:pr-[20rem] z-50 border-t-8 border-b-8 border-r-8  border-[#f8f8f8] dark:border-[#303030]">
       {/* <Link href={"/dashboard"} className="sm:hidden text-black">
@@ -149,36 +156,7 @@ export default function Navbar({ setShowSidebar, showSidebar }) {
             <DropdownMenuSeparator />
           </DropdownMenuContent>
         </DropdownMenu>
-
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <button>
-              <Image
-                src="/thumbnail_Wanda(1).jpg"
-                alt="User Profile"
-                width={200}
-                height={200}
-                className="w-8 h-8 rounded-full"
-              />
-            </button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent className="py-2 px-2">
-            <DropdownMenuLabel>My Account</DropdownMenuLabel>
-            <DropdownMenuSeparator />
-            <DropdownMenuItem>
-              <LayoutDashboard className="mr-2 h-4 w-4" />
-              <span>Dashboard</span>
-            </DropdownMenuItem>
-            <DropdownMenuItem>
-              <Settings className="mr-2 h-4 w-4" />
-              <span>Edit Profile</span>
-            </DropdownMenuItem>
-            <DropdownMenuItem>
-              <LogOut className="mr-2 h-4 w-4" />
-              <span>Logout</span>
-            </DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
+        {status === "authenticated" && <UserAvatar user={session?.user} />}{" "}
       </div>
     </div>
   );
