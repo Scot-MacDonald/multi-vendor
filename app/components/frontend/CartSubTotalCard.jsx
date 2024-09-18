@@ -5,7 +5,6 @@ export default function CartSubTotalCard({ subTotal }) {
   const shipping = 10.0;
   const tax = 0.0;
 
-
   const totalPrice = (
     Number(subTotal) +
     Number(shipping) +
@@ -33,8 +32,11 @@ export default function CartSubTotalCard({ subTotal }) {
         <span>Total</span>
         <span>€ {totalPrice}</span>
       </div>
-      <Link href="#" className="bg-black text-white py-2 px-4 font-normal">
-        Continue to Payment
+      <Link
+        href="/checkout"
+        className="bg-black text-white py-2 px-4 font-normal"
+      >
+        Continue to Checkout
       </Link>
     </div>
   );
