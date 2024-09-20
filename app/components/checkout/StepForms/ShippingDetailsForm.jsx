@@ -77,7 +77,7 @@ export default function ShippingDetailsForm() {
         />
         <TextInput
           label="Zip Code"
-          name="zip"
+          name="zipCode"
           register={register}
           errors={errors}
           className="w-full"
