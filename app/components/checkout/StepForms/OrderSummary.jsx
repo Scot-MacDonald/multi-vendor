@@ -1,4 +1,5 @@
 "use client";
+import { makePostRequest } from "@/lib/apiRequest";
 import { setCurrentStep } from "@/redux/slices/checkoutSlice";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import Image from "next/image";
@@ -29,12 +30,11 @@ export default function OrderSummary() {
 
   async function submitData() {
     // orderItems = cartItems;
-    //
+
     const data = {
       orderItems: cartItems,
       checkoutFormData,
     };
-    // console.log(data.orderItems);
     try {
       setLoading(true);
       const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
@@ -46,20 +46,48 @@ export default function OrderSummary() {
         },
         body: JSON.stringify(data),
       });
-      const responseData = await response.json();
+
       if (response.ok) {
         setLoading(false);
         toast.success("Order Created Successfully");
-        router.push(`/order-confirmation/${responseData.id}`);
+        router.push("/order-confirmation");
       } else {
         setLoading(false);
-        toast.error("Something Went wrong, Please Try Again");
+        toast.error("Something went wrong please try again");
       }
     } catch (error) {
       setLoading(false);
-      // console.log(error);
+      console.log(error);
     }
   }
+
+  //   makePostRequest(setLoading, "api/orders", data, "order", reset, redirect);
+  //   console.log(combinedData);
+  //   try {
+  //     setLoading(true);
+  //     const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
+
+  //     const response = await fetch(`${baseUrl}/api/orders`, {
+  //       method: "POST",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //       body: JSON.stringify(data),
+  //     });
+  //     const responseData = await response.json();
+  //     if (response.ok) {
+  //       setLoading(false);
+  //       toast.success("Order Created Successfully");
+  //       router.push(`/order-confirmation/${responseData.id}`);
+  //     } else {
+  //       setLoading(false);
+  //       toast.error("Something Went wrong, Please Try Again");
+  //     }
+  //   } catch (error) {
+  //     setLoading(false);
+  //     // console.log(error);
+  //   }
+  // }
   return (
     <div className="my-6">
       <h2 className="text-xl font-semibold mb-4 dark:text-green-400">
