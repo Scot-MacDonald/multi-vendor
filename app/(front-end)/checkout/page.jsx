@@ -30,11 +30,11 @@ export default async function page() {
     },
   ];
   return (
-    <div className="bg-white dark:bg-slate-950 min-h-screen w-full">
-      <div className="max-w-3xl my-6 mx-auto border border-slate-700 p-6 rounded-lg">
+    <div className="bg-white dark:bg-slate-950 min-h-screen w-full mt-20">
+      <div className="max-w-3xl my-6 mx-auto border border-slate-700 p-6 ">
         {/* STEPS */}
         <Steps steps={steps} />
-        <div className="w-full  p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700">
+        <div className="w-full  p-4 bg-white border border-gray-200  shadow sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700">
           {/* Banner */}
           <CartBanner />
           {/* Form */}

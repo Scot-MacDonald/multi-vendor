@@ -24,7 +24,9 @@ export default function HelpModal() {
         className="flex items-center space-x-1 text-black dark:text-white bg-white dark:bg-[#252525]  dark:hover:bg-[#252525]  "
       >
         {/* <HelpCircle size={14} strokeWidth={2} /> */}
-        <span className="text-[.75rem] ">Help</span>
+        <span className="text-[1rem] border-r border-black dark:border-[#666666] px-5 py-2 ">
+          Help
+        </span>
       </button>
       <Modal
         className=""

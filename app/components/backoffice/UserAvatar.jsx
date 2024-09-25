@@ -26,21 +26,23 @@ export default function UserAvatar({ user = {} }) {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <button>
-          {image ? (
-            <Image
-              src="/thumbnail_Wanda(1).jpg"
-              alt="User Profile"
-              width={200}
-              height={200}
-              className="w-8 h-8 rounded-full"
-            />
-          ) : (
-            <div className="w-8 h-8 rounded-full bg-white p-2 flex items-center justify-center">
-              {initials}
-            </div>
-          )}
-        </button>
+        <div className="border-l border-r border-black px-5 py-1">
+          <button>
+            {image ? (
+              <Image
+                src="/thumbnail_Wanda(1).jpg"
+                alt="User Profile"
+                width={200}
+                height={200}
+                className="w-8 h-8 rounded-full"
+              />
+            ) : (
+              <div className="w-8 h-8 rounded-full bg-white dark:bg-[#252525] p-2 flex items-center justify-center">
+                {initials}
+              </div>
+            )}
+          </button>
+        </div>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="py-2 px-2 ">
         <DropdownMenuLabel>{name}</DropdownMenuLabel>

@@ -18,11 +18,17 @@ export default function ThemeSwitcherBtn() {
   }
 
   return (
-    <button
-      className="text-[#000000] dark:text-white"
-      onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-    >
-      {theme === "light" ? <MoonIcon /> : <SunIcon />}
-    </button>
+    <div className="border-l border-black px-5 py-3 flex items-center justify-center">
+      <button
+        className="text-[#000000] dark:text-white"
+        onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+      >
+        {theme === "light" ? (
+          <MoonIcon className="w-4 h-4" />
+        ) : (
+          <SunIcon className="w-4 h-4" />
+        )}
+      </button>
+    </div>
   );
 }

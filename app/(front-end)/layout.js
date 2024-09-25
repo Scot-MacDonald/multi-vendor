@@ -4,9 +4,9 @@ import Footer from "../components/frontend/Footer";
 
 export default function layout({ children }) {
   return (
-    <div>
+    <div className="m-6 ">
       <Navbar />
-      <div className="flex    bg-white dark:bg-[#252525]">{children}</div>
+      <div className="flex bg-white dark:bg-[#252525]">{children}</div>
       <Footer />
     </div>
   );

@@ -36,7 +36,7 @@
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
+    --background: 0, 0%, 15%;
     --foreground: 210 40% 98%;
 
     --card: 222.2 84% 4.9%;
@@ -105,8 +105,8 @@
 }
 
 .nav {
-  margin: 0 -10px;
-  padding: 0 10px;
+  margin: 0 0px;
+  padding: 0 5px;
   list-style: none;
   display: flex;
   width: 100%;
