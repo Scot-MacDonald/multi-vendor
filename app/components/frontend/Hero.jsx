@@ -18,12 +18,12 @@ export default async function Hero() {
   return (
     <>
       <SecondNav />
-      <div className="grid grid-cols-12 gap-8 mb-6 pt-6 px-2">
+      <div className="grid grid-cols-12 gap-2 mb-6 pt-6 ">
         {/* <SidebarCategories /> */}
-        <div className="col-span-full md:col-span-6  rounded-md overflow-hidden">
+        <div className="col-span-full md:col-span-6 border border-black overflow-hidden">
           <HeroCarousel banners={banners} />
         </div>
-        <div className="col-span-6 hidden md:block border border-dashed border-gray-900/25 dark:border-[#666666] rounded-md py-4 px-6 ">
+        <div className="col-span-6 hidden md:block border  border-black dark:border-[#666666]  py-4 px-6 ">
           <Link href="#">
             <div className="flex items-center space-x-3 pb-3">
               <HelpCircle className="shrink-0 w-5 h-5" />

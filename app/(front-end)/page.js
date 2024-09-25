@@ -15,8 +15,9 @@ export default async function Home() {
   });
   const session = await getServerSession(authOptions);
   console.log(session?.user);
+
   return (
-    <div className="w-full min-h-screen ">
+    <div className="w-full min-h-screen">
       <Hero />
       <MarketList />
       {categories.map((category, i) => {

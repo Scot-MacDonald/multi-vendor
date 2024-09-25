@@ -1,10 +1,10 @@
-// import { Inter } from "next/font/google";
+import { Inter } from "next/font/google";
 import "../styles/main.scss";
 import Providers from "@/context/Providers";
 import { ThemeModeScript } from "flowbite-react";
-import { GeistSans } from "geist/font/sans";
+// import { GeistSans } from "geist/font/sans";
 
-// const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
   title: "multi",
@@ -17,7 +17,9 @@ export default function RootLayout({ children }) {
       <head>
         <ThemeModeScript />
       </head>
-      <body className={GeistSans.className}>
+      {/* <body className={GeistSans.className}> */}
+      <body className={inter.className}>
+        {" "}
         <Providers>{children}</Providers>
       </body>
     </html>

@@ -22,7 +22,7 @@ export default function Steps({ steps }) {
               className="inline-flex items-center p-1 text-sm font-medium text-gray-500 rounded-md focus:outline-none focus:ring-2 focus:text-gray-900 focus:ring-gray-900 hover:text-gray-700 dark:hover:text-lime-500 md:text-base"
             >
               Cart
-              <span className="inline-flex items-center justify-center w-5 h-5 ml-2 text-xs font-bold bg-lime-400 rounded-full text-gray-500">
+              <span className="inline-flex items-center justify-center w-5 h-5 ml-2 text-xs font-bold bg-green-500 rounded-full text-white">
                 {" "}
                 {cartItems.length}{" "}
               </span>
@@ -38,7 +38,7 @@ export default function Steps({ steps }) {
                 <div className="-m-1">
                   <p
                     className={`p-1 ml-1.5 text-sm md:text-base font-medium text-gray-500 rounded-md focus:outline-none focus:ring-2 focus:text-gray-900 focus:ring-gray-900 ${
-                      step.number === currentStep ? "text-lime-400" : ""
+                      step.number === currentStep ? "text-green-5ç00" : ""
                     }`}
                   >
                     {" "}

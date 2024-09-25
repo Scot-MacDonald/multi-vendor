@@ -42,7 +42,7 @@ export default function PersonalDetailsForm() {
   }
   return (
     <form onSubmit={handleSubmit(processData)}>
-      <h2 className="text-xl font-semibold mb-4 dark:text-lime-400">
+      <h2 className="text-xl font-semibold mb-4 dark:text-green-500">
         Personal Details
       </h2>
       <div className="grid gap-4 sm:grid-cols-2 sm:gap-6">

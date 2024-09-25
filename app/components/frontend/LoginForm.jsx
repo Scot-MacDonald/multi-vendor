@@ -96,7 +96,7 @@ export default function LoginForm() {
       <div className="flex gap-4 items-center">
         <Link
           href="/forgot-password"
-          className="shrink-0 font-medium text-blue-600 hover:underline dark:text-blue-500"
+          className="shrink-0 font-medium text-black hover:underline dark:text-black"
         >
           Forgot Password
         </Link>
@@ -104,7 +104,7 @@ export default function LoginForm() {
           <button
             disabled
             type="button"
-            className="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 inline-flex items-center"
+            className="w-full text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-blue-800 inline-flex items-center"
           >
             <svg
               aria-hidden="true"
@@ -128,7 +128,7 @@ export default function LoginForm() {
         ) : (
           <button
             type="submit"
-            className="w-full text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+            className="w-full text-white bg-green-600 hover:bg-green-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-blue-800"
           >
             Login
           </button>
@@ -139,7 +139,7 @@ export default function LoginForm() {
         Already have an account?{" "}
         <Link
           href="/register"
-          className="font-medium text-blue-600 hover:underline dark:text-blue-500"
+          className="font-medium text-black hover:underline dark:text-black"
         >
           Sign Up
         </Link>
