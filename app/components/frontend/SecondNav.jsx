@@ -25,6 +25,8 @@ export default async function SecondNav() {
     </ul>
   );
 }
+
+
 // <>
 //   <ul className="nav">
 //     <li>
@@ -51,3 +53,4 @@ export default async function SecondNav() {
 // </>
 //   );
 // }
+
