@@ -92,10 +92,10 @@ export default function ShippingDetailsForm() {
         {/* Shipping Cost */}
 
         <div className="col-span-full">
-          <h3 class="mb-5 text-lg font-medium text-gray-900 dark:text-white">
+          <h3 className="mb-5 text-lg font-medium text-gray-900 dark:text-white">
             Shipping Cost ?
           </h3>
-          <ul class="grid w-full gap-6 ">
+          <ul className="grid w-full gap-6 ">
             <li>
               <input
                 type="radio"
@@ -108,7 +108,7 @@ export default function ShippingDetailsForm() {
               />
               <label
                 htmlFor="hosting-small"
-                class="inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700"
+                className="inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700"
               >
                 {/* Design */}
                 <div className="flex gap-2 items-center">
@@ -126,12 +126,12 @@ export default function ShippingDetailsForm() {
                 id="hosting-medium"
                 name="hosting"
                 value="75"
-                class="hidden peer"
+                className="hidden peer"
                 onChange={(e) => setShippingCost(e.target.value)}
               />
               <label
                 htmlFor="hosting-medium"
-                class="inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700"
+                className="inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700"
               >
                 <div className="flex gap-2 items-center">
                   <Truck className="w-8 h-8 ms-3 flex-shrink-0 " />
@@ -148,12 +148,12 @@ export default function ShippingDetailsForm() {
                 id="hosting-big"
                 name="hosting"
                 value="90"
-                class="hidden peer"
+                className="hidden peer"
                 onChange={(e) => setShippingCost(e.target.value)}
               />
               <label
                 htmlFor="hosting-big"
-                class="inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700"
+                className="inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700"
               >
                 <div className="flex gap-2 items-center">
                   <Truck className="w-8 h-8 ms-3 flex-shrink-0 " />

@@ -189,7 +189,7 @@ export default function sidebar({ showSidebar, setShowSidebar }) {
   if (role === "USER") {
     sidebarLinks = [
       {
-        title: "Orders",
+        title: "My Orders",
         icon: Truck,
         href: "/dashboard/orders",
       },

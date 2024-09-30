@@ -7,14 +7,10 @@ export async function GET(request, { params: { id } }) {
       where: {
         id,
       },
-      include:{
-        orderItems:true
-      },
 
-      // Uncomment and adjust the following block if you want to order the results
-      // orderBy: {
-      //   createdAt: "desc",
-      // },
+      include: {
+        orderItems: true,
+      },
     });
 
     return NextResponse.json(order);
