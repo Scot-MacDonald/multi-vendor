@@ -12,15 +12,15 @@ import CategoryCarousel from "@/app/components/frontend/CategoryCarousel";
 import Image from "next/image";
 
 export default async function ProductDetailPage({ params: { slug } }) {
-  const category = await getData("/categories/668e6b15ed2307271cf7bf43");
+  const product = await getData(`/products/product/${slug}`);
   return (
     <div className="w-full">
       <Breadcrumb />
       <div className="grid grid-cols-12  h-[calc(100vh-150px)] overflow-auto   border-l-8 border-r-8 border-b-8  border-[#f8f8f8] dark:border-[#303030]">
         <div className="col-span-7 flex justify-center items-center border-r-8  border-[#f8f8f8] dark:border-[#303030]">
           <Image
-            src="/MENU_1.jpg"
-            alt="weed"
+            src={product.imageUrl}
+            alt={product.title}
             width={500}
             height={500}
             className="max-w-[550px] w-full pb-40"
@@ -29,7 +29,7 @@ export default async function ProductDetailPage({ params: { slug } }) {
         <div className="col-span-5 ">
           <div className=" flex px-5 items-center justify-between h-[110px] border-b-8  border-[#f8f8f8] dark:border-[#303030]">
             <h1 className="text-xl lg:text-3xl font-semibold uppercase ">
-              Cloud Forest
+              {product.title}
             </h1>
             <button>
               <Share2 />
@@ -37,30 +37,19 @@ export default async function ProductDetailPage({ params: { slug } }) {
           </div>
           <div className="border-b border-dashed border-gray-900/25">
             <p className="py-2 px-5 text-[.85rem] text-[#b2b2b2]">
-              Cloud Forest is a hybrid cross of Strawberry Cough and
-              Thundercloud, with Heirloom Malawi.
+              {product.description}
             </p>{" "}
-            <p className="py-2 px-5 text-[.85rem] text-[#b2b2b2]">
-              Cloud Forest is cherished for its uplifting effects, providing a
-              burst of energy and creativity that enhances mood and motivation.
-              With its invigorating properties.
-            </p>
-            <p className="py-2 px-5 mb-3 text-[.85rem] text-[#b2b2b2]">
-              {" "}
-              Cloud Forest is ideal for combating fatigue and promoting
-              productivity throughout the day.
-            </p>
             <div className="flex items-center gap-8 mb-4 px-5">
-              <p>SKU: 1234567</p>
+              <p>{product.sku}</p>
               <p className="bg-lime-100 py-1.5 px-4 rounded-full text-slate-900 ">
-                <b>Stock</b>: 199
+                <b>Stock</b>: {product.productStock}
               </p>
             </div>
           </div>
           <div className="flex items-center justify-between gap-4 px-5 pt-4 border-b border-dashed border-gray-900/25 pb-4">
             <div className="flex  items-center gap-4 ">
-              <h4 className="text-2xl">€49</h4>
-              <del className="text-slate-400 text-sm">€490</del>
+              <h4 className="text-2xl">€{product.productPrice}</h4>
+              <del className="text-slate-400 text-sm">€{product.salePrice}</del>
             </div>
             <p className="flex items-center">
               <Tag className="w-5 h-5 text-slate-400 me-2 " />
@@ -132,7 +121,7 @@ export default async function ProductDetailPage({ params: { slug } }) {
         <h2 className="mb-4 text-xl font-semibold text-slate-200 ml-3">
           Similar Products
         </h2>
-        <CategoryCarousel products={category.products} />
+        {/* <CategoryCarousel products={category.products} /> */}
       </div>
     </div>
   );

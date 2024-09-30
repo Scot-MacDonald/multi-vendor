@@ -27,7 +27,7 @@ export default function UserAvatar({ user = {} }) {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <div className="border-l border-r border-black px-5 py-1">
+        <div className="border-l border-black px-5 py-1">
           <button>
             {image ? (
               <Image
@@ -38,7 +38,7 @@ export default function UserAvatar({ user = {} }) {
                 className="w-8 h-8 rounded-full"
               />
             ) : (
-              <div className="w-8 h-8 rounded-full bg-white dark:bg-[#252525] p-2 flex items-center justify-center">
+              <div className="w-8 h-8 rounded-full text-black dark:text-white bg-white dark:bg-[#252525] p-2 flex items-center justify-center">
                 {initials}
               </div>
             )}
@@ -60,13 +60,14 @@ export default function UserAvatar({ user = {} }) {
             <span>Edit Profile</span>
           </Link>
         </DropdownMenuItem>
-        {role==="USER" && (
+        {role === "USER" && (
           <DropdownMenuItem>
-          <Link className="flex" href="dashboard/orders">
-            <Settings className="mr-2 h-4 w-4" />
-            <span>My Orders</span>
-          </Link>
-        </DropdownMenuItem>)}
+            <Link className="flex" href="dashboard/orders">
+              <Settings className="mr-2 h-4 w-4" />
+              <span>My Orders</span>
+            </Link>
+          </DropdownMenuItem>
+        )}
         <DropdownMenuItem>
           <button className="flex" onClick={handleLogout}>
             <LogOut className="mr-2 h-4 w-4" />

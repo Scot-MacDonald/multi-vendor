@@ -47,10 +47,10 @@ export default function PaymentMethodForm() {
       <div className="grid gap-4 sm:grid-cols-2 sm:gap-6">
         {/* Payment method Cost */}
         <div className="col-span-full">
-          <h3 class="mb-5 text-lg font-medium text-gray-900 dark:text-white">
+          <h3 className="mb-5 text-lg font-medium text-gray-900 dark:text-white">
             Which Payment Method do You Prefer ?
           </h3>
-          <ul class="grid w-full gap-6 md:grid-cols-2">
+          <ul className="grid w-full gap-6 md:grid-cols-2">
             <li>
               <input
                 type="radio"
@@ -63,7 +63,7 @@ export default function PaymentMethodForm() {
               />
               <label
                 htmlFor="hosting-small"
-                class="inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700"
+                className="inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700"
               >
                 {/* Design */}
                 <div className="flex gap-2 items-center">
@@ -79,12 +79,12 @@ export default function PaymentMethodForm() {
                 id="hosting-big"
                 name="hosting"
                 value="Credit Card"
-                class="hidden peer"
+                className="hidden peer"
                 onChange={(e) => setPaymentMethod(e.target.value)}
               />
               <label
                 htmlFor="hosting-big"
-                class="inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700"
+                className="inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700"
               >
                 <div className="flex gap-2 items-center">
                   <CreditCard className="w-8 h-8 ms-3 flex-shrink-0 " />

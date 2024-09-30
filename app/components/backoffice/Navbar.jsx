@@ -31,7 +31,7 @@ export default function Navbar({ setShowSidebar, showSidebar }) {
   }
 
   return (
-    <div className="flex items-center justify-between bg-white dark:bg-[#252525] text-white dark:text-[#249a38] h-16 px-8 py-4 fixed top-0 w-full  lg:pr-[20rem] z-50 border-t-8 border-b-8 border-r-8  border-[#f8f8f8] dark:border-[#303030]">
+    <div className="flex items-center justify-between bg-white dark:bg-[#252525] text-white dark:text-[#249a38] h-16 px-8 py-4 fixed top-0 w-full  lg:pr-[16rem] z-50 border-t-8 border-b-8 border-r-8  border-[#f8f8f8] dark:border-[#303030]">
       {/* <Link href={"/dashboard"} className="sm:hidden text-black">
         Logo
       </Link> */}
@@ -40,7 +40,6 @@ export default function Navbar({ setShowSidebar, showSidebar }) {
       </button>
 
       <div className="flex space-x-3 ">
-        <ThemeSwitcherBtn />
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <button
@@ -157,6 +156,7 @@ export default function Navbar({ setShowSidebar, showSidebar }) {
           </DropdownMenuContent>
         </DropdownMenu>
         {status === "authenticated" && <UserAvatar user={session?.user} />}{" "}
+        <ThemeSwitcherBtn />
       </div>
     </div>
   );

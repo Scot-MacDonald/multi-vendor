@@ -11,7 +11,7 @@ export default async function page({ params: { id } }) {
     .reduce((acc, item) => acc + item.price * item.quantity, 0)
     .toFixed(2);
   return (
-    <section className="py-12 dark:bg-slate-950 bg-slate-50 sm:py-16 lg:py-20">
+    <section className="py-12 dark:bg-slate-950 bg-slate-50 sm:py-16 lg:py-20 w-full">
       <div className="px-4 mx-auto sm:px-6 lg:px-8 max-w-5xl">
         <div className="max-w-2xl mx-auto">
           <div className="relative mt-6 overflow-hidden bg-white dark:bg-slate-700 rounded-lg shadow md:mt-10">
