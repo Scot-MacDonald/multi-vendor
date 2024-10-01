@@ -14,8 +14,12 @@ import ToggleInput from "@/app/components/FormInputs/Toggleinput";
 import { generateIsoFormattedDate } from "@/lib/generateIsoFormattedDate";
 import { useRouter } from "next/navigation";
 import { convertIsoDateToNormal } from "@/lib/convertIsoDatetoNormal";
+import { useSession } from "next-auth/react";
 
 export default function CouponForm({ updateData = {} }) {
+  const { data: session, status } = useSession();
+
+  const vendorId = session?.user?.id;
   const expiryDateNormal = convertIsoDateToNormal(updateData.expiryDate);
   const id = updateData?.id ?? "";
   updateData.expiryDate = expiryDateNormal;
@@ -46,6 +50,7 @@ export default function CouponForm({ updateData = {} }) {
   // const coupon = generateCouponCode(title, expiryDate)
   // console.log(coupon);
   async function onSubmit(data) {
+    data.vendorId = vendorId;
     const couponCode = generateCouponCode(data.title, data.expiryDate); //THIS LINE CAN BE REMOVED IF OTHER LINES ARE UNCOMMENTED
     const isoFormattedDate = generateIsoFormattedDate(data.expiryDate);
     data.expiryDate = isoFormattedDate;

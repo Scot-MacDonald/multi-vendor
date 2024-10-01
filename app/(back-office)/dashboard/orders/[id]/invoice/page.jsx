@@ -1,5 +1,10 @@
+import SalesInvoice from "@/app/components/Order/SalesInvoice";
+import { getData } from "@/lib/getData";
 import React from "react";
 
-export default function page() {
-  return <h2 className="text-blue-400">invoice</h2>;
+export default async function page({ params: { id } }) {
+  //   const orderId = "66f6ced554c90a30daf889af";
+  const order = await getData(`orders/${id}`);
+  //   console.log(order);
+  return <SalesInvoice order={order} />;
 }

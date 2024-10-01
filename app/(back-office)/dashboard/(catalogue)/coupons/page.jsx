@@ -6,9 +6,16 @@ import { Download, Plus, Search, Trash, Trash2 } from "lucide-react";
 import Link from "next/link";
 import React from "react";
 import { columns } from "./columns";
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/lib/authOptions";
 
 export default async function Coupons() {
-  const coupons = await getData("coupons");
+  const session = await getServerSession(authOptions);
+  const id = session?.user?.id;
+  const role = session?.user?.role;
+  const allCoupons = await getData("coupons");
+  const farmerCoupons = allCoupons.filter((coupon) => coupon.vendorId === id);
+
   return (
     <div className="text-black bg-[#ffffff] dark:bg-[#252525] p-8">
       <PageHeader
@@ -18,7 +25,11 @@ export default async function Coupons() {
       />
 
       <div className="py-6">
-        <DataTable data={coupons} columns={columns} />
+        {role === "ADMIN" ? (
+          <DataTable data={allCoupons} columns={columns} />
+        ) : (
+          <DataTable data={farmerCoupons} columns={columns} />
+        )}
       </div>
     </div>
   );

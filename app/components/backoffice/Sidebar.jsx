@@ -147,12 +147,6 @@ export default function sidebar({ showSidebar, setShowSidebar }) {
         icon: Warehouse,
         href: "/dashboard/markets",
       },
-
-      {
-        title: "Orders",
-        icon: Truck,
-        href: "/dashboard/orders",
-      },
       {
         title: "Sales",
         icon: Truck,
@@ -183,6 +177,18 @@ export default function sidebar({ showSidebar, setShowSidebar }) {
         title: "Online Store",
         icon: ExternalLink,
         href: "/",
+      },
+    ];
+    catalogueLinks = [
+      {
+        title: "Products",
+        icon: Boxes,
+        href: "/dashboard/products",
+      },
+      {
+        title: "Coupons",
+        icon: ScanSearch,
+        href: "/dashboard/coupons",
       },
     ];
   }

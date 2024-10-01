@@ -13,7 +13,7 @@ export default async function Sales() {
   const session = await getServerSession(authOptions);
   const id = session?.user?.id;
   const role = session?.user?.role;
-  const allSales = await getData("sales");
+  const sales = await getData("sales");
   const farmerSales = allSales.filter((sale) => sale.vendorId === id);
 
   return (
