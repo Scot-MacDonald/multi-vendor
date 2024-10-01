@@ -147,6 +147,7 @@ export default function sidebar({ showSidebar, setShowSidebar }) {
         icon: Warehouse,
         href: "/dashboard/markets",
       },
+
       {
         title: "Sales",
         icon: Truck,
