@@ -1,35 +1,26 @@
-import Heading from "@/app/components/backoffice/Heading";
-import PageHeader from "@/app/components/backoffice/PageHeader";
-import DataTable from "@/app/components/data-table-components/DataTable";
+// import Heading from "@/components/backoffice/Heading";
+// import PageHeader from "@/components/backoffice/PageHeader";
+// import TableActions from "@/components/backoffice/TableActions";
 import { getData } from "@/lib/getData";
-import { Download, Plus, Search, Trash, Trash2 } from "lucide-react";
-import Link from "next/link";
+
+// import Link from "next/link";
 import React from "react";
 import { columns } from "./columns";
-import { getServerSession } from "next-auth";
-import { authOptions } from "@/lib/authOptions";
+import { DataTable } from "../payments/data-table";
 
 export default async function Customers() {
-  const session = await getServerSession(authOptions);
-  const id = session?.user?.id;
-  const role = session?.user?.role;
-  const allSales = await getData("sales");
-  const farmerSales = allSales.filter((sale) => sale.vendorId === id);
+  const customers = await getData("customers");
 
   return (
-    <div className="text-black bg-[#ffffff] dark:bg-[#252525] p-8">
+    <div>
+      {/* Header */}
       {/* <PageHeader
         heading="Coupons"
         href="/dashboard/coupons/new"
-        linkTitle="Add coupon"
+        linkTitle="Add Coupon"
       /> */}
-
-      <div className="py-6">
-        {role === "ADMIN" ? (
-          <DataTable data={allSales} columns={columns} />
-        ) : (
-          <DataTable data={farmerSales} columns={columns} />
-        )}
+      <div className="py-8">
+        <DataTable data={customers} columns={columns} />
       </div>
     </div>
   );

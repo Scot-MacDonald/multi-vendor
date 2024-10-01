@@ -1,25 +1,12 @@
 "use client";
-import Image from "next/image";
 
-import { ColumnDef } from "@tanstack/react-table";
-import { MoreHorizontal } from "lucide-react";
-import { ArrowUpDown } from "lucide-react";
 import { Checkbox } from "@/components/ui/checkbox";
+// import DateColumn from "@/components/DataTableColumns/DateColumn";
+// import ImageColumn from "@/app/components/DataTableColumns/ImageColumn";
 
-import { Button } from "@/components/ui/button";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
 import DateColumn from "@/app/components/dataTableColumns/DateColumn";
-import ImageColumn from "@/app/components/dataTableColumns/ImageColumn";
 import SortableColumn from "@/app/components/dataTableColumns/SortableColumn";
 import ActionColumn from "@/app/components/dataTableColumns/ActionColumn";
-
 export const columns = [
   {
     id: "select",
@@ -48,24 +35,9 @@ export const columns = [
     header: ({ column }) => <SortableColumn column={column} title="Name" />,
   },
   // {
-  //   accessorKey: "imageUrl",
-  //   header: "Product Image",
-  //   cell: ({ row }) => <ImageColumn row={row} accessorKey="imageUrl" />,
-  // },
-  // {
   //   accessorKey: "profileImageUrl",
   //   header: "Profile Image",
   //   cell: ({ row }) => <ImageColumn row={row} accessorKey="profileImageUrl" />,
-  // },
-
-  // {
-  //   accessorKey: "description",
-  //   header: "Description",
-  //   cell: ({ row }) => {
-  //     const description = row.getValue("description");
-
-  //     return <div className="line-clamp-1">{description}</div>;
-  //   },
   // },
   {
     accessorKey: "email",
@@ -86,15 +58,14 @@ export const columns = [
   },
   {
     id: "actions",
-    // cell: ({ row }) => <ActionColumn row={row} title="Category" endpoint={`categories/${row.id}`}/>,
     cell: ({ row }) => {
-      const farmer = row.original;
+      const customer = row.original;
       return (
         <ActionColumn
           row={row}
-          title="Farmer"
-          editEndpoint={`farmers/update/${farmer.id}`}
-          endpoint={`farmers/${farmer.id}`}
+          title="Customer"
+          editEndpoint={`customers/update/${customer.id}`}
+          endpoint={`customers/${customer.id}`}
         />
       );
     },
