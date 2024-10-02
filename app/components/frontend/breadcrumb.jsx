@@ -3,10 +3,7 @@ import React from "react";
 
 export default function Breadcrumb() {
   return (
-    <nav
-      className="flex  pl-7 border border-b-8  border-[#f8f8f8] dark:border-[#303030]"
-      aria-label="Breadcrumb"
-    >
+    <nav className="flex py-3" aria-label="Breadcrumb">
       <ol className="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
         <li className="inline-flex items-center">
           <a

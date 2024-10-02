@@ -43,7 +43,7 @@ export default function ShippingDetailsForm() {
   }
   return (
     <form onSubmit={handleSubmit(processData)}>
-      <h2 className="text-xl font-semibold mb-4 dark:text-green-400">
+      <h2 className="text-xl font-semibold mb-4 dark:text-green-600">
         Shipping Details
       </h2>
       <div className="grid gap-4 sm:grid-cols-2 sm:gap-6">
@@ -108,7 +108,7 @@ export default function ShippingDetailsForm() {
               />
               <label
                 htmlFor="hosting-small"
-                className="inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700"
+                className="inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-green-500 peer-checked:border-green-600 peer-checked:text-green-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-[#303030] dark:hover:bg-[#4b4b4b]"
               >
                 {/* Design */}
                 <div className="flex gap-2 items-center">
@@ -131,7 +131,7 @@ export default function ShippingDetailsForm() {
               />
               <label
                 htmlFor="hosting-medium"
-                className="inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700"
+                className="inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-green-500 peer-checked:border-green-600 peer-checked:text-green-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-[#303030] dark:hover:bg-[#4b4b4b]"
               >
                 <div className="flex gap-2 items-center">
                   <Truck className="w-8 h-8 ms-3 flex-shrink-0 " />
@@ -153,7 +153,7 @@ export default function ShippingDetailsForm() {
               />
               <label
                 htmlFor="hosting-big"
-                className="inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700"
+                className="inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-green-500 peer-checked:border-green-600 peer-checked:text-green-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-[#303030] dark:hover:bg-[#4b4b4b]"
               >
                 <div className="flex gap-2 items-center">
                   <Truck className="w-8 h-8 ms-3 flex-shrink-0 " />

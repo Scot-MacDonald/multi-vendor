@@ -27,7 +27,7 @@ export default function UserAvatar({ user = {} }) {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <div className="border-l border-black px-5 py-1">
+        <div className="border-l border-r border-black dark:border-[#666666] px-5 py-1">
           <button>
             {image ? (
               <Image

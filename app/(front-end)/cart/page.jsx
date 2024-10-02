@@ -23,12 +23,12 @@ export default function Cart() {
     <div className="w-full">
       <Breadcrumb />
       {cartItems.length > 0 ? (
-        <div className="grid grid-cols-12 h-[calc(100vh-150px)] overflow-auto border-l-8 border-r-8   border-[#f8f8f8] dark:border-[#303030]">
+        <div className="grid grid-cols-12 h-[calc(100vh-150px)] overflow-auto gap-5">
           <CartItems cartItems={cartItems} />
           <CartSubTotalCard subTotal={subTotal} />{" "}
         </div>
       ) : (
-        <div className="pl-8 h-[calc(100vh-150px)]">
+        <div className="pl-1 h-[calc(100vh-150px)]">
           <EmptyCart />
         </div>
       )}
