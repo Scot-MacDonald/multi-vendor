@@ -17,7 +17,6 @@ export default function CartProduct({ cartItem }) {
     dispatch(removeFromCart(cartId));
 
     toast.success("item removed successfully");
-
   }
   function handleQtyIncrement(cartId) {
     dispatch(incrementQty(cartId));
@@ -26,7 +25,7 @@ export default function CartProduct({ cartItem }) {
     dispatch(decrementQty(cartId));
   }
   return (
-    <div className="flex items-center justify-between border-b border-slate-400 pb-3 font-semibold text-sm mb-4">
+    <div className="flex items-center justify-between border-b border-black dark:border-[#666666] py-5 font-semibold text-sm mb-4">
       <div className="flex items-center gap-3">
         <Image
           src={cartItem.imageUrl}

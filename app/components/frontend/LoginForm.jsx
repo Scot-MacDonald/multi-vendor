@@ -52,7 +52,7 @@ export default function LoginForm() {
       <div>
         <label
           htmlFor="email"
-          className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          className="block mb-2 text-sm  font-medium text-gray-900 dark:text-white"
         >
           Your email
         </label>
@@ -61,7 +61,7 @@ export default function LoginForm() {
           type="email"
           name="email"
           id="email"
-          className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          className="bg-white border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-green-300 focus:border-green-300 block w-full p-2.5 dark:bg-[#252525] dark:border-[#666666] dark:placeholder-gray-400 dark:text-white dark:focus:ring-white dark:focus:border-white"
           placeholder="name@company.com"
           required=""
         />
@@ -84,7 +84,7 @@ export default function LoginForm() {
           name="password"
           id="password"
           placeholder="••••••••"
-          className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          className="bg-white border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-green-300 focus:border-green-300 block w-full p-2.5 dark:bg-[#252525] dark:border-[#666666] dark:placeholder-gray-400 dark:text-white dark:focus:ring-white dark:focus:border-white"
           required=""
         />
         {errors.password && (
@@ -93,10 +93,10 @@ export default function LoginForm() {
           </small>
         )}
       </div>
-      <div className="flex gap-4 items-center">
+      <div className="flex gap-8 items-center pt-4">
         <Link
           href="/forgot-password"
-          className="shrink-0 font-medium text-black hover:underline dark:text-black"
+          className="shrink-0 font-medium text-black hover:underline dark:text-white"
         >
           Forgot Password
         </Link>
@@ -128,18 +128,18 @@ export default function LoginForm() {
         ) : (
           <button
             type="submit"
-            className="w-full text-white bg-green-600 hover:bg-green-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-blue-800"
+            className="w-full text-white bg-[#252525] hover:bg-green-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-blue-800"
           >
             Login
           </button>
         )}
       </div>
 
-      <p className="text-sm font-light text-gray-500 dark:text-gray-400">
-        Already have an account?{" "}
+      <p className="text-sm font-light text-gray-500 dark:text-gray-400 pt-3 flex items-center gap-2">
+        <div>Already have an account? </div>
         <Link
           href="/register"
-          className="font-medium text-black hover:underline dark:text-black"
+          className="font-medium text-black hover:underline dark:text-green-600"
         >
           Sign Up
         </Link>

@@ -11,9 +11,9 @@ export default function CartSubTotalCard({ subTotal }) {
     Number(tax)
   ).toFixed(2);
   return (
-    <div className="md:col-span-5 sm:col-span-full col-span-full sm:block overflow-hidden p-5">
+    <div className="md:col-span-5 sm:col-span-full col-span-full sm:block overflow-hidden p-5 border border-black dark:border-[#666666]">
       <h2 className="text-md lg:text-md font-bold uppercase ">Cart Total</h2>
-      <div className="flex items-center justify-between border-b border-slate-400 pb-2 font-semibold text-[.85rem] text-[#b4b4b4]">
+      <div className="flex items-center justify-between border-b border-black dark:border-[#666666] pb-2 font-semibold text-[.85rem] text-[#b4b4b4]">
         <span className="uppercase">Subtotal</span>
         <span>€ {subTotal}</span>
       </div>
@@ -25,7 +25,7 @@ export default function CartSubTotalCard({ subTotal }) {
         <span>Shipping</span>
         <span>€ {shipping}</span>
       </div>
-      <p className="border-b border-slate-400 pb-3 text-[.85rem] text-[#b2b2b2]">
+      <p className="border-b border-black dark:border-[#666666] pb-3 text-[.85rem] text-[#b2b2b2]">
         A text here about the shipping prices or whatever is useful.
       </p>
       <div className="flex items-center justify-between py-4 font-bold">

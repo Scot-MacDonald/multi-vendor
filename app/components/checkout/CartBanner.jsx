@@ -13,14 +13,14 @@ export default function CartBanner() {
       }, 0)
       .toFixed(2) ?? 0;
   return (
-    <div className="bg-gray-100 rounded-xl mb-6">
+    <div className="bg-gray-100 dark:bg-[#303030] rounded-xl mb-6">
       <div className="p-4">
         <div className="sm:flex sm:items-center sm:justify-between">
           <div className="flex items-center flex-1">
-            <div className="inline-flex items-center justify-center flex-shrink-0 bg-gray-400 rounded-full w-9 h-9 text-gray-50">
+            <div className="inline-flex items-center justify-center flex-shrink-0 bg-gray-400 dark:bg-[#252525] rounded-full w-10 h-10 text-gray-50">
               <ShoppingBag className="w-6 h-6" />
             </div>
-            <p className="ml-3 text-base font-normal text-gray-900">
+            <p className="ml-3 text-base font-normal text-black dark:text-white">
               You have {cartItems.length} items in cart. Sub total is{" "}
               <span className="font-bold">${subTotal}</span>
             </p>

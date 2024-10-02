@@ -69,7 +69,7 @@ export default function ForgotPasswordForm() {
           type="email"
           name="email"
           id="email"
-          className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          className="bg-white border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-green-300 focus:border-green-300 block w-full p-2.5 dark:bg-[#252525] dark:border-[#666666] dark:placeholder-gray-400 dark:text-white dark:focus:ring-white dark:focus:border-white"
           placeholder="name@company.com"
           required=""
         />
@@ -107,7 +107,7 @@ export default function ForgotPasswordForm() {
       ) : (
         <button
           type="submit"
-          className="w-full text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+          className="w-full text-white bg-[#252525] hover:bg-green-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-blue-800"
         >
           Send Password Reset Email
         </button>
@@ -117,7 +117,7 @@ export default function ForgotPasswordForm() {
           Do remember your Password?{" "}
           <Link
             href="/login"
-            className="font-medium text-blue-600 hover:underline dark:text-blue-500"
+            className="font-medium text-green-600 hover:underline dark:text-green-500"
           >
             Login
           </Link>

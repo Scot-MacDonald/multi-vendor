@@ -7,7 +7,6 @@ import toast from "react-hot-toast";
 import SubmitButton from "../FormInputs/SubmitButton";
 import TextInput from "../FormInputs/TextInput";
 
-
 export default function RegisterForm({ role = "USER" }) {
   const router = useRouter();
   const {
@@ -71,7 +70,6 @@ export default function RegisterForm({ role = "USER" }) {
         errors={errors}
         type="hidden"
         defaultValue={role}
-
         className="sm:col-span-2 mb-3 border-white"
       />
       <TextInput
@@ -107,21 +105,21 @@ export default function RegisterForm({ role = "USER" }) {
         loadingButtonTitle="Creating please wait..."
       />
 
-      <p className="text-[0.75rem] font-light text-gray-500 dark:text-gray-400 py-4">
+      <p className="text-sm font-light text-gray-500 dark:text-gray-400 pt-3 flex items-center gap-2">
         Already have an account?{" "}
         <Link
           href="/login"
-          className="font-medium text-purple-600 hover:underline dark:text-purple-500"
+          className="font-medium text-green-600 hover:underline dark:text-green-600"
         >
           Login
         </Link>
       </p>
       {role === "USER" ? (
-        <p className="text-[0.75rem] font-light text-gray-500 dark:text-gray-400 py-4">
-          Are you a Farmer ?{" "}
+        <p className="text-sm font-light text-gray-500 dark:text-gray-400 pt-3 flex items-center gap-2">
+          Are you a Farmer?{" "}
           <Link
             href="/register-farmer"
-            className="font-medium text-purple-600 hover:underline dark:text-purple-500"
+            className="font-medium text-green-600 hover:underline dark:green-purple-600"
           >
             Register here
           </Link>

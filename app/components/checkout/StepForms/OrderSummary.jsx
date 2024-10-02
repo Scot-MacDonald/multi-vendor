@@ -90,7 +90,6 @@
 //   // }
 // //bottom
 
-  
 //   return (
 //     <div className="my-6">
 //       <h2 className="text-xl font-semibold mb-4 dark:text-green-400">
@@ -180,16 +179,8 @@
 //   );
 // }
 
-
-
-
-
-// I'm not able to run the npx commands so I'm receiving an error in code so below is altered with chatgpt, 
-// the code above might work when the db can be updated 
-
-
-
-
+// I'm not able to run the npx commands so I'm receiving an error in code so below is altered with chatgpt,
+// the code above might work when the db can be updated
 
 "use client";
 import { setCurrentStep } from "@/redux/slices/checkoutSlice";
@@ -260,14 +251,14 @@ export default function OrderSummary() {
 
   return (
     <div className="my-6">
-      <h2 className="text-xl font-semibold mb-4 dark:text-green-400">
+      <h2 className="text-xl font-semibold mb-4 dark:text-green-600">
         Order Summary
       </h2>
       {cartItems.map((cartItem, i) => {
         return (
           <div
             key={i}
-            className="flex items-center justify-between border-b border-slate-400 pb-3 font-semibold text-sm mb-4"
+            className="flex items-center justify-between border-b border-black dark:border-[#666666] pb-3 font-semibold text-sm mb-4"
           >
             <div className="flex items-center gap-3">
               <Image
@@ -281,7 +272,7 @@ export default function OrderSummary() {
                 <h2>{cartItem.title}</h2>
               </div>
             </div>
-            <div className="rounded-xl border border-gray-400 flex gap-3 items-center">
+            <div className="rounded-xl border border-black dark:border-[#666666] flex gap-3 items-center">
               <p className="flex-grow py-2 px-4">{cartItem.qty}</p>
             </div>
             <div className="flex items-center gap-2">
@@ -296,7 +287,7 @@ export default function OrderSummary() {
         );
       })}
       {checkoutFormData?.shippingCost && (
-        <div className="flex items-center justify-between border-b border-slate-400 pb-3 font-semibold text-sm mb-4">
+        <div className="flex items-center justify-between border-b border-black dark:border-[#666666] pb-3 font-semibold text-sm mb-4">
           <span>Shipping Cost </span>
           <span className="text-[12px] text-gray-300">
             The Order will be delivered in{" "}
@@ -310,10 +301,14 @@ export default function OrderSummary() {
           <span>${checkoutFormData.shippingCost}</span>
         </div>
       )}
-      <div className="flex items-center justify-between border-b border-slate-400 pb-3 font-semibold text-sm mb-4">
+      <div className="flex items-center justify-between border-b border-black dark:border-[#666666] pb-3 font-semibold text-sm mb-4">
         <span>Total</span>
         <span>
-          ${(parseFloat(checkoutFormData?.shippingCost || 0) + parseFloat(subTotal)).toFixed(2)}
+          $
+          {(
+            parseFloat(checkoutFormData?.shippingCost || 0) +
+            parseFloat(subTotal)
+          ).toFixed(2)}
         </span>
       </div>
       <div className="mt-4 flex items-center justify-between">
