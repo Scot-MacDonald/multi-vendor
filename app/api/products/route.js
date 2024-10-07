@@ -10,7 +10,6 @@ export async function POST(request) {
       categoryId,
       description,
       userId: farmerId,
-      imageUrl,
       isActive,
       isWholesale,
       productCode,
@@ -24,6 +23,7 @@ export async function POST(request) {
       wholesaleQty,
       productStock,
       qty,
+      productImages,
     } = await request.json();
 
     const existingProduct = await db.product.findUnique({
@@ -44,7 +44,8 @@ export async function POST(request) {
         categoryId,
         description,
         userId: farmerId,
-        imageUrl,
+        productImages,
+        imageUrl: productImages[0],
         isActive,
         isWholesale,
         productCode,
