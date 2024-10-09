@@ -75,12 +75,52 @@ export async function POST(request) {
 
 // GET function to fetch all products
 export async function GET(request) {
+  const categoryId = request.nextUrl.searchParams.get("catId");
+  const sortBy = request.nextUrl.searchParams.get("sort");
+  // console.log(sortBy, categoryId);
+  const min = request.nextUrl.searchParams.get("min");
+  const max = request.nextUrl.searchParams.get("max");
+
+  let where = {
+    categoryId,
+  };
+  if (min && max) {
+    where.salePrice = {
+      gte: parseFloat(min),
+      lte: parseFloat(max),
+    };
+  } else if (min) {
+    where.salePrice = {
+      gte: parseFloat(min),
+    };
+  } else if (max) {
+    where.salePrice = {
+      lte: parseFloat(max),
+    };
+  }
+  let products;
   try {
-    const products = await db.product.findMany({
-      orderBy: {
-        createdAt: "desc",
-      },
-    });
+    if (categoryId && sortBy) {
+      products = await db.product.findMany({
+        where,
+        orderBy: {
+          salePrice: sortBy === "asc" ? "asc" : "desc",
+        },
+      });
+    } else if (categoryId) {
+      products = await db.product.findMany({
+        where,
+        orderBy: {
+          createdAt: "desc",
+        },
+      });
+    } else {
+      products = await db.product.findMany({
+        orderBy: {
+          createdAt: "desc",
+        },
+      });
+    }
     return NextResponse.json(products);
   } catch (error) {
     console.log(error);

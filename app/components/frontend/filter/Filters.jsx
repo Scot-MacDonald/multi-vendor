@@ -10,11 +10,11 @@ import { Button } from "@/components/ui/button";
 import PriceFilter from "./PriceFilter";
 import BrandFilter from "./BrandFilter";
 
-export default function Filters() {
+export default function Filters({ slug }) {
   //   const [isOpen, setIsOpen] = React.useState(false);
   return (
-    <div className="bg-green-400">
-      <PriceFilter />
+    <div className="border border-black">
+      <PriceFilter slug={slug} />
       <BrandFilter />
       {/* <Collapsible open={isOpen} onOpenChange={setIsOpen} className=" ">
         <div className="flex items-center justify-between ">
