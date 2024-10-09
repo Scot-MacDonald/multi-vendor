@@ -13,7 +13,7 @@ export default async function SecondNav() {
             <li>
               <Link
                 key={i}
-                href="#"
+                href={`/category/${category.slug}`}
                 className="dark:text-white "
                 //   className="flex items-center gap-3 hover:bg-[#f8f8f8] duration-500 transition-all pr-10"
               >
@@ -26,7 +26,6 @@ export default async function SecondNav() {
     </ul>
   );
 }
-
 
 // <>
 //   <ul className="nav">
@@ -54,4 +53,3 @@ export default async function SecondNav() {
 // </>
 //   );
 // }
-

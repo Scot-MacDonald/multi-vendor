@@ -7,7 +7,7 @@ export default function CategoryList({ category }) {
     <div className="">
       <div className="flex justify-between items-center py-4 ">
         <h2 className="font-bold text-6xl px-1">{category.title}</h2>
-        <Link className="" href="#">
+        <Link className="" href={`/category/${category.slug}`}>
           See All
         </Link>
       </div>

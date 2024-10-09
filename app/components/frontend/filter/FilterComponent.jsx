@@ -7,18 +7,19 @@ import Filters from "./Filters";
 import FilteredProducts from "./FilteredProducts";
 import Paginate from "./Paginate";
 
-export default function FilterComponent() {
+export default function FilterComponent({ category, products }) {
+  const { title, slug } = category;
   return (
     <>
       <div className="bg-white space-y-10 ">
-        <Breadcrumb />
-        <Sorting />
+        <Breadcrumb title={title} />
+        <Sorting title={title} slug={slug} />
         <div className="grid grid-cols-12 pt-10 border-t border-black gap-2">
           <div className="col-span-3">
-            <Filters />
+            <Filters slug={slug} />
           </div>
           <div className="col-span-9">
-            <FilteredProducts />
+            <FilteredProducts products={products} />
           </div>
         </div>
       </div>

@@ -1,10 +1,8 @@
-import { getData } from "@/lib/getData";
 import React from "react";
 import Product from "../Product";
 import Paginate from "./Paginate";
 
-export default async function FilteredProducts() {
-  const products = await getData("products");
+export default async function FilteredProducts({ products = [] }) {
   return (
     <>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:md:grid-cols-3 gap-4">
