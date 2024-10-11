@@ -16,6 +16,7 @@ import SubmitButton from "../../FormInputs/SubmitButton";
 import TextAreaInput from "../../FormInputs/TextAreaInput";
 import TextInput from "../../FormInputs/TextInput";
 import ToggleInput from "../../FormInputs/Toggleinput";
+import MultipleImageInput from "../../FormInputs/MultipleImageInput";
 
 export default function NewProductForm({
   categories,
@@ -195,6 +196,12 @@ export default function NewProductForm({
           endpoint="multipleProductsUploader"
           label="Product Image Images"
         /> */}
+        <MultipleImageInput
+          imageUrls={productImages}
+          setImageUrls={setProductImages}
+          endpoint="multipleProductsUploader"
+          label="Product Image Images"
+        />
         {/* Tags */}
         <ArrayItemsInput setItems={setTags} items={tags} itemTitle="Tag" />
 
