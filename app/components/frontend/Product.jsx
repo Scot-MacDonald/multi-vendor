@@ -14,7 +14,7 @@ export default function Product({ product }) {
     toast.success("item added successfully");
   }
   return (
-    <div className="flex flex-col items-center min-h-96 border border-[#666666] ">
+    <div className="flex flex-col items-center min-h-96 border border-black dark:border-[#666666]">
       <Link href={`/products/${product.slug}`}>
         <Image
           src={product.imageUrl}
