@@ -31,7 +31,7 @@ export default function Navbar({ setShowSidebar, showSidebar }) {
   }
 
   return (
-    <div className="flex items-center justify-between bg-white dark:bg-[#252525] text-white dark:text-[#249a38] h-16 px-8 py-4 fixed top-0 w-full  lg:pr-[16rem] z-50 border-t-8 border-b-8 border-r-8  border-[#f8f8f8] dark:border-[#303030]">
+    <div className="flex items-center justify-between bg-white border-[#000000] dark:bg-[#252525] text-white dark:text-[#249a38] px-4  m-6   z-50 border   dark:border-[#303030]">
       {/* <Link href={"/dashboard"} className="sm:hidden text-black">
         Logo
       </Link> */}

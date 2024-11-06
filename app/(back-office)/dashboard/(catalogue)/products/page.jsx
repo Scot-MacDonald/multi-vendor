@@ -19,14 +19,14 @@ export default async function page() {
   const id = session?.user?.id;
   const farmerProducts = allProducts.filter((product) => product.userId === id);
   return (
-    <div className="text-black bg-[#ffffff] dark:bg-[#252525] p-8">
+    <div className="text-black bg-[#ffffff] dark:bg-[#252525] px-8">
       <PageHeader
         heading="Products"
         href="/dashboard/products/new"
         linkTitle="Add product"
       />
 
-      <div className="py-6">
+      <div className="py-6 border ">
         {role === "ADMIN" ? (
           <DataTable data={allProducts} columns={columns} />
         ) : (

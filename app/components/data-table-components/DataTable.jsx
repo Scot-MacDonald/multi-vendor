@@ -29,7 +29,7 @@ import {
 import { DataTableToolbar } from "./DataTableToolbar";
 import { DataTablePagination } from "./DataPagePagination";
 
-export default function DataTable({ columns, data , filterKeys=["title"] }) {
+export default function DataTable({ columns, data, filterKeys = ["title"] }) {
   const [rowSelection, setRowSelection] = useState({});
   const [columnVisibility, setColumnVisibility] = useState({});
   const [columnFilters, setColumnFilters] = useState([]);
@@ -59,8 +59,8 @@ export default function DataTable({ columns, data , filterKeys=["title"] }) {
 
   return (
     <div className="space-y-4">
-      <DataTableToolbar table={table} filterKeys={filterKeys}/>
-      <div className="rounded-md border">
+      <DataTableToolbar table={table} filterKeys={filterKeys} />
+      <div className=" border border-black">
         <Table>
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (

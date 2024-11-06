@@ -25,7 +25,7 @@ export default function Sorting({ title, slug }) {
     },
   ];
   return (
-    <div className="flex items-center justify-between text-xs text-black    ">
+    <div className="flex items-center justify-between text-xs text-black  dark:text-white  ">
       {/* <h2>Search Results - Electronics </h2> */}
       <h2>{title} </h2>
       <div className="flex items-center justify-between ">
@@ -40,7 +40,7 @@ export default function Sorting({ title, slug }) {
                 className={`${
                   actualPathName === link.href
                     ? "border border-black text-green-600 px-2 py-1 mr-1"
-                    : "border border-black px-2 py-1 mr-1"
+                    : "border border-[#666666] px-2 py-1 mr-1"
                 }`}
               >
                 {link.title}

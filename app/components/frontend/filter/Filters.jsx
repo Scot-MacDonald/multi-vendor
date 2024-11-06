@@ -13,7 +13,7 @@ import BrandFilter from "./BrandFilter";
 export default function Filters({ slug }) {
   //   const [isOpen, setIsOpen] = React.useState(false);
   return (
-    <div className="border border-black">
+    <div className="border border-black dark:border-[#666666] p-3 h-full">
       <PriceFilter slug={slug} />
       <BrandFilter />
       {/* <Collapsible open={isOpen} onOpenChange={setIsOpen} className=" ">

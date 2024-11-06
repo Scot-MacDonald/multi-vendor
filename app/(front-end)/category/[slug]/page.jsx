@@ -34,7 +34,7 @@ export default async function page({ params: { slug }, searchParams }) {
   }
 
   return (
-    <div className="w-full py-10">
+    <div className="w-full py-5">
       {category && products && (
         <FilterComponent category={category} products={products} />
       )}
