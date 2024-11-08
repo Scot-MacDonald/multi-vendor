@@ -5,16 +5,16 @@ import { NextResponse } from "next/server";
 export async function POST(request) {
   try {
     const {
-      sku,
       barcode,
       categoryId,
       description,
-      userId: farmerId,
+      farmerId,
       isActive,
       isWholesale,
       productCode,
       productPrice,
       salePrice,
+      sku,
       slug,
       tags,
       title,
@@ -25,21 +25,23 @@ export async function POST(request) {
       qty,
       productImages,
     } = await request.json();
-
+    //Check if this product already exists in the db
     const existingProduct = await db.product.findUnique({
-      where: { slug },
+      where: {
+        slug,
+      },
     });
-
     if (existingProduct) {
       return NextResponse.json(
-        { data: null, message: "Product already exists" },
+        {
+          data: null,
+          message: `Product ( ${title})  already exists in the Database`,
+        },
         { status: 409 }
       );
     }
-
     const newProduct = await db.product.create({
       data: {
-        sku,
         barcode,
         categoryId,
         description,
@@ -51,23 +53,32 @@ export async function POST(request) {
         productCode,
         productPrice: parseFloat(productPrice),
         salePrice: parseFloat(salePrice),
+        sku,
         slug,
         tags,
         title,
         unit,
-        wholesalePrice: isWholesale ? parseFloat(wholesalePrice) : null,
-        wholesaleQty: isWholesale ? parseInt(wholesaleQty) : null,
+        wholesalePrice: parseFloat(wholesalePrice),
+        wholesaleQty: parseInt(wholesaleQty),
         productStock: parseInt(productStock),
         qty: parseInt(qty),
+        // category: {
+        //   connect: { id: categoryId },
+        // },
+        // user: {
+        //   connect: { id: farmerId },
+        // },
       },
     });
-
     console.log(newProduct);
     return NextResponse.json(newProduct);
   } catch (error) {
     console.log(error);
     return NextResponse.json(
-      { message: "Failed to create Product", error },
+      {
+        message: "Failed to create Product",
+        error,
+      },
       { status: 500 }
     );
   }
@@ -77,10 +88,11 @@ export async function POST(request) {
 export async function GET(request) {
   const categoryId = request.nextUrl.searchParams.get("catId");
   const sortBy = request.nextUrl.searchParams.get("sort");
-  // console.log(sortBy, categoryId);
   const min = request.nextUrl.searchParams.get("min");
   const max = request.nextUrl.searchParams.get("max");
-
+  const page = request.nextUrl.searchParams.get("page") || 1;
+  const pageSize = 3;
+  console.log(sortBy, categoryId);
   let where = {
     categoryId,
   };
@@ -103,6 +115,8 @@ export async function GET(request) {
     if (categoryId && sortBy) {
       products = await db.product.findMany({
         where,
+        skip: (parseInt(page) - 1) * parseInt(pageSize),
+        take: parseInt(pageSize),
         orderBy: {
           salePrice: sortBy === "asc" ? "asc" : "desc",
         },
@@ -110,12 +124,16 @@ export async function GET(request) {
     } else if (categoryId) {
       products = await db.product.findMany({
         where,
+        skip: (parseInt(page) - 1) * parseInt(pageSize),
+        take: parseInt(pageSize),
         orderBy: {
           createdAt: "desc",
         },
       });
     } else {
       products = await db.product.findMany({
+        skip: (parseInt(page) - 1) * parseInt(pageSize),
+        take: parseInt(pageSize),
         orderBy: {
           createdAt: "desc",
         },
@@ -125,7 +143,10 @@ export async function GET(request) {
   } catch (error) {
     console.log(error);
     return NextResponse.json(
-      { message: "Failed to fetch products", error },
+      {
+        message: "Failed to Fetch Products",
+        error,
+      },
       { status: 500 }
     );
   }
