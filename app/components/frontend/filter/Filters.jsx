@@ -10,12 +10,12 @@ import { Button } from "@/components/ui/button";
 import PriceFilter from "./PriceFilter";
 import BrandFilter from "./BrandFilter";
 
-export default function Filters({ slug }) {
+export default function Filters({ slug, isSearch }) {
   //   const [isOpen, setIsOpen] = React.useState(false);
   return (
-    <div className="border border-black dark:border-[#666666] p-3 h-full">
-      <PriceFilter slug={slug} />
-      <BrandFilter />
+    <div className="border  border-black dark:border-[#666666] p-3 h-full">
+      <PriceFilter slug={slug} isSearch={isSearch} />
+      {/* <BrandFilter /> */}
       {/* <Collapsible open={isOpen} onOpenChange={setIsOpen} className=" ">
         <div className="flex items-center justify-between ">
           <CollapsibleTrigger asChild>
