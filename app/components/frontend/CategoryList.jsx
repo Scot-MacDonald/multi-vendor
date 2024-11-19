@@ -2,7 +2,7 @@ import Link from "next/link";
 import React from "react";
 import CategoryCarousel from "./CategoryCarousel";
 
-export default function CategoryList({ category }) {
+export default function CategoryList({ category, isMarketPage }) {
   return (
     <div className="">
       <div className="flex justify-between items-center py-4 ">
@@ -12,7 +12,7 @@ export default function CategoryList({ category }) {
         </Link>
       </div>
       <div className="px-1 ">
-        <CategoryCarousel products={category.products} />
+        <CategoryCarousel isMarketPage={isMarketPage} products={category.products} />
       </div>
     </div>
   );
