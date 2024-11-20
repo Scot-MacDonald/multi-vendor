@@ -21,23 +21,17 @@ export default async function Home() {
   return (
     <div className="w-full min-h-screen">
       <Hero />
-      {/* <MarketList /> */}
-      {categories.map((category, i) => {
-        return (
+      {/* Uncomment this if needed */}
+      <MarketList />
+      {categories.map((category, i) => (
+        // <div className="py-1" key={i}>
+        //   <CategoryList isMarketPage={false} category={category} />
+        // </div>
 
-          <div className="py-1" key={i}>
-            <CategoryList isMarketPage={false} category={category} />
-
-          <div className="py-1" key={i}>
-            <CategoryList category={category} />
-          </div>
-//           <div className="" key={i}>
-//             <CategoryListNewLayout category={category} />
-
-          </div>
-        );
-      })}
-
+        <div className="" key={i}>
+          <CategoryListNewLayout category={category} />
+        </div>
+      ))}
       <div className="py-8">
         <CommunityTrainings />
       </div>
@@ -47,3 +41,32 @@ export default async function Home() {
     </div>
   );
 }
+
+// {/* <div className="w-full min-h-screen">
+// <Hero />
+// {/* <MarketList /> */}
+// {categories.map((category, i) => {
+//   return (
+
+//     <div className="py-1" key={i}>
+//       <CategoryList isMarketPage={false} category={category} />
+
+//     {/* <div className="py-1" key={i}>
+//       <CategoryList category={category} />
+//     </div> */}
+//    {/* <div className="" key={i}>
+//      <CategoryListNewLayout category={category} />
+
+//     // </div> */}
+//   );
+// })}
+
+// <div className="py-8">
+//   <CommunityTrainings />
+// </div>
+// <div className="py-8">
+//   <TestCol />
+// </div>
+// </div>
+// );
+// } */}
