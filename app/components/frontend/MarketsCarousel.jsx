@@ -46,7 +46,7 @@ export default function MarketsCarousel({ markets }) {
       {/* Cloud Forest */}
       {markets.map((market, i) => {
         return (
-          <Link key={i} href="#">
+          <Link key={i} href={`/market/${market.slug}`}>
             <div className="flex flex-col items-center  ">
               <Image
                 width={400}

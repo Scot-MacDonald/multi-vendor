@@ -10,9 +10,15 @@ import Breadcrumb from "@/app/components/frontend/Breadcrumb";
 import { getData } from "@/lib/getData";
 import CategoryCarousel from "@/app/components/frontend/CategoryCarousel";
 import Image from "next/image";
+import AddToCartButton from "@/app/components/frontend/AddToCartButton";
 
 export default async function ProductDetailPage({ params: { slug } }) {
   const product = await getData(`/products/product/${slug}`);
+  const {id} = product;
+  const catId = product.categoryId;
+  const category = await getData(`categories/${catId}`);
+  const categoryProducts = category.products;
+  const products = categoryProducts.filter((product)=> product.id!==id);
   return (
     <div className="w-full">
       <Breadcrumb />
@@ -66,10 +72,7 @@ export default async function ProductDetailPage({ params: { slug } }) {
                 <Plus />
               </button>
             </div>
-            <button className="flex items-center space-x-2">
-              <ShoppingCart />
-              <span>Add to cart</span>
-            </button>
+            <AddToCartButton product={product}/>
           </div>
           <div className="hidden md:block  overflow-hidden">
             <h2 className="bg-[#f8f8f8] dark:bg-[#f8f8f8] py-4 px-6 font-semibold  text-slate-800 dark:text-slate-100">
@@ -121,7 +124,7 @@ export default async function ProductDetailPage({ params: { slug } }) {
         <h2 className="mb-4 text-xl font-semibold text-slate-200 ml-3">
           Similar Products
         </h2>
-        {/* <CategoryCarousel products={category.products} /> */}
+        <CategoryCarousel products={categoryProducts} />
       </div>
     </div>
   );

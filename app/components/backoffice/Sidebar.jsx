@@ -138,26 +138,14 @@ export default function sidebar({ showSidebar, setShowSidebar }) {
   if (role === "FARMER") {
     sidebarLinks = [
       {
-        title: "Customers",
-        icon: Users2,
-        href: "/dashboard/customers",
-      },
-      {
-        title: "Markets",
-        icon: Warehouse,
-        href: "/dashboard/markets",
-      },
-
-      {
         title: "Sales",
         icon: Truck,
         href: "/dashboard/sales",
       },
-
       {
-        title: "Limi Community",
-        icon: Building2,
-        href: "/dashboard/community",
+        title: "My Orders",
+        icon: Truck,
+        href: "/dashboard/orders",
       },
       {
         title: "Wallet",

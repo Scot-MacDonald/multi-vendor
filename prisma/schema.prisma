@@ -164,19 +164,19 @@ model UserProfile {
 
 model FarmerProfile {
   id                 String    @id @default(auto()) @map("_id") @db.ObjectId
-  code               String
+  code               String?
   contactPerson      String?
   contactPersonPhone String?
   profileImageUrl    String?
-  email              String
-  name               String
+  email              String?
+  name               String?
   notes              String?
-  phone              String
+  phone              String?
   physicalAddress    String?
   terms              String?
-  isActive           Boolean
+  isActive           Boolean?
   products           String[]
-  landSize           Float
+  landSize           Float?
   mainCrop           String
   userId             String    @unique @db.ObjectId
   user               User      @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)

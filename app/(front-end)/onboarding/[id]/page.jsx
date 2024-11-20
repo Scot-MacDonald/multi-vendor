@@ -1,17 +1,42 @@
+import CartBanner from "@/app/components/checkout/CartBanner";
+import StepForm from "@/app/components/checkout/StepForm";
+import Steps from "@/app/components/checkout/Steps";
+import { authOptions } from "@/lib/authOptions";
+import { getServerSession } from "next-auth";
+import { redirect } from "next/navigation";
 import React from "react";
-import NewFarmerForm from "@/app/components/backoffice/NewFarmerForm";
-import { getData } from "@/lib/getData";
 
-export default async function page({ params: { id } }) {
-  const user = await getData(`users/${id}`);
-  console.log(user);
+export default async function page({params: {id}}) {
+  const steps = [
+    {
+      number: 1,
+      title: "Basic Information",
+    },
+    {
+      number: 2,
+      title: "Farm Details",
+    },
+    {
+      number: 3,
+      title: "Additional Information",
+    },
+    {
+      number: 4,
+      title: "Summary",
+    },
+  ];
   return (
-    <div className="flex flex-col gap-6 p-16">
-      <div className="max-w-4xl p-4 mx-auto">
-        <h2>Hello {user?.name}, Tell more about yourself</h2>
+    <div className="bg-white dark:bg-[#252525] min-h-screen w-full ">
+      <div className="max-w-3xl my-6 mx-auto border border-black dark:border-[#666666] p-6 ">
+        {/* STEPS */}
+        <Steps steps={steps} />
+        <div className="w-full  p-4 bg-white border border-gray-200  shadow sm:p-6 md:p-8 dark:bg-[#252525] dark:border-[#666666]">
+          {/* Banner */}
+          <CartBanner />
+          {/* Form */}
+          <StepForm  farmerId={id}/>
+        </div>
       </div>
-
-      <NewFarmerForm user={user} />
     </div>
   );
 }
