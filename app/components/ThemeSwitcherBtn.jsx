@@ -18,9 +18,10 @@ export default function ThemeSwitcherBtn() {
   }
 
   return (
-    <div className="border-l border-black px-5 py-3 flex items-center justify-center">
+    <div className="border-l border-black  flex items-center justify-center">
       <button
-        className="text-[#000000] dark:text-white"
+        className="text-[#000000] dark:text-white font-bold relative overflow-hidden transition-all duration-200 hover:bg-black hover:text-white px-5 py-3"
+        style={{ transitionTimingFunction: "cubic-bezier(0.2, 1, 0.2, 1)" }}
         onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
       >
         {theme === "light" ? (

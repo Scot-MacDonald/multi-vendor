@@ -7,6 +7,8 @@ import CommunityTrainings from "../components/frontend/CommunityTrainings";
 import { getData } from "@/lib/getData";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/authOptions";
+import TestCol from "../components/frontend/TestCol";
+import CategoryListNewLayout from "../components/frontend/CategoryListNewLayout";
 
 export default async function Home() {
   const categoriesData = await getData("categories");
@@ -19,11 +21,14 @@ export default async function Home() {
   return (
     <div className="w-full min-h-screen">
       <Hero />
-      <MarketList />
+      {/* <MarketList /> */}
       {categories.map((category, i) => {
         return (
-          <div className="py-1" key={i}>
-            <CategoryList category={category} />
+          // <div className="py-1" key={i}>
+          //   <CategoryList category={category} />
+          // </div>
+          <div className="" key={i}>
+            <CategoryListNewLayout category={category} />
           </div>
         );
       })}
@@ -31,11 +36,9 @@ export default async function Home() {
       <div className="py-8">
         <CommunityTrainings />
       </div>
-
-      <h2 className="text-4xl">Ecommerce</h2>
-      <Link className="my-4 underline" href="/register-farmer">
-        Become a farmer
-      </Link>
+      <div className="py-8">
+        <TestCol />
+      </div>
     </div>
   );
 }

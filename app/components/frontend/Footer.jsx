@@ -1,4 +1,5 @@
 import { Cannabis } from "lucide-react";
+import Link from "next/link";
 
 const Footer = () => {
   return (
@@ -101,14 +102,13 @@ const Footer = () => {
 
             <ul className="mt-4 space-y-2 text-black dark:text-white">
               <li>
-                <a
-                  href="#"
+                <Link
+                  href="./about/"
                   title=""
                   className="flex text-base transition-all duration-200 hover:text-blue-600 focus:text-blue-600"
                 >
-                  {" "}
-                  About{" "}
-                </a>
+                  About
+                </Link>
               </li>
 
               <li>
