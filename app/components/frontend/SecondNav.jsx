@@ -6,11 +6,11 @@ import Link from "next/link";
 export default async function SecondNav() {
   const categories = await getData("categories");
   return (
-    <ul className="nav  border-b  border-[#000000] dark:border-[#666666]">
+    <ul className="nav  border-b py-0 border-[#000000] dark:border-[#666666]">
       {categories.map((category, i) => {
         return (
           <>
-            <li>
+            <li className="py-0">
               <Link
                 key={i}
                 href={`/category/${category.slug}`}

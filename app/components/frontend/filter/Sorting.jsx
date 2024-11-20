@@ -1,47 +1,57 @@
 "use client";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import React from "react";
 
-export default function Sorting({ title, slug }) {
-  const pathname = usePathname();
-
-  //   const relevance =
-  //   const highToLow =
-  //   const lowToHigh =
-
+export default function Sorting({ title, slug, isSearch }) {
+  const searchParams = useSearchParams();
+  const sortParam = searchParams.get("sort");
+  const min = searchParams.get("min") || 0;
+  const max = searchParams.get("max") || "";
+  const search = searchParams.get("search") || "";
+  const page = parseInt(searchParams.get("page")) || 1;
+  console.log(sortParam);
   const sortingLinks = [
     {
       title: "Relevance",
-      href: `/category/${slug}`,
+      href: isSearch ? `/search?search=${search}` : `/category/${slug}`,
+      sort: null,
     },
     {
       title: "Price - High to Low",
-      href: `/category/${slug}?sort=desc`,
+      href: isSearch
+        ? `/search?search=${search}&page=${page}&sort=desc&min=${min}&max=${max}`
+        : `/category/${slug}?page=${page}&sort=desc&min=${min}&max=${max}`,
+      sort: "desc",
     },
     {
-      title: "Price -Low to High",
-      href: `/category/${slug}?sort=asc`,
+      title: "Price - Low to High",
+      href: isSearch
+        ? `/search?search=${search}&page=${page}&sort=asc&min=${min}&max=${max}`
+        : `/category/${slug}?page=${page}&sort=asc&min=${min}&max=${max}`,
+      sort: "asc",
     },
   ];
   return (
-    <div className="flex items-center justify-between text-xs text-black  dark:text-white  ">
-      {/* <h2>Search Results - Electronics </h2> */}
-      <h2>{title} </h2>
-      <div className="flex items-center justify-between ">
-        <p className="mr-2">Sort By:</p>
-        <div className="flex ">
+    <div className="flex items-center justify-between">
+      {/* <h2 className="text-2xl">Search Results - Electronic</h2> */}
+      <h2 className="text-2xl font-medium ">
+        {isSearch && "Search Results - "}
+        {title}
+      </h2>
+      <div className="flex text-sm items-center gap-3">
+        <p>Sort by:</p>
+        <div className="flex items-center">
           {sortingLinks.map((link, i) => {
-            const actualPathName = `${pathname}${link.params}`;
             return (
               <Link
-                href={link.href}
                 key={i}
                 className={`${
-                  actualPathName === link.href
-                    ? "border border-black text-green-600 px-2 py-1 mr-1"
+                  link.sort === sortParam
+                    ? "bg-slate-800 px-2 py-1 mr-1 border border-black text-lime-400"
                     : "border border-[#666666] px-2 py-1 mr-1"
                 }`}
+                href={link.href}
               >
                 {link.title}
               </Link>

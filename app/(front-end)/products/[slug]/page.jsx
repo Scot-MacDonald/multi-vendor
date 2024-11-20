@@ -22,18 +22,18 @@ export default async function ProductDetailPage({ params: { slug } }) {
   return (
     <div className="w-full">
       <Breadcrumb />
-      <div className="grid grid-cols-12  h-[calc(100vh-150px)] overflow-auto   border-l-8 border-r-8 border-b-8  border-[#f8f8f8] dark:border-[#303030]">
-        <div className="col-span-7 flex justify-center items-center border-r-8  border-[#f8f8f8] dark:border-[#303030]">
+      <div className="grid grid-cols-12  h-[calc(100vh-150px)] overflow-auto gap-2 ">
+        <div className="col-span-6 flex  justify-center items-center border  border-black dark:border-[#303030]">
           <Image
             src={product.imageUrl}
             alt={product.title}
             width={500}
             height={500}
-            className="max-w-[550px] w-full pb-40"
+            className=" object-contain"
           />
         </div>
-        <div className="col-span-5 ">
-          <div className=" flex px-5 items-center justify-between h-[110px] border-b-8  border-[#f8f8f8] dark:border-[#303030]">
+        <div className="col-span-6 px-5 border  border-black dark:border-[#666666]">
+          <div className=" flex px-5 items-center justify-between h-[110px] ">
             <h1 className="text-xl lg:text-3xl font-semibold uppercase ">
               {product.title}
             </h1>
