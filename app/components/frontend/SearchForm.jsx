@@ -23,7 +23,7 @@ export default function SearchForm() {
           {...register("searchTerm")}
           type="text"
           id="voice-search"
-          className="w-full bg-white dark:bg-[#252525] focus:outline-none focus:ring-white focus:border-b-black focus:border-t-0 focus:border-l-0 focus:border-r-0 border-t-0 border-l-0 border-r-0 border-b-black dark:border-b-white text-gray-900 text-sm   focus:border-t-white   p-0    dark:placeholder-gray-400 dark:text-white text-[.65rem] "
+          className="w-full bg-white dark:bg-[#252525] focus:outline-none focus:ring-white focus:border-b-black focus:border-t-0 focus:border-l-0 focus:border-r-0 border-t-0 border-l-0 border-r-0 border-b-black dark:border-b-white text-gray-900 text-sm   focus:border-t-white   p-0    dark:placeholder-[#666666] dark:text-white text-[.65rem] "
           placeholder="Search Products, Categories, Markets..."
           required
         />
