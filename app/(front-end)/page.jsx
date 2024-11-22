@@ -21,18 +21,18 @@ export default async function Home() {
   return (
     <div className="w-full min-h-screen">
       <Hero />
-      {/* <MarketList /> */}
+      <MarketList />
       {categories.map((category, i) => {
         return (
 
-          <div className="py-1" key={i}>
-            <CategoryList isMarketPage={false} category={category} />
+          // <div className="py-1" key={i}>
+          //   <CategoryList isMarketPage={false} category={category} />
 
-          <div className="py-1" key={i}>
-            <CategoryList category={category} />
-          </div>
-//           <div className="" key={i}>
-//             <CategoryListNewLayout category={category} />
+          // <div className="py-1" key={i}>
+          //   <CategoryList category={category} />
+          // </div>
+          <div className="" key={i}>
+            <CategoryListNewLayout category={category} />
 
           </div>
         );
