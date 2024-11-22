@@ -15,7 +15,7 @@ export default function Summary({ farmerId }) {
   const onboardingFormData = useSelector(
     (store) => store.onboarding.onboardingFormData
   );
-  const currentStep = useSelector((store) => store.checkout.currentStep);
+  const currentStep = useSelector((store) => store.onboarding.currentStep);
   const dispatch = useDispatch();
   function handlePrevious() {
     dispatch(setCurrentStep(currentStep - 1));
