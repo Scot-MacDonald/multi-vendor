@@ -168,8 +168,8 @@ model FarmerProfile {
   contactPerson      String?
   contactPersonPhone String?
   profileImageUrl    String?
-  email              String?
-  name               String?
+  firstName             String?
+  lastName               String?
   notes              String?
   phone              String?
   physicalAddress    String?

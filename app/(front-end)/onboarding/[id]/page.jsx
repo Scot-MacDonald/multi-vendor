@@ -1,12 +1,12 @@
 import CartBanner from "@/app/components/checkout/CartBanner";
-import StepForm from "@/app/components/checkout/StepForm";
-import Steps from "@/app/components/checkout/Steps";
+import StepForm from "@/app/components/Onboarding/StepForm";
+import Steps from "@/app/components/Onboarding/Steps";
 import { authOptions } from "@/lib/authOptions";
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
 import React from "react";
 
-export default async function page({params: {id}}) {
+export default async function page({ params: { id } }) {
   const steps = [
     {
       number: 1,
@@ -32,9 +32,9 @@ export default async function page({params: {id}}) {
         <Steps steps={steps} />
         <div className="w-full  p-4 bg-white border border-gray-200  shadow sm:p-6 md:p-8 dark:bg-[#252525] dark:border-[#666666]">
           {/* Banner */}
-          <CartBanner />
+          {/* <CartBanner /> */}
           {/* Form */}
-          <StepForm  farmerId={id}/>
+          <StepForm farmerId={id} />
         </div>
       </div>
     </div>

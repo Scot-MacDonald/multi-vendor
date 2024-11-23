@@ -1,22 +1,22 @@
 "use client";
-import TextInput from "@/components/FormInputs/TextInput";
+// import TextInput from "@/components/FormInputs/TextInput";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import NavButtons from "../NavButtons";
 import { useDispatch, useSelector } from "react-redux";
 import { useSession } from "next-auth/react";
-import ImageInput from "@/components/FormInputs/ImageInput";
-import TextareaInput from "@/components/FormInputs/TextAreaInput";
 import {
   setCurrentStep,
   updateOnboardingFormData,
 } from "@/redux/slices/onboardingSlice";
+import ImageInput from "../../FormInputs/ImageInput";
+import TextAreaInput from "../../FormInputs/TextAreaInput";
 
 export default function AdditionalInformationForm() {
   const [imageUrl, setImageUrl] = useState("");
   const currentStep = useSelector((store) => store.onboarding.currentStep);
   const existingFormData = useSelector(
-    (store) => store.checkout.checkoutFormData
+    (store) => store.onboarding.onboardingFormData
   );
   const {
     register,
@@ -50,14 +50,14 @@ export default function AdditionalInformationForm() {
           endpoint="farmerProfileUploader"
           label="Farmer Profile Image"
         />
-        <TextareaInput
+        <TextAreaInput
           label="Farmer's Payment Terms"
           name="terms"
           register={register}
           errors={errors}
           isRequired={false}
         />
-        <TextareaInput
+        <TextAreaInput
           label="Notes"
           name="notes"
           register={register}

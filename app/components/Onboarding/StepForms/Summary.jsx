@@ -1,5 +1,6 @@
 "use client";
 
+import { makePostRequest } from "@/lib/apiRequest";
 import { generateUserCode } from "@/lib/generateUserCode";
 import { setCurrentStep } from "@/redux/slices/onboardingSlice";
 import { ChevronLeft, ChevronRight } from "lucide-react";
@@ -17,57 +18,57 @@ export default function Summary({ farmerId }) {
   );
   const currentStep = useSelector((store) => store.onboarding.currentStep);
   const dispatch = useDispatch();
-  function handlePrevious() {
-    dispatch(setCurrentStep(currentStep - 1));
-  }
+
+  const reset = () => {
+    console.log("Form reset triggered");
+    // Logic to reset the form or state
+  };
+
+  const redirect = () => {
+    console.log("Redirecting...");
+    router.push("http://localhost:3000/login");
+  };
+
   async function submitData() {
-    const data = {
-      ...onboardingFormData,
-    };
+    const data = { ...onboardingFormData };
     const fullName = `${data.firstName} ${data.lastName}`;
     const code = generateUserCode("LFF", fullName);
     data.code = code;
     data.userId = farmerId;
-    console.log(data);
-    makePostRequest(
-      setLoading,
-      "api/farmers",
-      data,
-      "Farmer Profile",
-      reset,
-      redirect
-    );
+
+    console.log("Submitting data:", data);
+
+    // Ensure reset and redirect functions are handled properly
+    makePostRequest(setLoading, "api/farmers", data, "farmer", reset, redirect);
   }
+
   return (
     <div className="my-6">
-      <h2 className="text-xl font-semibold mb-4 dark:text-lime-400">
-        Order Summary
-      </h2>
+      <h2 className="text-xl font-semibold mb-4 dark:text-lime-400">Summary</h2>
       <div className="flex">
         <h2>Here are your Details</h2>
       </div>
       <div className="mt-4 flex items-center justify-between">
         <button
-          onClick={handlePrevious}
-          type="button"
-          className="inline-flex items-center px-6 py-3 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-slate-900 rounded-lg focus:ring-4 focus:ring-lime-200 dark:focus:ring-lime-900 hover:bg-slate-800 dark:bg-lime-600 dark:hover:bg-lime-700"
+          onClick={() => dispatch(setCurrentStep(currentStep - 1))}
+          className="inline-flex items-center px-6 py-3 text-sm font-medium bg-slate-900 text-white rounded-lg hover:bg-slate-800"
         >
           <ChevronLeft className="w-5 h-5 mr-2" />
-          <span>Previous</span>
+          Previous
         </button>
         {loading ? (
           <button
             disabled
-            className="inline-flex items-center px-6 py-3 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-slate-900 rounded-lg focus:ring-4 focus:ring-lime-200 dark:focus:ring-lime-900 hover:bg-slate-800 dark:bg-lime-600 dark:hover:bg-lime-700"
+            className="px-6 py-3 text-sm font-medium bg-slate-900 text-white rounded-lg"
           >
-            Processing Please wait...
+            Processing, please wait...
           </button>
         ) : (
           <button
             onClick={submitData}
-            className="inline-flex items-center px-6 py-3 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-slate-900 rounded-lg focus:ring-4 focus:ring-lime-200 dark:focus:ring-lime-900 hover:bg-slate-800 dark:bg-lime-600 dark:hover:bg-lime-700"
+            className="inline-flex items-center px-6 py-3 text-sm font-medium bg-slate-900 text-white rounded-lg hover:bg-slate-800"
           >
-            <span>Submit Data</span>
+            Submit Data
             <ChevronRight className="w-5 h-5 ml-2" />
           </button>
         )}
