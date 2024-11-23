@@ -24,7 +24,6 @@ export async function GET(request, { params: { id } }) {
   }
 }
 
-
 export async function DELETE(request, { params: { id } }) {
   try {
     const existingMarket = await db.market.findUnique({
@@ -32,11 +31,14 @@ export async function DELETE(request, { params: { id } }) {
         id,
       },
     });
-    if(!existingMarket){
-      return NextResponse.json({
-        data: null,
-        message: "Market Not Found",
-      }, {status:404});
+    if (!existingMarket) {
+      return NextResponse.json(
+        {
+          data: null,
+          message: "Market Not Found",
+        },
+        { status: 404 }
+      );
     }
     const deletedMarket = await db.market.delete({
       where: {

@@ -1,15 +1,17 @@
 "use client";
-import TextInput from "@/components/FormInputs/TextInput";
+// import TextInput from "@/components/FormInputs/TextInput";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import NavButtons from "../NavButtons";
 import { Circle, Truck } from "lucide-react";
 import { useDispatch, useSelector } from "react-redux";
-import ArrayItemsInput from "@/components/FormInputs/ArrayItemsInput";
+// import ArrayItemsInput from "@/components/FormInputs/ArrayItemsInput";
 import {
   setCurrentStep,
   updateOnboardingFormData,
 } from "@/redux/slices/onboardingSlice";
+import TextInput from "../../FormInputs/TextInput";
+import ArrayItemsInput from "../../FormInputs/ArrayItemsInput";
 
 export default function FarmDetailsForm() {
   const [products, setProducts] = useState([]);

@@ -1,5 +1,4 @@
 "use client";
-import TextInput from "@/components/FormInputs/TextInput";
 import React from "react";
 import { useForm } from "react-hook-form";
 import NavButtons from "../NavButtons";
@@ -9,6 +8,7 @@ import {
   setCurrentStep,
   updateOnboardingFormData,
 } from "@/redux/slices/onboardingSlice";
+import TextInput from "../../FormInputs/TextInput";
 
 export default function BasicInformationForm() {
   const currentStep = useSelector((store) => store.onboarding.currentStep);

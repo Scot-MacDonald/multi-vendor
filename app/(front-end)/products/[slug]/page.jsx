@@ -14,11 +14,11 @@ import AddToCartButton from "@/app/components/frontend/AddToCartButton";
 
 export default async function ProductDetailPage({ params: { slug } }) {
   const product = await getData(`/products/product/${slug}`);
-  const {id} = product;
+  const { id } = product;
   const catId = product.categoryId;
   const category = await getData(`categories/${catId}`);
   const categoryProducts = category.products;
-  const products = categoryProducts.filter((product)=> product.id!==id);
+  const products = categoryProducts.filter((product) => product.id !== id);
   return (
     <div className="w-full">
       <Breadcrumb />
@@ -63,7 +63,7 @@ export default async function ProductDetailPage({ params: { slug } }) {
             </p>
           </div>
           <div className="flex justify-between items-center px-5 py-6">
-            <div className="rounded-xl border border-gray-400 flex gap-3 items-center">
+            {/* <div className="rounded-xl border border-gray-400 flex gap-3 items-center">
               <button className="border-r border-gray-400 py-2 px-4">
                 <Minus />
               </button>
@@ -71,8 +71,8 @@ export default async function ProductDetailPage({ params: { slug } }) {
               <button className="border-l border-gray-400 py-2 px-4">
                 <Plus />
               </button>
-            </div>
-            <AddToCartButton product={product}/>
+            </div> */}
+            <AddToCartButton product={product} />
           </div>
           <div className="hidden md:block  overflow-hidden">
             <h2 className="bg-[#f8f8f8] dark:bg-[#f8f8f8] py-4 px-6 font-semibold  text-slate-800 dark:text-slate-100">
@@ -120,11 +120,11 @@ export default async function ProductDetailPage({ params: { slug } }) {
           </div>
         </div>
       </div>
-      <div className="bg-white dark:bg-slate-700 my-8 rounded-xl p-4">
+      <div className="bg-white dark:bg-slate-700 my-8 ">
         <h2 className="mb-4 text-xl font-semibold text-slate-200 ml-3">
           Similar Products
         </h2>
-        <CategoryCarousel products={categoryProducts} />
+        <CategoryCarousel products={products} />
       </div>
     </div>
   );

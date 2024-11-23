@@ -6,7 +6,7 @@ import Summary from "./StepForms/Summary";
 import FarmDetailsForm from "./StepForms/FarmDetailsForm";
 import BasicInformationForm from "./StepForms/BasicInformationForm";
 
-export default function StepForm() {
+export default function StepForm({ farmerId }) {
   const currentStep = useSelector((store) => store.onboarding.currentStep);
   function renderFormByStep(step) {
     if (step === 1) {

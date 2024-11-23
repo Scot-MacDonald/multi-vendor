@@ -1,4 +1,4 @@
-import { setCurrentStep } from "@/redux/slices/checkoutSlice";
+import { setCurrentStep } from "@/redux/slices/onboardingSlice";
 import { ChevronLast, ChevronLeft, ChevronRight } from "lucide-react";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";

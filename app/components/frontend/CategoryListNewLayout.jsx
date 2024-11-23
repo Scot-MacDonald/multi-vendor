@@ -3,7 +3,7 @@ import React from "react";
 import Link from "next/link";
 import ProductNewLayout from "./ProductNewLayout";
 
-export default function CategoryListNewLayout({ category }) {
+export default function CategoryListNewLayout({ category, isMarketPage }) {
   const products = category.products.slice(0, 5); // Limit to 5 products for layout consistency
 
   return (

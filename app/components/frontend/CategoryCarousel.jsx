@@ -7,16 +7,16 @@ import Link from "next/link";
 import { ShoppingCart } from "lucide-react";
 import Product from "./Product";
 
-export default function CategoryCarousel({ products, isMarketPage=false }) {
+export default function CategoryCarousel({ products, isMarketPage = false }) {
   const responsive = {
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
-      items: isMarketPage ? 3 :4,
+      items: isMarketPage ? 3 : 4,
       slidesToSlide: 1, // optional, default to 1.
     },
     tablet: {
       breakpoint: { max: 1024, min: 464 },
-      items: isMarketPage ? 2 :3,
+      items: isMarketPage ? 2 : 3,
       slidesToSlide: 2, // optional, default to 1.
     },
     mobile: {

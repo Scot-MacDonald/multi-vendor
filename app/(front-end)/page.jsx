@@ -23,24 +23,17 @@ export default async function Home() {
       <Hero />
       <MarketList />
       {categories.map((category, i) => (
-
-          // <div className="py-1" key={i}>
-          //   <CategoryList isMarketPage={false} category={category} />
-          <div className="" key={i}>
-            <CategoryListNewLayout category={category} />
-
-          </div>
-        ))}
+        // <div className="py-1" key={i}>
+        //   <CategoryList isMarketPage={false} category={category} />
+        <div className="" key={i}>
+          <CategoryListNewLayout category={category} />
+        </div>
+      ))}
 
       {/* Uncomment this if needed */}
       {categories.map((category, i) => (
-        // <div className="py-1" key={i}>
-        //   <CategoryList isMarketPage={false} category={category} />
-        // </div>
-
-
-        <div className="" key={i}>
-          <CategoryListNewLayout category={category} />
+        <div className="py-1" key={i}>
+          <CategoryList isMarketPage={false} category={category} />
         </div>
       ))}
       <div className="py-8">
