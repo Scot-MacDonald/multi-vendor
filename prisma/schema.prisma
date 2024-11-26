@@ -131,6 +131,7 @@ model User {
   products          Product[]
   coupons           Coupon[]
   role              UserRole       @default(USER)
+  plan    String? 
   verificationToken String?
   farmerProfile     FarmerProfile?
   profile           UserProfile?

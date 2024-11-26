@@ -143,11 +143,6 @@ export default function sidebar({ showSidebar, setShowSidebar }) {
         href: "/dashboard/sales",
       },
       {
-        title: "My Orders",
-        icon: Truck,
-        href: "/dashboard/orders",
-      },
-      {
         title: "Wallet",
         icon: CircleDollarSign,
         href: "/dashboard/wallet",

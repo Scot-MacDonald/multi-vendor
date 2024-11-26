@@ -2,49 +2,70 @@ import React from "react";
 import SmallCard from "./SmallCard";
 import {
   Boxes,
+  CheckCheck,
+  Loader2,
+  LucideShoppingCart,
   MailCheck,
   Package,
   PackageCheck,
   PackageMinus,
   PackageOpen,
+  RefreshCcw,
   ShoppingCart,
 } from "lucide-react";
 
-export default function SmallCards() {
-  const data = [
+export default function SmallCards({ orders }) {
+  const status = {
+    pending: "PENDING",
+    processing: "PROCESSING",
+    shipping: "SHIPPED",
+    delivering: "DELIVERED",
+    cancelling: "CANCELED",
+  };
+  function getOrdersCountByStatus(status) {
+    const filteredOrders = orders.filter(
+      (order) => order.orderStatus === status
+    );
+    const count = filteredOrders.length.toString().padStart(2, "0");
+    return count;
+  }
+  const ordersCount = orders.length.toString().padStart(2, "0");
+  const pendingOrdersCount = getOrdersCountByStatus(status.pending);
+  const processingOrdersCount = getOrdersCountByStatus(status.processing);
+  const deliveredOrdersCount = getOrdersCountByStatus(status.delivering);
+  const orderStatus = [
     {
-      title: "Total Orders",
-      number: "150",
+      title: "Total Order",
+      number: ordersCount,
       iconBg: "bg-green-600",
-      iconBorder: "dark:border-[#666666] border-solid border ",
-      icon: Boxes,
+      icon: LucideShoppingCart,
     },
     {
-      title: "Pending Orders",
-      number: "100",
-      iconBg: "bg-green-600",
-      iconBorder: "dark:border-[#666666] border-solid border ",
-      icon: ShoppingCart,
+      title: "Orders Pending",
+      number: pendingOrdersCount,
+      iconBg: "bg-blue-600",
+      icon: Loader2,
     },
     {
-      title: "Orders Processing",
-      number: "200",
-      iconBg: "bg-green-600",
-      iconBorder: "dark:border-[#666666] border-solid border ",
-      icon: Package,
+      title: "Order Processing",
+      number: processingOrdersCount,
+      iconBg: "bg-orange-600",
+      icon: RefreshCcw,
     },
     {
       title: "Orders Delivered",
-      number: "300",
-      iconBg: "bg-green-600",
-      iconBorder: "dark:border-[#666666] border-solid border ",
-      icon: PackageCheck,
+      number: deliveredOrdersCount,
+      iconBg: "bg-purple-600",
+      icon: CheckCheck,
     },
   ];
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 py-8 px-8 bg-white dark:bg-[#252525]">
-      {data.map((data, i) => {
-        return <SmallCard data={data} />;
+    <div
+      className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 py-8 px-3
+     bg-white dark:bg-[#252525]"
+    >
+      {orderStatus.map((data, i) => {
+        return <SmallCard data={data} key={i} />;
       })}
     </div>
   );
