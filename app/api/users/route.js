@@ -69,7 +69,7 @@ import EmailTemplate from "@/app/components/email-template";
 export async function POST(request) {
   try {
     const resend = new Resend(process.env.RESEND_API_KEY);
-    const { name, email, password, role } = await request.json();
+    const { name, email, password, role, plan } = await request.json();
     // Check if all required fields are provided
     if (!name || !email || !password || !role) {
       return NextResponse.json(
@@ -111,6 +111,7 @@ export async function POST(request) {
         email,
         password: hashedPassword,
         role,
+        plan,
         verificationToken: token,
       },
     });

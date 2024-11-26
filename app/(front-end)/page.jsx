@@ -26,7 +26,7 @@ export default async function Home() {
         // <div className="py-1" key={i}>
         //   <CategoryList isMarketPage={false} category={category} />
         <div className="" key={i}>
-          <CategoryListNewLayout category={category} />
+          <CategoryListNewLayout isMarketPage={false} category={category} />
         </div>
       ))}
 
