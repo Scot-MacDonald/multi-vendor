@@ -206,19 +206,19 @@ export default function sidebar({ showSidebar, setShowSidebar }) {
     <div
       className={
         showSidebar
-          ? "    space-y-6 w-64  bg-[#f8f8f8] dark:bg-[#2b2b2b] dark:text-white text-[#249a38] ml-6 mt-6    border border-[#000000] dark:border-[#303030] z-50 overflow-y-scroll"
-          : " hidden lg:block space-y-6 w-64  bg-white dark:bg-[#2b2b2b] dark:text-white text-[#249a38]    border border-[#000000] dark:border-[#303030] z-50 overflow-y-scroll"
+          ? "    space-y-6 w-64  bg-[#f8f8f8] dark:bg-[#2b2b2b] dark:text-white text-black ml-6 mt-6    border border-[#000000] dark:border-[#303030] z-50 overflow-y-scroll"
+          : " hidden lg:block space-y-6 w-64  bg-white dark:bg-[#2b2b2b] dark:text-white text-black    border border-[#000000] dark:border-[#303030] z-50 overflow-y-scroll"
       }
     >
       <div className="pt-2 pl-2 hidden lg:block  ">
-        <Link
+        {/* <Link
           onClick={() => setShowSidebar(false)}
           className=""
           href="/dashboard"
-        >
-          {/* <Image src={logo} alt="logo" width={40} height={40} /> */}
-          <Cannabis size={32} color="#249a38" strokeWidth={1} />
-        </Link>
+        > */}
+        {/* <Image src={logo} alt="logo" width={40} height={40} /> */}
+        {/* <Cannabis size={32} color="#249a38" strokeWidth={1} />
+        </Link> */}
       </div>
       <div className="space-y-3 flex flex-col mt-12">
         <Link

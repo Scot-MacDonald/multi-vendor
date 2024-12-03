@@ -49,14 +49,12 @@ export async function POST(request) {
 
 export async function GET(request) {
   try {
-    const trainings = await db.training
-      .findMany
-      //   {
-      //   orderBy: {
-      //     createdAt: "desc",
-      //   },
-      // }
-      ();
+    const trainings = await db.training.findMany({
+      orderBy: {
+        createdAt: "desc",
+      },
+    });
+
     return NextResponse.json(trainings);
   } catch (error) {
     console.log(error);

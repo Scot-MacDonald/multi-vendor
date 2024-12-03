@@ -29,7 +29,7 @@ export default async function page() {
       </div>
       <LargeCards sales={sales} />
       <SmallCards orders={orders} />
-      <DashboardCharts />
+      <DashboardCharts sales={sales} />
       {/* <CustomDataTable /> */}
     </>
   );

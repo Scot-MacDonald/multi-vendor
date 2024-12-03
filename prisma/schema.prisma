@@ -133,6 +133,7 @@ model User {
   role              UserRole       @default(USER)
   plan    String? 
   verificationToken String?
+  status            Boolean        @default(false)
   farmerProfile     FarmerProfile?
   profile           UserProfile?
   orders            Order[]

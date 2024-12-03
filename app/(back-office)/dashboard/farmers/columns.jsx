@@ -19,6 +19,7 @@ import DateColumn from "@/app/components/dataTableColumns/DateColumn";
 import ImageColumn from "@/app/components/dataTableColumns/ImageColumn";
 import SortableColumn from "@/app/components/dataTableColumns/SortableColumn";
 import ActionColumn from "@/app/components/dataTableColumns/ActionColumn";
+import Status from "@/app/components/dataTableColumns/Status";
 
 export const columns = [
   {
@@ -74,6 +75,15 @@ export const columns = [
   {
     accessorKey: "role",
     header: "Role",
+  },
+  {
+    accessorKey: "plan",
+    header: "Plan",
+  },
+  {
+    accessorKey: "status",
+    header: "Status",
+    cell: ({ row }) => <Status row={row} accessorKey="status" />,
   },
   // {
   //   accessorKey: "isActive",

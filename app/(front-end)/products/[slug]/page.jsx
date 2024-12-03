@@ -11,6 +11,8 @@ import { getData } from "@/lib/getData";
 import CategoryCarousel from "@/app/components/frontend/CategoryCarousel";
 import Image from "next/image";
 import AddToCartButton from "@/app/components/frontend/AddToCartButton";
+import ProductShareButton from "@/app/components/frontend/ProductShareButton";
+import ProductImageCarousel from "@/app/components/frontend/ProductImageCarousel";
 
 export default async function ProductDetailPage({ params: { slug } }) {
   const product = await getData(`/products/product/${slug}`);
@@ -19,11 +21,13 @@ export default async function ProductDetailPage({ params: { slug } }) {
   const category = await getData(`categories/${catId}`);
   const categoryProducts = category.products;
   const products = categoryProducts.filter((product) => product.id !== id);
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
+  const urlToShare = `${baseUrl}/products/${slug}`;
   return (
     <div className="w-full">
       <Breadcrumb />
       <div className="grid grid-cols-12  h-[calc(100vh-150px)] overflow-auto gap-2 ">
-        <div className="col-span-6 flex  justify-center items-center border  border-black dark:border-[#303030]">
+        {/* <div className="col-span-6 flex  justify-center items-center border  border-black dark:border-[#303030]">
           <Image
             src={product.imageUrl}
             alt={product.title}
@@ -31,15 +35,18 @@ export default async function ProductDetailPage({ params: { slug } }) {
             height={500}
             className=" object-contain"
           />
-        </div>
+        </div> */}
+        <ProductImageCarousel
+          productImages={product.productImages}
+          thumbnail={product.imageUrl}
+        />
         <div className="col-span-6 px-5 border  border-black dark:border-[#666666]">
           <div className=" flex px-5 items-center justify-between h-[110px] ">
             <h1 className="text-xl lg:text-3xl font-semibold uppercase ">
               {product.title}
             </h1>
-            <button>
-              <Share2 />
-            </button>
+
+            <ProductShareButton urlToShare={urlToShare} />
           </div>
           <div className="border-b border-dashed border-gray-900/25">
             <p className="py-2 px-5 text-[.85rem] text-[#b2b2b2]">

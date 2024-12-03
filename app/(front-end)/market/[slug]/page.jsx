@@ -19,8 +19,8 @@ export default async function page({ params: { slug } }) {
   return (
     <div className="w-full">
       <Breadcrumb />
-      <div className="grid grid-cols-12 gap-6 py-8 w-full">
-        <div className="sm:col-span-2 sm:block bg-white p-4 overflow-hidden hidden">
+      <div className="grid grid-cols-12 gap-2  w-full">
+        <div className="sm:col-span-3 sm:block bg-white p-4 overflow-hidden hidden border  border-black dark:border-[#666666] h-[calc(100vh-10rem)]">
           <div className="">
             <div className="flex items-center justify-center">
               <Image
@@ -43,10 +43,10 @@ export default async function page({ params: { slug } }) {
           <Link className="py-2" href="#">Category 1</Link>
         </div> */}
         </div>
-        <div className="col-span-full sm:col-span-10">
+        <div className="col-span-full sm:col-span-9">
           {marketCategories.map((category, i) => {
             return (
-              <div className="py-8" key={i}>
+              <div className="" key={i}>
                 <CategoryList isMarketPage={true} category={category} />
               </div>
             );
