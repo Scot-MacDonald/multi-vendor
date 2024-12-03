@@ -9,12 +9,14 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/authOptions";
 import TestCol from "../components/frontend/TestCol";
 import CategoryListNewLayout from "../components/frontend/CategoryListNewLayout";
+import CommunityTrainingsFP from "../components/frontend/CommunityTrainingsFP";
 
 export default async function Home() {
   const categoriesData = await getData("categories");
   const categories = await categoriesData.filter((category) => {
     return category.products.length > 3;
   });
+  const trainings = await getData("trainings");
   const session = await getServerSession(authOptions);
   console.log(session?.user);
 
@@ -37,7 +39,10 @@ export default async function Home() {
         </div>
       ))}
       <div className="py-8">
-        <CommunityTrainings />
+        <CommunityTrainingsFP
+          title="Featured Trainings"
+          trainings={trainings.slice(0, 4)}
+        />
       </div>
       <div className="py-8">
         <TestCol />
