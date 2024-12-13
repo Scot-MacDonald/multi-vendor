@@ -10,13 +10,13 @@ export default function TextInput({
 }) {
   return (
     <div className={className}>
-      <label
+      {/* <label
         htmlFor={name}
         className="block text-sm font-medium leading-6 text-[#303030] dark:text-slate-50 mb-2 "
       >
         {label}
-      </label>
-      <div className="mt-2">
+      </label> */}
+      <div className="">
         <input
           {...register(`${name}`, { required: isRequired })}
           type={type}
@@ -24,7 +24,7 @@ export default function TextInput({
           id={name}
           defaultValue={defaultValue}
           autoComplete={name}
-          className="block w-full border-0 py-2 text-gray-300 shadow-sm ring-1 ring-inset dark:ring-[#666666] ring-gray-300 placeholder:text-[#c1c1c1] dark:placeholder:text-[#666666] focus:ring-2 focus:ring-inset focus:ring-[#666666] dark:focus:ring-slate-100 sm:text-sm sm:leading-6 dark:bg-transparent dark:text-slate-100"
+          className="text-2xl font-light tracking-[0.11px] text-black dark:text-white p-4 border-1 border-black dark:border-[#666666] bg-transparent appearance-none text-center w-full placeholder:text-center placeholder-black dark:placeholder-[#cccccc]"
           placeholder={`Type the ${label.toLowerCase()}`}
         />
         {errors[`${name}`] && (

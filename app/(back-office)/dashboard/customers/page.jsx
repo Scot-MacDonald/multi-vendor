@@ -19,6 +19,9 @@ export default async function Customers() {
         href="/dashboard/coupons/new"
         linkTitle="Add Coupon"
       /> */}
+      <h2 className="font-bold text-[16px] uppercase dark:text-white text-black">
+        Customers
+      </h2>
       <div className="py-8">
         <DataTable data={customers} columns={columns} />
       </div>

@@ -17,12 +17,15 @@ export default async function Sales() {
   const farmerSales = allSales.filter((sale) => sale.vendorId === id);
 
   return (
-    <div className="text-black bg-[#ffffff] dark:bg-[#252525] p-8">
+    <div className="text-black bg-[#ffffff] dark:bg-[#252525] ">
       {/* <PageHeader
         heading="Coupons"
         href="/dashboard/coupons/new"
         linkTitle="Add coupon"
       /> */}
+      <h2 className="font-bold text-[16px] uppercase dark:text-white text-black">
+        Sales
+      </h2>
 
       <div className="py-6">
         {role === "ADMIN" ? (

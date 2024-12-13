@@ -13,11 +13,21 @@ export default async function Coupons() {
   const session = await getServerSession(authOptions);
   const id = session?.user?.id;
   const role = session?.user?.role;
-  const allCoupons = await getData("coupons");
-  const farmerCoupons = allCoupons.filter((coupon) => coupon.vendorId === id);
+  // const allCoupons = await getData("coupons");
+  // const farmerCoupons = allCoupons.filter((coupon) => coupon.vendorId === id);
+
+  const allCoupons = await getData("coupons").catch((error) => {
+    console.error("Error fetching coupons:", error);
+    return [];
+  });
+
+  // Ensure allCoupons is valid before filtering
+  const farmerCoupons = Array.isArray(allCoupons)
+    ? allCoupons.filter((coupon) => coupon.vendorId === id)
+    : [];
 
   return (
-    <div className="text-black bg-[#ffffff] dark:bg-[#252525] p-8">
+    <div className="text-black bg-[#ffffff] dark:bg-[#252525]">
       <PageHeader
         heading="Coupons"
         href="/dashboard/coupons/new"

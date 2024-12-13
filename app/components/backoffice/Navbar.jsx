@@ -37,6 +37,7 @@ export default function Navbar({ setShowSidebar, showSidebar }) {
           {/* <Cannabis size={32} color="#249a38" strokeWidth={1} /> */}
           BLATTCLUB
         </Link>
+
         <div className="flex items-center  ">
           {status === "authenticated" && <UserAvatar user={session?.user} />}
 

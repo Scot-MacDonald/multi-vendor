@@ -43,7 +43,7 @@ export default async function page({ params: { slug } }) {
           <Link className="py-2" href="#">Category 1</Link>
         </div> */}
         </div>
-        <div className="col-span-full sm:col-span-9">
+        <div className="col-span-full sm:col-span-9 border border-black dark:border-[#666666] h-[calc(100vh-10rem)]">
           {marketCategories.map((category, i) => {
             return (
               <div className="" key={i}>

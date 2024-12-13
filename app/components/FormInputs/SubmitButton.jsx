@@ -7,7 +7,7 @@ export default function SubmitButton({
   loadingButtonTitle,
 }) {
   return (
-    <div className="sm:col-span-1">
+    <div className="w-1/2">
       {isLoading ? (
         <button
           disabled
@@ -36,7 +36,7 @@ export default function SubmitButton({
       ) : (
         <button
           type="submit"
-          className="inline-flex items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-black dark:bg-green-600 rounded-lg focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-900 hover:bg-gray-800 dark:hover:"
+          className="text-2xl font-light tracking-[0.11px] text-white dark:text-black px-8 py-4 bg-black dark:bg-[#cccccc] border border-black dark:border-[#666666] appearance-none text-center w-full placeholder:text-center placeholder-black dark:placeholder-[#cccccc]"
         >
           {/* <Plus className="w-5 h-5 mr-2" /> */}
           <span>{buttonTitle}</span>

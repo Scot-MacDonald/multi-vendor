@@ -74,41 +74,44 @@ export default function RegisterForm({ role = "USER" }) {
         errors={errors}
         type="hidden"
         defaultValue={role}
-        className="sm:col-span-2 mb-3 border-white"
+        className=""
       />
-      <TextInput
-        label="Your Full Name"
-        name="name"
-        register={register}
-        errors={errors}
-        type="text"
-        className="sm:col-span-2 mb-3"
-      />
-      <TextInput
-        label="Email"
-        name="email"
-        register={register}
-        errors={errors}
-        type="email"
-        className="sm:col-span-2 mb-3"
-      />
-      {emailErr && (
-        <small className="text-red-600 -mt-2 mb-2">{emailErr}</small>
-      )}
-      <TextInput
-        label="Password"
-        name="password"
-        register={register}
-        errors={errors}
-        type="password"
-        className="sm:col-span-2 mb-3"
-      />
-      <SubmitButton
-        isLoading={loading}
-        buttonTitle="Register"
-        loadingButtonTitle="Creating please wait..."
-      />
-
+      <div className="flex gap-2">
+        <TextInput
+          label="Your Full Name"
+          name="name"
+          register={register}
+          errors={errors}
+          type="text"
+          className=""
+        />
+        <TextInput
+          label="Email"
+          name="email"
+          register={register}
+          errors={errors}
+          type="email"
+          className=""
+        />
+        {emailErr && (
+          <small className="text-red-600 -mt-2 mb-2">{emailErr}</small>
+        )}
+      </div>
+      <div className="flex gap-2">
+        <TextInput
+          label="Password"
+          name="password"
+          register={register}
+          errors={errors}
+          type="password"
+          className=""
+        />
+        <SubmitButton
+          isLoading={loading}
+          buttonTitle="Register"
+          loadingButtonTitle="Creating please wait..."
+        />
+      </div>
       <p className="text-sm font-light text-gray-500 dark:text-gray-400 pt-3 flex items-center gap-2">
         Already have an account?{" "}
         <Link

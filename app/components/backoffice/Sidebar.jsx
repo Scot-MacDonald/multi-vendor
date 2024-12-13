@@ -206,32 +206,23 @@ export default function sidebar({ showSidebar, setShowSidebar }) {
     <div
       className={
         showSidebar
-          ? "    space-y-6 w-64  bg-[#f8f8f8] dark:bg-[#2b2b2b] dark:text-white text-black ml-6 mt-6    border border-[#000000] dark:border-[#303030] z-50 overflow-y-scroll"
-          : " hidden lg:block space-y-6 w-64  bg-white dark:bg-[#2b2b2b] dark:text-white text-black    border border-[#000000] dark:border-[#303030] z-50 overflow-y-scroll"
+          ? "col-span-2 hidden md:block border border-black dark:border-[#666666] py-4 px-4 z-50 overflow-y-scroll"
+          : " hidden lg:block col-span-2  md:block border border-black dark:border-[#666666] py-4 px-4 z-50 overflow-y-scroll"
       }
     >
-      <div className="pt-2 pl-2 hidden lg:block  ">
-        {/* <Link
-          onClick={() => setShowSidebar(false)}
-          className=""
-          href="/dashboard"
-        > */}
-        {/* <Image src={logo} alt="logo" width={40} height={40} /> */}
-        {/* <Cannabis size={32} color="#249a38" strokeWidth={1} />
-        </Link> */}
-      </div>
-      <div className="space-y-3 flex flex-col mt-12">
+      <div className="space-y-1 flex flex-col">
         <Link
           onClick={() => setShowSidebar(false)}
           href="/dashboard"
           className={
             pathname === "/dashboard"
               ? "flex items-center space-x-3 px-6 py-2 mt-10 lg:mt-0 border-l-8 border-[#666666] text-[#249a38]"
-              : "flex items-center space-x-3 px-6 py-2 "
+              : "flex items-center space-x-3 px-6  "
           }
         >
-          <LayoutGrid />
-          <span>Dashboard</span>
+          <span className="font-bold text-[16px] uppercase dark:text-white text-black">
+            Dashboard
+          </span>
         </Link>
         {catalogueLinks.length > 0 && (
           <Collapsible className="px-6 py-2">
@@ -242,7 +233,6 @@ export default function sidebar({ showSidebar, setShowSidebar }) {
             >
               <button className="flex items-center space-x-5  py-2   ">
                 <div className="flex items-center space-x-3">
-                  <Warehouse />
                   <span>Catalogue</span>
                 </div>
                 {openMenu ? <ChevronDown /> : <ChevronRight />}
@@ -263,7 +253,6 @@ export default function sidebar({ showSidebar, setShowSidebar }) {
                         : "flex items-center space-x-3  py-1 text-sm"
                     }
                   >
-                    <Icon className="w-4 h-4" />
                     <span>{item.title}</span>
                   </Link>
                 );
@@ -285,7 +274,6 @@ export default function sidebar({ showSidebar, setShowSidebar }) {
                   : "flex items-center space-x-3 px-6 py-2 "
               }
             >
-              <Icon />
               <span>{item.title}</span>
             </Link>
           );

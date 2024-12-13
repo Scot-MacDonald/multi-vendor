@@ -230,7 +230,7 @@ const Footer = () => {
         <hr className="mt-16 mb-10 border-black dark:border-[#666666]" />
 
         <p className="text-sm text-center text-black dark:text-[#666666]">
-          © Copyright 2021, All Rights Reserved by Postcraft
+          © Copyright 2021, All Rights Reserved by Blattclub
         </p>
       </div>
     </section>

@@ -14,7 +14,7 @@ export default async function BlogCard({ training }) {
       <div className="relative">
         <div className="block  ">
           <img
-            className="object-cover w-full h-80 transition-all duration-200 transform group-hover:scale-110 p-1"
+            className="object-cover w-full h-80   p-1"
             src={training.imageUrl}
             alt={training.title}
           />
