@@ -31,7 +31,7 @@ export default function Pricing() {
       title: "Gold",
       isRecommended: false,
       description:
-        "No transaction fee. Is Good if your earning more than $5000 in revenue",
+        "No transaction fee. Its Good if your revenue is above $5000",
       price: "$99",
       features: ["All features", "Unlimited products", "Unlimited revenue"],
       nonFeatures: [],
@@ -66,42 +66,42 @@ export default function Pricing() {
           {plans.map((plan, i) => (
             <div
               key={i}
-              className="border border-slate-200 rounded-lg shadow-sm divide-y divide-slate-200"
+              className="border border-black dark:border-[#666666]  shadow-sm divide-y divide-black dark:divide-[#666666]"
             >
               <div className="p-6">
                 <div className="flex items-center justify-between">
-                  <h2 className="text-xl leading-6 font-bold text-slate-900 dark:text-white">
+                  <h2 className="text-xl leading-6 font-bold text-black dark:text-white">
                     {plan.title}
                   </h2>
-                  {plan.isRecommended && (
-                    <span className="uppercase border dark:bg-transparent bg-lime-500 text-white border-lime-500 text-xs rounded-full px-3 py-1">
-                      recommended
-                    </span>
-                  )}
+                  {/* {plan.isRecommended && (
+                    // <span className="uppercase border dark:bg-transparent bg-lime-500 text-white border-lime-500 text-xs rounded-full px-3 py-1">
+                    //   recommended
+                    // </span>
+                  )} */}
                 </div>
 
-                <p className="mt-2 text-base text-slate-700 dark:text-slate-300 leading-tight">
+                <p className="mt-2 text-base text-black dark:text-[#cccccc] leading-tight">
                   {plan.description}
                 </p>
                 <p className="mt-8">
-                  <span className="text-4xl font-bold text-slate-900 dark:text-lime-400 tracking-tighter">
+                  <span className="text-4xl font-bold text-black dark:text-white tracking-tighter">
                     {plan.price}
                   </span>
 
-                  <span className="text-base font-medium text-slate-500">
+                  <span className="text-base font-medium text-black dark:text-white">
                     /mo
                   </span>
                 </p>
               </div>
               <div className="pt-6 pb-8 px-6">
-                <h3 className="text-sm font-bold text-slate-900 dark:text-white tracking-wide uppercase">
+                <h3 className="text-sm font-bold text-black dark:text-white tracking-wide uppercase">
                   What's included
                 </h3>
                 <ul role="list" className="mt-4 space-y-3">
                   {plan.features.map((feature, i) => (
                     <li key={i} className="flex space-x-3">
                       <Check className="flex-shrink-0 h-5 w-5 text-green-400" />
-                      <span className="text-base text-slate-700 dark:text-slate-300">
+                      <span className="text-base text-black dark:text-[#cccccc]">
                         {feature}
                       </span>
                     </li>
@@ -118,7 +118,7 @@ export default function Pricing() {
                 </ul>
                 <Link
                   href={`${plan.link}`}
-                  className="mt-8 block w-full dark:bg-lime-500 bg-slate-950 rounded-full py-3 text-sm font-semibold text-white text-center"
+                  className="mt-20 block w-full border border-black dark:border-[#666666]  py-3 text-sm font-semibold text-black dark:text-white text-center"
                 >
                   {plan.buttonText}
                 </Link>

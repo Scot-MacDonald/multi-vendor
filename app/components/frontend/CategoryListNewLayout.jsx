@@ -7,11 +7,13 @@ export default function CategoryListNewLayout({ category, isMarketPage }) {
   const products = category.products.slice(0, 5); // Limit to 5 products for layout consistency
 
   return (
-    <div className="">
-      <div className="flex justify-between items-center py-2">
-        <h2 className="font-bold text-6xl ">{category.title}</h2>
+    <div className="mt-8">
+      <div className="flex justify-between items-center py-2  ">
+        <h2 className=" text-3xl font-bold dark:text-slate-100 text-gray-900 sm:text-4xl">
+          {category.title}
+        </h2>
         <Link
-          className="text-black dark:text-white hover:underline pr-1"
+          className="text-black dark:text-white hover:underline text-3xl font-bold   sm:text-4xl"
           href={`/category/${category.slug}`}
         >
           See All

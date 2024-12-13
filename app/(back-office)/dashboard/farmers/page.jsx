@@ -11,7 +11,7 @@ import { columns } from "./columns";
 export default async function Coupons() {
   const farmers = await getData("farmers");
   return (
-    <div className="text-black bg-[#ffffff] dark:bg-[#252525] p-8">
+    <div className="text-black bg-[#ffffff] dark:bg-[#252525] ">
       <PageHeader
         heading="Farmers"
         href="/dashboard/farmers/new"
@@ -19,7 +19,7 @@ export default async function Coupons() {
       />
 
       <div className="py-6">
-        <DataTable data={farmers} columns={columns} filterKeys={["name"]}/>
+        <DataTable data={farmers} columns={columns} filterKeys={["name"]} />
       </div>
     </div>
   );

@@ -10,6 +10,12 @@ export default async function CommunityTrainings({ trainings, title }) {
   return (
     <section className="my-6">
       <div className="grid grid-cols-12 gap-3  w-full">
+        <div className="sm:col-span-6 sm:block bg-white  overflow-y-scroll [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]  h-[calc(100vh-10rem)]">
+          {/* <div className="grid max-w-md grid-cols-1 mx-auto mt-12 sm:mt-16 md:grid-cols-4 gap-y-12 md:gap-x-8 lg:gap-x-16 md:max-w-none"> */}
+          {trainings.map((training, i) => {
+            return <BlogCard key={i} training={training} />;
+          })}
+        </div>
         <div className="sm:col-span-3 sm:block bg-white p-4 overflow-hidden hidden border  border-black dark:border-[#666666] h-[calc(100vh-10rem)]">
           <div className="px-4 mx-auto sm:px-6 lg:px-8 ">
             <div className=" mx-auto md:mx-0">
@@ -31,12 +37,6 @@ export default async function CommunityTrainings({ trainings, title }) {
               </p>
             </div>
           </div>
-        </div>
-        <div className="sm:col-span-6 sm:block bg-white  overflow-y-scroll [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]  h-[calc(100vh-10rem)]">
-          {/* <div className="grid max-w-md grid-cols-1 mx-auto mt-12 sm:mt-16 md:grid-cols-4 gap-y-12 md:gap-x-8 lg:gap-x-16 md:max-w-none"> */}
-          {trainings.map((training, i) => {
-            return <BlogCard key={i} training={training} />;
-          })}
         </div>
       </div>
     </section>

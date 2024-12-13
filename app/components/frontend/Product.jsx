@@ -28,10 +28,10 @@ export default function Product({ product }) {
         <h2 className="justify-center mb-10">{product.title}</h2>
       </Link>
       <div className="flex justify-between w-full px-3 py-3">
-        <p>€ {product.salePrice}</p>
+        <p className="text-black dark:text-white">€ {product.salePrice}</p>
         <button
           onClick={() => handleAddToCart()}
-          className="flex items-center space-x-2"
+          className="flex items-center space-x-2 text-black dark:text-white"
         >
           <ShoppingCart />
           <span>Add</span>

@@ -40,7 +40,7 @@ export default async function ProductDetailPage({ params: { slug } }) {
           productImages={product.productImages}
           thumbnail={product.imageUrl}
         />
-        <div className="col-span-6 px-5 border  border-black dark:border-[#666666]">
+        <div className="col-span-4 px-5 border  border-black dark:border-[#666666]">
           <div className=" flex px-5 items-center justify-between h-[110px] ">
             <h1 className="text-xl lg:text-3xl font-semibold uppercase ">
               {product.title}

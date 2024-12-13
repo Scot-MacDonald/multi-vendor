@@ -10,7 +10,7 @@ import { columns } from "./columns";
 export default async function page() {
   const banners = await getData("banners");
   return (
-    <div className="text-black bg-[#ffffff] dark:bg-[#252525] p-8">
+    <div className="text-black bg-[#ffffff] dark:bg-[#252525]">
       <PageHeader
         heading="Banners"
         href="/dashboard/banners/new"

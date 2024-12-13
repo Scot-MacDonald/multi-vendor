@@ -16,10 +16,7 @@ export default async function CommunityTrainingsFP({ trainings, title }) {
             <h2 className="py-2 text-3xl font-bold dark:text-slate-100 text-gray-900 sm:text-4xl">
               {title}
             </h2>
-            <Link
-              href="/blogs"
-              className="bg-slate-800 py-3 px-5 rounded flex items-center"
-            >
+            <Link href="/blogs" className=" py-3 px-5  flex items-center">
               See All
               <MoveRight className="flex-shrink-0 mx-2" />
             </Link>

@@ -58,9 +58,9 @@ export default function DataTable({ columns, data, filterKeys = ["title"] }) {
   });
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-4 dark:text-[#666666]">
       <DataTableToolbar table={table} filterKeys={filterKeys} />
-      <div className=" border border-black">
+      <div className=" border border-black dark:border-[#666666]">
         <Table>
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (

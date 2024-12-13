@@ -98,7 +98,7 @@ export function DataTable({ columns, data }) {
           </DropdownMenuContent>
         </DropdownMenu>
       </div>
-      <div className="rounded-md border">
+      <div className=" border border-black">
         <Table>
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (

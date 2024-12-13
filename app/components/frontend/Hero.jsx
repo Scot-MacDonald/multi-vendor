@@ -36,7 +36,7 @@ export default async function Hero() {
             </div>
           </div>
         </div>
-        <div className="col-span-3 hidden md:block border  border-black dark:border-[#666666]  py-4 px-4 flex-grow ">
+        <div className="col-span-3 hidden md:block border border-black dark:border-[#666666]  py-4 px-4 flex-grow ">
           <ClubList />
         </div>
         <div className="col-span-3 hidden md:block    flex-grow ">

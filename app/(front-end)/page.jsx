@@ -23,7 +23,7 @@ export default async function Home() {
   return (
     <div className="w-full min-h-screen">
       <Hero />
-      <MarketList />
+      {/* <MarketList /> */}
       {categories.map((category, i) => (
         // <div className="py-1" key={i}>
         //   <CategoryList isMarketPage={false} category={category} />
@@ -33,20 +33,20 @@ export default async function Home() {
       ))}
 
       {/* Uncomment this if needed */}
-      {categories.map((category, i) => (
+      {/* {categories.map((category, i) => (
         <div className="py-1" key={i}>
           <CategoryList isMarketPage={false} category={category} />
         </div>
-      ))}
+      ))} */}
       <div className="py-8">
         <CommunityTrainingsFP
           title="Featured Trainings"
           trainings={trainings.slice(0, 4)}
         />
       </div>
-      <div className="py-8">
+      {/* <div className="py-8">
         <TestCol />
-      </div>
+      </div> */}
     </div>
   );
 }

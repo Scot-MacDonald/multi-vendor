@@ -62,7 +62,7 @@ export default function LoginForm() {
             type="email"
             name="email"
             id="email"
-            className="text-2xl font-light tracking-[0.11px] text-white p-4 border-2 border-black bg-transparent appearance-none text-center w-full placeholder:text-center"
+            className="text-2xl font-light tracking-[0.11px] text-black dark:text-white p-4 border-1 border-black dark:border-[#666666] bg-transparent appearance-none text-center w-full placeholder:text-center placeholder-black dark:placeholder-[#cccccc]"
             placeholder="EMAIL"
             required=""
           />
@@ -85,7 +85,7 @@ export default function LoginForm() {
             name="password"
             id="password"
             placeholder="PASSWORD"
-            className="text-2xl font-light tracking-[0.11px] text-white p-4 border-2 border-black bg-transparent appearance-none text-center w-full placeholder:text-center"
+            className="text-2xl font-light tracking-[0.11px] text-black dark:text-white p-4 border-1 border-black dark:border-[#666666] bg-transparent appearance-none text-center w-full placeholder:text-center placeholder-black dark:placeholder-[#cccccc]"
             required=""
           />
           {errors.password && (
@@ -124,9 +124,9 @@ export default function LoginForm() {
           ) : (
             <button
               type="submit"
-              className="text-2xl font-light tracking-[0.11px] text-white py-4 px-8 border-2 border-black bg-black appearance-none text-center w-full"
+              className="text-2xl font-light tracking-[0.11px] text-white dark:text-black px-8 py-4 bg-black dark:bg-[#cccccc] border border-black dark:border-[#666666] appearance-none text-center w-full placeholder:text-center placeholder-black dark:placeholder-[#cccccc]"
             >
-              Login
+              LOGIN
             </button>
           )}
         </div>

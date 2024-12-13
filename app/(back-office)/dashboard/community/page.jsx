@@ -10,7 +10,7 @@ import { getData } from "@/lib/getData";
 export default async function page() {
   const trainings = await getData("trainings");
   return (
-    <div className="text-black bg-[#ffffff] dark:bg-[#252525] p-8">
+    <div className="text-black bg-[#ffffff] dark:bg-[#252525]">
       <PageHeader
         heading="Community"
         href="/dashboard/community/new"
