@@ -1,16 +1,15 @@
-import * as React from "react"
-import { ChevronRight } from "lucide-react"
+import * as React from "react";
+import { usePathname, useRouter } from "next/navigation";
 
-import { SearchForm } from "@/components/search-form"
-import { VersionSwitcher } from "@/components/version-switcher"
 import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
-} from "@/components/ui/collapsible"
+} from "@/components/ui/collapsible";
 import {
   Sidebar,
   SidebarContent,
+  SidebarFooter,
   SidebarGroup,
   SidebarGroupContent,
   SidebarGroupLabel,
@@ -19,184 +18,217 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
   SidebarRail,
-} from "@/components/ui/sidebar"
+} from "@/components/ui/sidebar";
+import { ChevronDown } from "lucide-react"; // Assuming you're using Lucide for icons
 
-// This is sample data.
-const data = {
-  versions: ["1.0.1", "1.1.0-alpha", "2.0.0-beta1"],
-  navMain: [
-    {
-      title: "Getting Started",
-      url: "#",
-      items: [
-        {
-          title: "Installation",
-          url: "#",
-        },
-        {
-          title: "Project Structure",
-          url: "#",
-        },
-      ],
-    },
-    {
-      title: "Building Your Application",
-      url: "#",
-      items: [
-        {
-          title: "Routing",
-          url: "#",
-        },
-        {
-          title: "Data Fetching",
-          url: "#",
-          isActive: true,
-        },
-        {
-          title: "Rendering",
-          url: "#",
-        },
-        {
-          title: "Caching",
-          url: "#",
-        },
-        {
-          title: "Styling",
-          url: "#",
-        },
-        {
-          title: "Optimizing",
-          url: "#",
-        },
-        {
-          title: "Configuring",
-          url: "#",
-        },
-        {
-          title: "Testing",
-          url: "#",
-        },
-        {
-          title: "Authentication",
-          url: "#",
-        },
-        {
-          title: "Deploying",
-          url: "#",
-        },
-        {
-          title: "Upgrading",
-          url: "#",
-        },
-        {
-          title: "Examples",
-          url: "#",
-        },
-      ],
-    },
-    {
-      title: "API Reference",
-      url: "#",
-      items: [
-        {
-          title: "Components",
-          url: "#",
-        },
-        {
-          title: "File Conventions",
-          url: "#",
-        },
-        {
-          title: "Functions",
-          url: "#",
-        },
-        {
-          title: "next.config.js Options",
-          url: "#",
-        },
-        {
-          title: "CLI",
-          url: "#",
-        },
-        {
-          title: "Edge Runtime",
-          url: "#",
-        },
-      ],
-    },
-    {
-      title: "Architecture",
-      url: "#",
-      items: [
-        {
-          title: "Accessibility",
-          url: "#",
-        },
-        {
-          title: "Fast Refresh",
-          url: "#",
-        },
-        {
-          title: "Next.js Compiler",
-          url: "#",
-        },
-        {
-          title: "Supported Browsers",
-          url: "#",
-        },
-        {
-          title: "Turbopack",
-          url: "#",
-        },
-      ],
-    },
-    {
-      title: "Community",
-      url: "#",
-      items: [
-        {
-          title: "Contribution Guide",
-          url: "#",
-        },
-      ],
-    },
-  ],
-}
+import { signOut, useSession } from "next-auth/react";
 
-export function AppSidebar({
-  ...props
-}) {
+export function AppSidebar(props) {
+  const { data: session, status } = useSession();
+  const router = useRouter();
+  const pathname = usePathname();
+
+  if (status === "loading") {
+    return <p>Loading...</p>;
+  }
+
+  const role = session?.user?.role;
+
+  // Role-based links
+  let sidebarLinks = [
+    {
+      title: "Customers",
+      icon: "Users2",
+      href: "/dashboard/customers",
+    },
+    {
+      title: "Markets",
+      icon: "Warehouse",
+      href: "/dashboard/markets",
+    },
+    {
+      title: "Farmers",
+      icon: "UserSquare2",
+      href: "/dashboard/farmers",
+    },
+    {
+      title: "Orders",
+      icon: "Truck",
+      href: "/dashboard/orders",
+    },
+    {
+      title: "Sales",
+      icon: "Truck",
+      href: "/dashboard/sales",
+    },
+    {
+      title: "Our Staff",
+      icon: "User",
+      href: "/dashboard/staff",
+    },
+    {
+      title: "Limi Community",
+      icon: "Building2",
+      href: "/dashboard/community",
+    },
+    {
+      title: "Wallet",
+      icon: "CircleDollarSign",
+      href: "/dashboard/wallet",
+    },
+    {
+      title: "Farmer Support",
+      icon: "HeartHandshake",
+      href: "/dashboard/farmer-support",
+    },
+    {
+      title: "Settings",
+      icon: "LayoutGrid",
+      href: "/dashboard/settings",
+    },
+    {
+      title: "Online Store",
+      icon: "ExternalLink",
+      href: "/",
+    },
+  ];
+
+  let catalogueLinks = [
+    {
+      title: "Products",
+      icon: "Boxes",
+      href: "/dashboard/products",
+    },
+    {
+      title: "Categories",
+      icon: "LayoutList",
+      href: "/dashboard/categories",
+    },
+    {
+      title: "Coupons",
+      icon: "ScanSearch",
+      href: "/dashboard/coupons",
+    },
+    {
+      title: "Store Banners",
+      icon: "MonitorPlay",
+      href: "/dashboard/banners",
+    },
+  ];
+
+  if (role === "FARMER") {
+    sidebarLinks = [
+      {
+        title: "Sales",
+        icon: "Truck",
+        href: "/dashboard/sales",
+      },
+      {
+        title: "Wallet",
+        icon: "CircleDollarSign",
+        href: "/dashboard/wallet",
+      },
+      {
+        title: "Farmer Support",
+        icon: "HeartHandshake",
+        href: "/dashboard/farmer-support",
+      },
+      {
+        title: "Settings",
+        icon: "LayoutGrid",
+        href: "/dashboard/settings",
+      },
+      {
+        title: "Online Store",
+        icon: "ExternalLink",
+        href: "/",
+      },
+    ];
+    catalogueLinks = [
+      {
+        title: "Products",
+        icon: "Boxes",
+        href: "/dashboard/products",
+      },
+      {
+        title: "Coupons",
+        icon: "ScanSearch",
+        href: "/dashboard/coupons",
+      },
+    ];
+  }
+
+  if (role === "USER") {
+    sidebarLinks = [
+      {
+        title: "My Orders",
+        icon: "Truck",
+        href: "/dashboard/orders",
+      },
+      {
+        title: "Profile",
+        icon: "Truck",
+        href: "/dashboard/profile",
+      },
+      {
+        title: "Online Store",
+        icon: "ExternalLink",
+        href: "/",
+      },
+    ];
+    catalogueLinks = [];
+  }
+
+  async function handleLogout() {
+    await signOut();
+    router.push("/");
+  }
+
   return (
-    (<Sidebar {...props}>
-      <SidebarHeader>
-        <VersionSwitcher versions={data.versions} defaultVersion={data.versions[0]} />
-        <SearchForm />
-      </SidebarHeader>
-      <SidebarContent className="gap-0">
-        {/* We create a collapsible SidebarGroup for each parent. */}
-        {data.navMain.map((item) => (
-          <Collapsible
-            key={item.title}
-            title={item.title}
-            defaultOpen
-            className="group/collapsible">
+    <Sidebar
+      style={{
+        border: "1px solid black",
+        margin: "90px 0px 0 24px",
+        height: "750px",
+        background: "white",
+      }}
+      variant="inset"
+      {...props}
+    >
+      <SidebarHeader />
+      <SidebarContent>
+        {/* Sidebar Links */}
+        <SidebarGroup>
+          <SidebarGroupContent>
+            <SidebarMenu>
+              {sidebarLinks.map((link) => (
+                <SidebarMenuItem key={link.title}>
+                  <SidebarMenuButton asChild>
+                    <a href={link.href}>{link.title}</a>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+              ))}
+            </SidebarMenu>
+          </SidebarGroupContent>
+        </SidebarGroup>
+
+        {/* Collapsible Catalogue Links */}
+        {catalogueLinks.length > 0 && (
+          <Collapsible defaultOpen className="group/collapsible">
             <SidebarGroup>
-              <SidebarGroupLabel
-                asChild
-                className="group/label text-sm text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground">
-                <CollapsibleTrigger>
-                  {item.title}{" "}
-                  <ChevronRight
-                    className="ml-auto transition-transform group-data-[state=open]/collapsible:rotate-90" />
+              <SidebarGroupLabel asChild>
+                <CollapsibleTrigger className="flex items-center w-full">
+                  Catalogue
+                  <ChevronDown className="ml-auto transition-transform group-data-[state=open]/collapsible:rotate-180" />
                 </CollapsibleTrigger>
               </SidebarGroupLabel>
               <CollapsibleContent>
                 <SidebarGroupContent>
                   <SidebarMenu>
-                    {item.items.map((item) => (
-                      <SidebarMenuItem key={item.title}>
-                        <SidebarMenuButton asChild isActive={item.isActive}>
-                          <a href={item.url}>{item.title}</a>
+                    {catalogueLinks.map((link) => (
+                      <SidebarMenuItem key={link.title}>
+                        <SidebarMenuButton asChild>
+                          <a href={link.href}>{link.title}</a>
                         </SidebarMenuButton>
                       </SidebarMenuItem>
                     ))}
@@ -205,9 +237,19 @@ export function AppSidebar({
               </CollapsibleContent>
             </SidebarGroup>
           </Collapsible>
-        ))}
+        )}
       </SidebarContent>
+      <SidebarFooter>
+        {" "}
+        {/* Logout Button */}
+        <button
+          onClick={handleLogout}
+          className="flex items-center space-x-3 bg-[#12a049] text-white rounded-md px-6 py-3"
+        >
+          <span>Logout</span>
+        </button>
+      </SidebarFooter>
       <SidebarRail />
-    </Sidebar>)
+    </Sidebar>
   );
 }

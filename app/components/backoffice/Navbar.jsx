@@ -23,6 +23,7 @@ import {
 import ThemeSwitcherBtn from "../ThemeSwitcherBtn";
 import UserAvatar from "./UserAvatar";
 import { useSession } from "next-auth/react";
+import { SidebarTrigger } from "@/components/ui/sidebar";
 
 export default function Navbar({ setShowSidebar, showSidebar }) {
   const { data: session, status } = useSession();
@@ -31,13 +32,12 @@ export default function Navbar({ setShowSidebar, showSidebar }) {
   }
 
   return (
-    <div className=" bg-white dark:bg-[#252525] border-t border-b border-l border-r   border-[#000000] dark:border-[#666666] ">
+    <div className="w-full  bg-white dark:bg-[#252525] border-t border-b border-l border-r   border-[#000000] dark:border-[#666666] ">
       <div className="flex items-center justify-between mx-auto pl-5 gap-8">
         <Link className="font-bold" href="/">
           {/* <Cannabis size={32} color="#249a38" strokeWidth={1} /> */}
           BLATTCLUB
         </Link>
-
         <div className="flex items-center  ">
           {status === "authenticated" && <UserAvatar user={session?.user} />}
 
@@ -156,6 +156,8 @@ export default function Navbar({ setShowSidebar, showSidebar }) {
               <DropdownMenuSeparator />
             </DropdownMenuContent>
           </DropdownMenu>
+          <SidebarTrigger className="px-6 py-3 rounded-none text-black dark:text-white border-l border-black  flex items-center justify-center" />
+
           <ThemeSwitcherBtn />
         </div>
       </div>
