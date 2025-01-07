@@ -9,11 +9,11 @@ export default function CategoryListNewLayout({ category, isMarketPage }) {
   return (
     <div className="mt-8">
       <div className="flex justify-between items-center py-2  ">
-        <h2 className=" text-3xl font-bold dark:text-slate-100 text-gray-900 sm:text-4xl">
+        <h2 className=" font-bold text-[16px] uppercase dark:text-slate-100 text-gray-900 ">
           {category.title}
         </h2>
         <Link
-          className="text-black dark:text-white hover:underline text-3xl font-bold   sm:text-4xl"
+          className="text-black dark:text-white hover:underline font-bold text-[16px] uppercase"
           href={`/category/${category.slug}`}
         >
           See All
