@@ -43,7 +43,7 @@ export default function NewMarketForm({ categories }) {
     setImageUrl("");
   }
   return (
-    <div className="bg-white dark:bg-[#252525] py-6">
+    <div className="bg-white dark:bg-[#252525] ">
       <FormHeader title="New Market" />
       <form
         onSubmit={handleSubmit(onSubmit)}

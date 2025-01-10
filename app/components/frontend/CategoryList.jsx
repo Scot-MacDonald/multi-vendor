@@ -5,18 +5,18 @@ import CategoryCarousel from "./CategoryCarousel";
 export default function CategoryList({ category, isMarketPage }) {
   return (
     <div className="pb-6  text-slate-800 overflow-hidden ">
-      <div className=" flex justify-between items-center ">
-        <h2 className="uppercase text-3xl font-bold dark:text-slate-100 text-gray-900 sm:text-4xl">
+      <div className=" flex justify-between items-center p-4">
+        <h2 className="uppercase text-[16px] font-bold dark:text-white text-black ">
           {category.title}
         </h2>
         <Link
-          className="uppercase text-black dark:text-white hover:underline text-3xl font-bold sm:text-4xl"
+          className="uppercase text-black dark:text-white hover:underline text-[16px] font-bold "
           href={`/category/${category.slug}`}
         >
           See All
         </Link>
       </div>
-      <div className="mt-4">
+      <div className="mt-4 px-4">
         <CategoryCarousel
           isMarketPage={isMarketPage}
           products={category.products}

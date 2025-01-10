@@ -20,7 +20,7 @@ export default async function page({ params: { slug } }) {
     <div className="w-full">
       <Breadcrumb />
       <div className="grid grid-cols-12 gap-2  w-full">
-        <div className="sm:col-span-3 sm:block bg-white p-4 overflow-hidden hidden border  border-black dark:border-[#666666] h-[calc(100vh-10rem)]">
+        <div className="sm:col-span-3 sm:block bg-white dark:bg-[#252525] p-4 overflow-hidden hidden border  border-black dark:border-[#666666] h-[calc(100vh-10rem)]">
           <div className="">
             <div className="flex items-center justify-center">
               <Image

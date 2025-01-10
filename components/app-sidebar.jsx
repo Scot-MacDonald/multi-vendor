@@ -189,37 +189,23 @@ export function AppSidebar(props) {
       style={{
         border: "1px solid black",
         margin: "90px 0px 0 24px",
+
         height: "750px",
         background: "white",
       }}
       variant="inset"
       {...props}
     >
-      <SidebarHeader />
       <SidebarContent>
-        {/* Sidebar Links */}
-        <SidebarGroup>
-          <SidebarGroupContent>
-            <SidebarMenu>
-              {sidebarLinks.map((link) => (
-                <SidebarMenuItem key={link.title}>
-                  <SidebarMenuButton asChild>
-                    <a href={link.href}>{link.title}</a>
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-              ))}
-            </SidebarMenu>
-          </SidebarGroupContent>
-        </SidebarGroup>
-
         {/* Collapsible Catalogue Links */}
         {catalogueLinks.length > 0 && (
           <Collapsible defaultOpen className="group/collapsible">
-            <SidebarGroup>
-              <SidebarGroupLabel asChild>
-                <CollapsibleTrigger className="flex items-center w-full">
+            <SidebarGroup className="pt-1">
+              {/* removed  asChild from SidebarGroupLabel - styles */}
+              <SidebarGroupLabel>
+                <CollapsibleTrigger className="flex items-center w-full font-bold text-[16px] uppercase text-black dark:text-white">
                   Catalogue
-                  <ChevronDown className="ml-auto transition-transform group-data-[state=open]/collapsible:rotate-180" />
+                  <ChevronDown className="ml-auto transition-transform group-data-[state=open]/collapsible:rotate-180 " />
                 </CollapsibleTrigger>
               </SidebarGroupLabel>
               <CollapsibleContent>
@@ -238,6 +224,21 @@ export function AppSidebar(props) {
             </SidebarGroup>
           </Collapsible>
         )}
+
+        {/* Sidebar Links */}
+        <SidebarGroup>
+          <SidebarGroupContent>
+            <SidebarMenu>
+              {sidebarLinks.map((link) => (
+                <SidebarMenuItem key={link.title}>
+                  <SidebarMenuButton asChild>
+                    <a href={link.href}>{link.title}</a>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+              ))}
+            </SidebarMenu>
+          </SidebarGroupContent>
+        </SidebarGroup>
       </SidebarContent>
       <SidebarFooter>
         {" "}

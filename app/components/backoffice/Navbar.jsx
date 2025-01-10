@@ -45,9 +45,9 @@ export default function Navbar({ setShowSidebar, showSidebar }) {
             <DropdownMenuTrigger asChild>
               <button
                 type="button"
-                className="relative inline-flex items-center px-5 py-3 text-sm  text-center text-white rounded-lg"
+                className="relative inline-flex items-center px-5 py-3 text-sm  text-center text-[#000000] dark:text-white transition-all duration-200 bg-white hover:bg-black hover:text-white"
               >
-                <Bell className="text-[#000000] dark:text-white w-4 h-4" />
+                <Bell className=" w-4 h-4 " />
                 <span className="sr-only">Notifications</span>
                 {/* <div className="absolute inline-flex items-center justify-center w-5 h-5 text-xs font-bold text-white bg-red-500 rounded-full -top-2 end-4 dark:border-gray-900">
                   20
@@ -156,7 +156,7 @@ export default function Navbar({ setShowSidebar, showSidebar }) {
               <DropdownMenuSeparator />
             </DropdownMenuContent>
           </DropdownMenu>
-          <SidebarTrigger className="px-6 py-3 rounded-none text-black dark:text-white border-l border-black  flex items-center justify-center" />
+          <SidebarTrigger className="px-6 py-3 rounded-none text-black dark:text-white border-l border-black  flex items-center justify-center transition-all duration-200 hover:bg-black hover:text-white" />
 
           <ThemeSwitcherBtn />
         </div>

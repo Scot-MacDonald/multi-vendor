@@ -24,7 +24,7 @@ export default async function page() {
   }
   return (
     <>
-      <div className="bg-white dark:bg-[#252525] pl-8 pt-8">
+      <div className="bg-white dark:bg-[#252525] p-4">
         <Heading title="Dashboard Overview" />
       </div>
       <LargeCards sales={sales} />

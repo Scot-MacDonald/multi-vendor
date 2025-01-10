@@ -11,7 +11,7 @@ import DataTable from "@/app/components/data-table-components/DataTable";
 export default async function page() {
   const markets = await getData("markets");
   return (
-    <div className="text-black bg-[#ffffff] dark:bg-[#252525]">
+    <div className="text-black bg-[#ffffff] dark:bg-[#252525] p-4">
       <PageHeader
         heading="Markets"
         href="/dashboard/markets/new"

@@ -17,13 +17,11 @@ export default async function page() {
   // filter by user id
   const userOrders = orders.filter((order) => order.userId === userId);
   return (
-    <section className="py-12 bg-white sm:py-16 lg:py-20">
-      <div className="px-4 m-auto sm:px-6 lg:px-8 max-w-7xl">
-        <div className="max-w-6xl mx-auto">
+    <section className="p-4 bg-white">
+      <div className="">
+        <div className="">
           <div>
-            <h1 className="text-2xl font-bold text-gray-900 sm:text-3xl">
-              Your Orders
-            </h1>
+            <h1 className="text-[16px] font-bold text-black ">Your Orders</h1>
             <p className="mt-2 text-sm font-normal text-gray-600">
               Check the status of recent and old orders & discover more products
             </p>

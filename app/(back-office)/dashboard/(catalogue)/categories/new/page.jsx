@@ -3,7 +3,7 @@ import NewCategoryForm from "@/app/components/backoffice/Forms/NewCategoryForm";
 
 export default function NewCategory() {
   return (
-    <div className="bg-white dark:bg-[#252525] py-6">
+    <div className="bg-white dark:bg-[#252525]">
       <FormHeader title="New category" />
       <NewCategoryForm />
     </div>

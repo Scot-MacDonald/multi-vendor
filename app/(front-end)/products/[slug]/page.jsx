@@ -81,8 +81,8 @@ export default async function ProductDetailPage({ params: { slug } }) {
             </div> */}
             <AddToCartButton product={product} />
           </div>
-          <div className="hidden md:block  overflow-hidden">
-            <h2 className="bg-[#f8f8f8] dark:bg-[#f8f8f8] py-4 px-6 font-semibold  text-slate-800 dark:text-slate-100">
+          <div className="hidden md:block  overflow-hidden px-4">
+            <h2 className="bg-white dark:bg-[#252525] py-4 px-6 font-semibold  text-black dark:text-white border border-black dark:border-[#666666]">
               Delivery and Returns
             </h2>
             <div className="px-4 py-4">
@@ -127,7 +127,7 @@ export default async function ProductDetailPage({ params: { slug } }) {
           </div>
         </div>
       </div>
-      <div className="bg-white dark:bg-slate-700 my-8 ">
+      <div className="bg-white dark:bg-[#252525] my-8 ">
         <h2 className="mb-4 text-xl font-semibold text-slate-200 ml-3">
           Similar Products
         </h2>

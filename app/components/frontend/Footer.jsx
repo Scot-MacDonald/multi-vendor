@@ -4,7 +4,7 @@ import Link from "next/link";
 const Footer = () => {
   return (
     <section
-      className="py-10 bg-white dark:bg-[#252525] border mt-5   border-black dark:border-[#666666]
+      className="py-10 bg-white dark:bg-[#252525] border mt-2   border-black dark:border-[#666666]
       sm:pt-16 lg:pt-24"
     >
       <div className="px-4 mx-auto sm:px-6 lg:px-8 ">
