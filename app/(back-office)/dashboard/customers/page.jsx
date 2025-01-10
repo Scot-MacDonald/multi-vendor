@@ -12,14 +12,14 @@ export default async function Customers() {
   const customers = await getData("customers");
 
   return (
-    <div>
+    <div className="p-4">
       {/* Header */}
       {/* <PageHeader
         heading="Coupons"
         href="/dashboard/coupons/new"
         linkTitle="Add Coupon"
       /> */}
-      <h2 className="font-bold text-[16px] uppercase dark:text-white text-black">
+      <h2 className="font-bold text-[16px] uppercase dark:text-white text-black ">
         Customers
       </h2>
       <div className="py-8">

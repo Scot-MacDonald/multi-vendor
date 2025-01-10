@@ -88,8 +88,8 @@ export default function NewProductForm({
   }
 
   return (
-    <div className="bg-white dark:bg-[#252525] py-6">
-      <FormHeader title="New product" />
+    <div className="bg-white dark:bg-[#252525]">
+      {/* <FormHeader title="New product" /> */}
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="w-full max-w-4xl ml-8 p-4 bg-white border border-dashed border-gray-900/25 dark:border-[#666666] sm:p-6 md:p-8 dark:bg-transparent m-5"

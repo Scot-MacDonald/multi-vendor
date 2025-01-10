@@ -17,7 +17,7 @@ export default async function Sales() {
   const farmerSales = allSales.filter((sale) => sale.vendorId === id);
 
   return (
-    <div className="text-black bg-[#ffffff] dark:bg-[#252525] p-8">
+    <div className="text-black bg-[#ffffff] dark:bg-[#252525] p-4">
       {/* <PageHeader
         heading="Coupons"
         href="/dashboard/coupons/new"

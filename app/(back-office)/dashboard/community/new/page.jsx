@@ -11,7 +11,7 @@ export default async function NewTraining() {
   }));
   return (
     <div>
-      <FormHeader title="New Training" />
+      <FormHeader title="New Post" />
       <NewTrainingForm categories={categories} />;
     </div>
   );

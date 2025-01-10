@@ -11,7 +11,7 @@ import { columns } from "./columns";
 export default async function page() {
   const categories = await getData("categories");
   return (
-    <div className="text-black bg-[#ffffff] dark:bg-[#252525]">
+    <div className="text-black bg-[#ffffff] dark:bg-[#252525] p-4">
       <PageHeader
         heading="Categories"
         href="/dashboard/categories/new"

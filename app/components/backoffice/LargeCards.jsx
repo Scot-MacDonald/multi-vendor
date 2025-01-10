@@ -56,7 +56,7 @@ export default function LargeCards({ sales }) {
     },
   ];
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 py-8 px-3">
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 py-8 px-3 bg-white dark:bg-[#252525]">
       {orderStats.map((item, i) => {
         return <LargeCard className="bg-green-600" data={item} key={i} />;
       })}

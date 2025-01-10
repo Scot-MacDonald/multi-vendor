@@ -14,6 +14,12 @@ export default function ProductNewLayout({ product, isLarge }) {
   }
   return (
     <div className="relative flex flex-col items-center justify-center w-full h-full">
+      <Link href={`/products/${product.slug}`}>
+        <h2 className="justify-center font-bold text-[16px] uppercase text-black dark:text-white mb-10">
+          {product.title}
+        </h2>
+      </Link>
+
       {/* Image Link */}
       <Link
         href={`/products/${product.slug}`}
@@ -36,7 +42,7 @@ export default function ProductNewLayout({ product, isLarge }) {
         {/* Add to Cart Button */}
         <button
           onClick={() => handleAddToCart()}
-          className="flex items-center space-x-2  text-black "
+          className="flex items-center space-x-2"
         >
           <ShoppingCart />
           <span>Add</span>

@@ -17,7 +17,7 @@ import NewFarmerForm from "@/app/components/backoffice/NewFarmerForm";
 
 export default function NewFarmer() {
   return (
-    <div className="bg-white dark:bg-[#252525] py-6">
+    <div className="bg-white dark:bg-[#252525] ">
       <FormHeader title="New Farmer" />
       <NewFarmerForm />
     </div>
