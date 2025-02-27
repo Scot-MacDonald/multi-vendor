@@ -126,7 +126,7 @@ export async function POST(request) {
         " Thank you, for Creating annAccount with Us. We request you to click on the link Below in order to verify your Account. Thankyou";
       const subject = "Account Verification from Blattclub";
       const sendMail = await resend.emails.send({
-        from: "Acme <onboarding@resend.dev>",
+        from: "Acme <noreply@blattclub.com>",
         to: email,
         subject: subject,
         react: EmailTemplate({
