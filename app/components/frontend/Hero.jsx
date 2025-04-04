@@ -13,6 +13,7 @@ import SidebarCategories from "./SidebarCategories";
 import { getData } from "@/lib/getData";
 import SecondNav from "./SecondNav";
 import ClubList from "./ClubList";
+import MapComponent from "../map/map";
 
 export default async function Hero() {
   const banners = await getData("banners");
@@ -26,7 +27,7 @@ export default async function Hero() {
             {/* First nested h-1/2 */}
             <div className="h-1/2 border border-black dark:border-[#666666] flex items-center justify-center overflow-hidden flex-grow p-2 ">
               {/* <HeroCarousel banners={banners} /> */}
-              <div className="bg-gray-100 w-full h-full"></div>
+              <div className="bg-gray-100 w-full h-full"><MapComponent/></div>
             </div>
             {/* Second nested h-1/2 */}
             <div className="h-1/2 border border-black dark:border-[#666666] flex items-center justify-center">
