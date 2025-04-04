@@ -18,7 +18,6 @@ export default function layout({ children }) {
     <div className="m-6 ">
       <Navbar />
       {/* <SecondNav /> */}
-      <MapComponent />
       <div className="flex bg-white dark:bg-[#252525]">{children}</div>
       <Footer />
     </div>
